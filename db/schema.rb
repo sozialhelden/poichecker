@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20131210142715) do
 
   create_table "nodes", force: true do |t|
     t.integer  "data_set_id"
+    t.integer  "original_id"
     t.integer  "osm_id",      limit: 8
     t.string   "name"
     t.float    "lat"

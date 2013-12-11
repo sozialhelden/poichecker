@@ -2,6 +2,7 @@ class CreateNodes < ActiveRecord::Migration
   def change
     create_table :nodes do |t|
       t.belongs_to :data_set
+      t.integer :original_id
       t.column :osm_id, :bigint # Needs to be large as in osm are 64bit int ids
       t.string :name
       t.float :lat

@@ -11,7 +11,29 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+$wheelchair-yes: #97C34E;
+$wheelchair-limited: #F19D46;
+$wheelchair-no: #D6382F;
+$wheelchair-unknown: lighten(black, 70%);
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+.status_tag {
+  &.yes {
+    background: $wheelchair-yes;
+  }
+
+  &.limited {
+    background: $wheelchair-limited;
+  }
+
+  &.no {
+    background: $wheelchair-no;
+  }
+
+  &.unknown {
+    background: $wheelchair-unknown;
+  }
+}
