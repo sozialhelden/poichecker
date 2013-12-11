@@ -1,0 +1,9 @@
+development:
+  oauth_secret: 'M52hsBTR3VFeL5wN9kRN5a7ka5T8Hef9CdWajEw4'
+  oauth_key: 'FiCMVIJXZIqnKXQZO5XE9GjOGZp699nd8JTJiaLi'
+  oauth_site: 'http://api06.dev.openstreetmap.org'
+
+test:
+  oauth_secret: 'M52hsBTR3VFeL5wN9kRN5a7ka5T8Hef9CdWajEw4'
+  oauth_key: 'FiCMVIJXZIqnKXQZO5XE9GjOGZp699nd8JTJiaLi'
+  oauth_site: 'http://api06.dev.openstreetmap.org'

@@ -69,9 +69,12 @@ GEM
     execjs (2.0.2)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    haml (4.0.4)
+      tilt
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
     inherited_resources (1.4.1)
@@ -95,6 +98,15 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
+    oauth (0.4.7)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-osm (0.3.2)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.17.0)
     polyamorous (0.6.4)
@@ -162,8 +174,10 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   coffee-rails (~> 4.0.0)
+  haml
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth-osm
   pg
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

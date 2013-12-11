@@ -1,0 +1,10 @@
+development:
+  oauth_secret: 'OAUTH_SECRET'
+  oauth_key: 'OAUTH_KEY'
+  oauth_site: 'http://api06.dev.openstreetmap.org'
+  # oauth_site: 'http://www.openstreetmap.org'
+
+test:
+  oauth_secret: 'OAUTH_SECRET'
+  oauth_key: 'OAUTH_KEY'
+  oauth_site: 'http://api06.dev.openstreetmap.org'

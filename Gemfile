@@ -9,6 +9,9 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Use Haml for templates
+gem 'haml'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -28,6 +31,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'omniauth-osm'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
