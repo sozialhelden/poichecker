@@ -32,7 +32,7 @@ listen "/var/apps/matchy/staging/shared/unicorn.sock", :backlog => 64
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/var/apps/matchy/staging/shared/pids/unicorn.pid"
+pid "/var/apps/matchy/staging/shared/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
