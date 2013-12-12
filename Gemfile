@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'omniauth-osm'
+gem 'geocoder'
+gem 'country_select'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -13,6 +13,7 @@ class CreateNodes < ActiveRecord::Migration
       t.string :housenumber
       t.string :postcode
       t.string :city
+      t.string :country
       t.string :website
       t.string :phone
       t.string :wheelchair

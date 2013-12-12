@@ -59,6 +59,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    country_select (1.2.0)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -69,6 +70,7 @@ GEM
     execjs (2.0.2)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    geocoder (1.1.9)
     haml (4.0.4)
       tilt
     has_scope (0.6.0.rc)
@@ -174,6 +176,8 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   coffee-rails (~> 4.0.0)
+  country_select
+  geocoder
   haml
   jbuilder (~> 1.2)
   jquery-rails

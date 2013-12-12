@@ -2,7 +2,7 @@
   = form.inputs do
     = form.input :name
     = form.input :license
-    = form.input :csv_file, as: :file, required: true, hint: "Die CSV Datei sollte in der ersten Zeile folgende Spalten in beliebiger Reihenfolge enthalten:<strong> \"Name, Lat, Lon, Street, Housenumber, Postcode, City, Phone, Wheelchair\"</strong>".html_safe
+    = form.input :csv_file, as: :file, required: true, hint: "Die CSV Datei sollte in der ersten Zeile folgende Spalten in beliebiger Reihenfolge enthalten:<strong> \"Name, Lat, Lon, Street, Housenumber, Postcode, City, Country, Phone, Wheelchair\"</strong>".html_safe
 
   = form.actions do
     = form.submit 'Upload'

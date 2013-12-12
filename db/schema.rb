@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20131210142715) do
     t.integer  "data_set_id"
     t.integer  "original_id"
     t.integer  "osm_id",      limit: 8
+    t.string   "osm_key"
+    t.string   "osm_value"
     t.string   "name"
     t.float    "lat"
     t.float    "lon"
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20131210142715) do
     t.string   "housenumber"
     t.string   "postcode"
     t.string   "city"
+    t.string   "country"
     t.string   "website"
     t.string   "phone"
     t.string   "wheelchair"
