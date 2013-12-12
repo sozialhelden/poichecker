@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Node < ActiveRecord::Base
   belongs_to :data_set
 

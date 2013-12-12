@@ -1,3 +1,4 @@
+# encoding: UTF-8
 ActiveAdmin.register Node do
 
   menu :label => proc{ "Orte" }

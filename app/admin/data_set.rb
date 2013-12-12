@@ -1,3 +1,4 @@
+# encoding: UTF-8
 ActiveAdmin.register DataSet do
 
   menu :label => proc{ "Datensätze" }
