@@ -42,3 +42,23 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 
 end
+
+namespace :unicorn do
+
+  task :reload do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute '/etc/init.d/unicorn_matchy upgrade'
+    end
+  end
+
+
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute '/etc/init.d/unicorn_matchy restart'
+    end
+  end
+
+end
+
+after 'deploy:restart', 'unicorn:reload' # ZERO DOWNTIME DEPLOYMENT
+
