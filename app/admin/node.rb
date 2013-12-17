@@ -9,12 +9,36 @@ ActiveAdmin.register Node do
   actions :all, :except => [:destroy]
   config.batch_actions = false
 
-  controller do
+  action_item :only => :index  do
+    link_to 'Upload CSV', :action => 'upload_csv'
+  end
 
+  collection_action :upload_csv, :title => "Upload Dataset" do
+
+    render "/admin/nodes/upload_csv"
+  end
+
+  collection_action :import_csv, :method => :post do
+    tmp_file = node_params[:csv_file].read
+    data_set = DataSet.find(node_params[:data_set_id])
+    Node.import(tmp_file, data_set)
+    redirect_to({:action => :index}, :notice => "CSV imported successfully!")
+  end
+
+
+
+  controller do
     def show
       @nodes = Node.where(:id => params[:id]).page(params[:page]).per(10)
       render action: :index
     end
+
+    private
+
+    def node_params
+      params.require('node').permit(:data_set_id, :csv_file)
+    end
+
   end
 
   index title: 'Orte' do
@@ -40,7 +64,6 @@ ActiveAdmin.register Node do
     column :wheelchair do |node|
       status_tag(node.wheelchair, :class => node.wheelchair)
     end
-
     default_actions
   end
 
@@ -69,7 +92,6 @@ ActiveAdmin.register Node do
       f.input :phone
       f.input :wheelchair
     end
-
     f.actions
   end
 end
