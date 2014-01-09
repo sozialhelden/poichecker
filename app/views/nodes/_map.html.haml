@@ -1,0 +1,13 @@
+%h1 Platzhalter
+
+%p Hier werden dann potentielle Orte aus der OpenStreetMap angezeigt.
+
+%table
+  %tr
+    %th{style: 'width: 30%'}
+      %ul.candidates
+        %li Place One
+        %li Place Two
+    %td
+      #map
+        = image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/#{resource.lon},#{resource.lat},17/640x480.png64"
