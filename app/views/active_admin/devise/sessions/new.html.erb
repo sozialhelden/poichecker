@@ -1,7 +1,9 @@
 <div id="login">
   <h2><%= title "#{active_admin_application.site_title} Login" %></h2>
   <div class="oauth_providers" style="margin-top: 40px;">
-    <h3><%= link_to 'Sign in with OpenStreetMap', admin_user_omniauth_authorize_path(:osm) %></h3>
+    <p>Hilf der freien Weltkarte OpenStreetMap: Kontrolliere Daten, die das Projekt gespendet bekommt. Das geht ganz leicht und macht sogar Spaß!</p>
+    <br/>
+    <h3><%= link_to 'Sign in with OpenStreetMap', admin_user_omniauth_authorize_path(:osm), class: 'light-button' %></h3>
   </div>
 
 </div>

@@ -37,3 +37,7 @@ $wheelchair-unknown: lighten(black, 70%);
     background: $wheelchair-unknown;
   }
 }
+
+a.light-button {
+  @include light-button;
+}

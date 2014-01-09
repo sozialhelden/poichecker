@@ -28,10 +28,6 @@ ActiveAdmin.register Node do
 
 
   controller do
-    def show
-      @nodes = Node.where(:id => params[:id]).page(params[:page]).per(10)
-      render action: :index
-    end
 
     private
 
@@ -41,30 +37,78 @@ ActiveAdmin.register Node do
 
   end
 
-  index title: 'Orte' do
+  index title: proc{ parent.name rescue 'Orte' }, :default => true do
     selectable_column
     column "Koordinaten" do |node|
       if node.lat && node.lon
-        link_to "#{node.lat || 0.0},#{node.lon || 0.0}", "http://www.openstreetmap.org/#map=17/#{node.lat}/#{node.lon}", target: '_blank'
+        span "#{node.lat || 0.0},#{node.lon || 0.0}"
       else
         span "fehlt"
       end
     end
     column :name
-    column :full_address, sortable: :street
-    column :osm_tag do |node|
+    column :amenity, sortable: :osm_tag do |node|
       if node.osm_key && node.osm_value
         link_to"#{node.osm_key} => #{node.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{node.osm_key}%3D#{node.osm_value}"
       else
         span "fehlt"
       end
     end
+    column :street
+    column :housenumber
+    column :postcode
+    column :city
     column :website
     column :phone
     column :wheelchair do |node|
       status_tag(node.wheelchair, :class => node.wheelchair)
     end
+    column :map do |node|
+      if node.lat && node.lon
+        link_to "Map", "http://www.openstreetmap.org/#map=17/#{node.lat}/#{node.lon}", target: '_blank', class: 'light-button'
+      end
+    end
     default_actions
+  end
+
+  show do
+    table_options = {
+      :id => "index_table_#{active_admin_config.resource_name.plural}",
+      :sortable => false,
+      :class => "index_table index",
+      :i18n => active_admin_config.resource_class
+    }
+
+    table_for [resource], table_options do |t|
+      t.column "Koordinaten" do |node|
+        if node.lat && node.lon
+          span "#{node.lat || 0.0},#{node.lon || 0.0}"
+        else
+          span "fehlt"
+        end
+      end
+      t.column :name
+      t.column :amenity, sortable: :osm_tag do |node|
+        if node.osm_key && node.osm_value
+          link_to"#{node.osm_key} => #{node.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{node.osm_key}%3D#{node.osm_value}"
+        else
+          span "fehlt"
+        end
+      end
+      t.column :street
+      t.column :housenumber
+      t.column :postcode
+      t.column :city
+      t.column :website
+      t.column :phone
+      t.column :wheelchair do |node|
+        status_tag(node.wheelchair, :class => node.wheelchair)
+      end
+    end
+
+    panel "Shops in OpenStreetMap" do
+      render partial: "map"
+    end
   end
 
   form do |f|
