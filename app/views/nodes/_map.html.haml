@@ -1,4 +1,4 @@
 #map
   - candidate_pins = []
   - candidates.each_with_index{|c,i| candidate_pins << "pin-s-#{i+1}(#{c.lon},#{c.lat})"}
-  = image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+F22(#{resource.lon},#{resource.lat}),#{candidate_pins.join(",")}/#{resource.lon},#{resource.lat},17/360x240.png64", style: "width:100%"
+  = image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+F22(#{resource.lon},#{resource.lat}),#{candidate_pins.join(",")}/#{resource.lon},#{resource.lat},16/480x360.png64", style: "width:100%"

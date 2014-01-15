@@ -80,17 +80,10 @@ ActiveAdmin.register Node do
     }
 
     columns do
-      column do
+      column span: 2 do
         table_for [resource], table_options do |t|
           t.column "#" do |node|
             span "★"
-          end
-          t.column "Koordinaten" do |node|
-            if node.lat && node.lon
-              span "#{node.lat || 0.0},#{node.lon || 0.0}"
-            else
-              span "fehlt"
-            end
           end
           t.column :name
           t.column :street
@@ -103,7 +96,9 @@ ActiveAdmin.register Node do
             status_tag(node.wheelchair, :class => node.wheelchair)
           end
         end
+      end
 
+      column do
       end
     end
 
@@ -112,26 +107,11 @@ ActiveAdmin.register Node do
       column span: 2 do
 
         table_for node.candidates, table_options do |t|
-          t.column "#" do |node|
-            node.pos
-          end
-
-          t.column "Koordinaten" do |node|
-            if node.lat && node.lon
-              span "#{node.lat || 0.0},#{node.lon || 0.0}"
-            else
-              span "fehlt"
-            end
-          end
+          t.column "#", :pos
           t.column :name
-          t.column :street
-          t.column :housenumber
-          t.column :postcode
-          t.column :city
-          t.column :website
-          t.column :phone
-          t.column :wheelchair do |node|
-            status_tag(node.wheelchair, :class => node.wheelchair)
+          t.column :full_address
+          t.column "Action" do |c|
+            link_to "Match", node_candidate_path(node.id, c.id), class: 'light-button'
           end
         end
       end
