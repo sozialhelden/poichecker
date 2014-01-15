@@ -1,6 +1,9 @@
 # encoding: UTF-8
 require 'csv/string_converter'
+
 class Node < ActiveRecord::Base
+  include Overpass
+
   belongs_to :data_set
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord

@@ -79,35 +79,69 @@ ActiveAdmin.register Node do
       :i18n => active_admin_config.resource_class
     }
 
-    table_for [resource], table_options do |t|
-      t.column "Koordinaten" do |node|
-        if node.lat && node.lon
-          span "#{node.lat || 0.0},#{node.lon || 0.0}"
-        else
-          span "fehlt"
+    columns do
+      column do
+        table_for [resource], table_options do |t|
+          t.column "#" do |node|
+            span "★"
+          end
+          t.column "Koordinaten" do |node|
+            if node.lat && node.lon
+              span "#{node.lat || 0.0},#{node.lon || 0.0}"
+            else
+              span "fehlt"
+            end
+          end
+          t.column :name
+          t.column :street
+          t.column :housenumber
+          t.column :postcode
+          t.column :city
+          t.column :website
+          t.column :phone
+          t.column :wheelchair do |node|
+            status_tag(node.wheelchair, :class => node.wheelchair)
+          end
         end
-      end
-      t.column :name
-      t.column :amenity, sortable: :osm_tag do |node|
-        if node.osm_key && node.osm_value
-          link_to"#{node.osm_key} => #{node.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{node.osm_key}%3D#{node.osm_value}"
-        else
-          span "fehlt"
-        end
-      end
-      t.column :street
-      t.column :housenumber
-      t.column :postcode
-      t.column :city
-      t.column :website
-      t.column :phone
-      t.column :wheelchair do |node|
-        status_tag(node.wheelchair, :class => node.wheelchair)
+
       end
     end
 
-    panel "Shops in OpenStreetMap" do
-      render partial: "map"
+    h2 "Kandidaten"
+    columns do
+      column span: 2 do
+
+        table_for node.candidates, table_options do |t|
+          t.column "#" do |node|
+            node.pos
+          end
+
+          t.column "Koordinaten" do |node|
+            if node.lat && node.lon
+              span "#{node.lat || 0.0},#{node.lon || 0.0}"
+            else
+              span "fehlt"
+            end
+          end
+          t.column :name
+          t.column :street
+          t.column :housenumber
+          t.column :postcode
+          t.column :city
+          t.column :website
+          t.column :phone
+          t.column :wheelchair do |node|
+            status_tag(node.wheelchair, :class => node.wheelchair)
+          end
+        end
+      end
+
+      column do
+        panel "Map" do
+          render partial: "map", locals: { candidates: node.candidates }
+        end
+      end
+
     end
   end
 
