@@ -37,6 +37,10 @@ class Place < ActiveRecord::Base
     attribs
   end
 
+  def source
+    "Original"
+  end
+
   private
 
   def self.valid_keys

@@ -17,9 +17,9 @@ ActiveAdmin.register Candidate do
     panel "Vergleich" do
       form_for :candidate, :url => '/' do |form|
         attributes_table_for [place, resource, Candidate.new(place.merge_attributes(resource.attributes))] do
-          %w{name street housenumber postcode city lat lon wheelchair}.each do |f|
+          %w{source name street housenumber postcode city lat lon wheelchair}.each do |f|
             row f do |n|
-              if n.id.nil?
+              if n.id.nil? && f != 'source'
                 form.text_field f, value: n.send(f)
               else
                 span n.send(f)
