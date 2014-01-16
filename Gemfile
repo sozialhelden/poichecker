@@ -36,6 +36,7 @@ gem 'geocoder'
 gem 'rgeo'
 gem 'country_select'
 gem 'httparty'
+gem 'draper', '>= 1.0.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

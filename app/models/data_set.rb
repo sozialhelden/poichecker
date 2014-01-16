@@ -6,6 +6,6 @@ class DataSet < ActiveRecord::Base
   validates :license, presence: true
   validates :name, uniqueness: true
 
-  has_many :nodes
+  has_many :places
 
 end

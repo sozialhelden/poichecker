@@ -1,5 +1,6 @@
 # encoding: UTF-8
-ActiveAdmin.register Node do
+ActiveAdmin.register Place do
+  decorate_with PlaceDecorator
 
   menu :label => proc{ "Orte" }
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair
@@ -15,13 +16,13 @@ ActiveAdmin.register Node do
 
   collection_action :upload_csv, :title => "Upload Dataset" do
 
-    render "/admin/nodes/upload_csv"
+    render "/places/upload_csv"
   end
 
   collection_action :import_csv, :method => :post do
-    tmp_file = node_params[:csv_file].read
-    data_set = DataSet.find(node_params[:data_set_id])
-    Node.import(tmp_file, data_set)
+    tmp_file = place_params[:csv_file].read
+    data_set = DataSet.find(place_params[:data_set_id])
+    Place.import(tmp_file, data_set)
     redirect_to({:action => :index}, :notice => "CSV imported successfully!")
   end
 
@@ -31,25 +32,25 @@ ActiveAdmin.register Node do
 
     private
 
-    def node_params
-      params.require('node').permit(:data_set_id, :csv_file)
+    def place_params
+      params.require('place').permit(:data_set_id, :csv_file)
     end
 
   end
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true do
     selectable_column
-    column "Koordinaten" do |node|
-      if node.lat && node.lon
-        span "#{node.lat || 0.0},#{node.lon || 0.0}"
+    column "Koordinaten" do |place|
+      if place.lat && place.lon
+        span "#{place.lat || 0.0},#{place.lon || 0.0}"
       else
         span "fehlt"
       end
     end
     column :name
-    column :amenity, sortable: :osm_tag do |node|
-      if node.osm_key && node.osm_value
-        link_to"#{node.osm_key} => #{node.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{node.osm_key}%3D#{node.osm_value}"
+    column :amenity, sortable: :osm_tag do |place|
+      if place.osm_key && place.osm_value
+        link_to"#{place.osm_key} => #{place.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{place.osm_key}%3D#{place.osm_value}"
       else
         span "fehlt"
       end
@@ -60,12 +61,12 @@ ActiveAdmin.register Node do
     column :city
     column :website
     column :phone
-    column :wheelchair do |node|
-      status_tag(node.wheelchair, :class => node.wheelchair)
+    column :wheelchair do |place|
+      status_tag(place.wheelchair, :class => place.wheelchair)
     end
-    column :map do |node|
-      if node.lat && node.lon
-        link_to "Map", "http://www.openstreetmap.org/#map=17/#{node.lat}/#{node.lon}", target: '_blank', class: 'light-button'
+    column :map do |place|
+      if place.lat && place.lon
+        link_to "Map", "http://www.openstreetmap.org/#map=17/#{place.lat}/#{place.lon}", target: '_blank', class: 'light-button'
       end
     end
     default_actions
@@ -82,7 +83,7 @@ ActiveAdmin.register Node do
     columns do
       column span: 2 do
         table_for [resource], table_options do |t|
-          t.column "#" do |node|
+          t.column "#" do |place|
             span "★"
           end
           t.column :name
@@ -92,8 +93,8 @@ ActiveAdmin.register Node do
           t.column :city
           t.column :website
           t.column :phone
-          t.column :wheelchair do |node|
-            status_tag(node.wheelchair, :class => node.wheelchair)
+          t.column :wheelchair do |place|
+            status_tag(place.wheelchair, :class => place.wheelchair)
           end
         end
       end
@@ -106,19 +107,19 @@ ActiveAdmin.register Node do
     columns do
       column span: 2 do
 
-        table_for node.candidates, table_options do |t|
+        table_for place.candidates, table_options do |t|
           t.column "#", :pos
           t.column :name
           t.column :full_address
           t.column "Action" do |c|
-            link_to "Match", node_candidate_path(node.id, c.id), class: 'light-button'
+            link_to "Match", place_candidate_path(place.id, c.id), class: 'light-button'
           end
         end
       end
 
       column do
         panel "Map" do
-          render partial: "map", locals: { candidates: node.candidates }
+          render partial: "map", locals: { candidates: place.candidates }
         end
       end
 

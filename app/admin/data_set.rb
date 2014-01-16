@@ -10,7 +10,7 @@ ActiveAdmin.register DataSet do
     column :name
     column :license
     column :orte do |data_set|
-      link_to "Check now: #{data_set.nodes.count}", data_set_nodes_path(data_set), class: 'light-button'
+      link_to "Check now: #{data_set.places.count}", data_set_places_path(data_set), class: 'light-button'
     end
     default_actions
 

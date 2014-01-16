@@ -1,7 +1,7 @@
 # encoding: UTF-8
 ActiveAdmin.register Candidate do
 
-  belongs_to :node
+  belongs_to :place
 
   actions :all, :except => [:destroy, :new, :update, :index, :edit, :index]
 
@@ -17,7 +17,7 @@ ActiveAdmin.register Candidate do
   show title: proc{ parent.name rescue 'Orte' } do
     panel "Vergleich" do
       form_for :Candidate, :url => '/' do |form|
-        attributes_table_for [node, resource, Candidate.new] do
+        attributes_table_for [place, resource, Candidate.new] do
           %w{name street housenumber postcode city lat lon wheelchair}.each do |f|
             row f do |n|
               if n.id.nil?

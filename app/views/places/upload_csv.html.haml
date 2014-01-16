@@ -1,4 +1,4 @@
-= semantic_form_for Node.new, :url => import_csv_admin_nodes_path, :html => {:multipart => true} do |form|
+= semantic_form_for Place.new, :url => import_csv_places_path, :html => {:multipart => true} do |form|
   = form.inputs do
     = form.input :data_set
     = form.input :csv_file, as: :file, required: true, hint: "Die CSV Datei sollte in der ersten Zeile folgende Spalten in beliebiger Reihenfolge enthalten:<strong> \"Name\", \"Lat\", \"Lon\", \"Street\", \"Housenumber\", \"Postcode\", \"City\", \"Country\", \"Phone\", \"Wheelchair\"</strong>. Wichtig ist, dass alle Werte mit \"Hochkomma\" gerahmt sind.".html_safe
