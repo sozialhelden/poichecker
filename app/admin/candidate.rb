@@ -11,17 +11,16 @@ ActiveAdmin.register Candidate do
     def resource
       Candidate.find(params[:id])
     end
-
   end
 
   show title: proc{ parent.name rescue 'Orte' } do
     panel "Vergleich" do
-      form_for :Candidate, :url => '/' do |form|
-        attributes_table_for [place, resource, Candidate.new] do
+      form_for :candidate, :url => '/' do |form|
+        attributes_table_for [place, resource, Candidate.new(place.merge_attributes(resource.attributes))] do
           %w{name street housenumber postcode city lat lon wheelchair}.each do |f|
             row f do |n|
               if n.id.nil?
-                form.text_field f
+                form.text_field f, value: n.send(f)
               else
                 span n.send(f)
               end
@@ -36,5 +35,4 @@ ActiveAdmin.register Candidate do
       end
     end
   end
-
 end

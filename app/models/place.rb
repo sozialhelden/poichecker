@@ -28,6 +28,15 @@ class Place < ActiveRecord::Base
     end
   end
 
+  def merge_attributes(other_attributes)
+    attribs = self.attributes.dup
+    other_attributes.each do |key,value|
+      attribs[key] ||= value
+    end
+    attribs.delete("id")
+    attribs
+  end
+
   private
 
   def self.valid_keys

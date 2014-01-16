@@ -34,7 +34,8 @@ class Candidate
     xml
   end
 
-  def self.from_osm(attribs_hash)
+  def self.from_osm(attribs_hash = {})
+    attribs_hash["tags"] ||= {}
     Candidate.new(
       id: attribs_hash["id"],
       name: attribs_hash["tags"]["name"],
@@ -42,12 +43,37 @@ class Candidate
       lon: attribs_hash["lon"],
       street: attribs_hash["tags"]["addr:street"],
       housenumber: attribs_hash["tags"]["addr:housenumber"],
-      city: attribs_hash["tags"]["addr:city"],
       postcode: attribs_hash["tags"]["addr:postcode"],
+      city: attribs_hash["tags"]["addr:city"],
       website: attribs_hash["tags"]["website"],
       phone: attribs_hash["tags"]["phone"],
       wheelchair: attribs_hash["tags"]["wheelchair"],
       pos: attribs_hash["pos"]
     )
   end
+
+  def valid_keys
+    [
+      :id,
+      :name,
+      :lat,
+      :lon,
+      :street,
+      :housenumber,
+      :postcode,
+      :city,
+      :website,
+      :phone,
+      :wheelchair
+    ]
+  end
+
+  def attributes()
+    self.valid_keys.inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
+      value = send(key)
+      a[key.to_s] = value
+      a
+    end
+  end
+
 end
