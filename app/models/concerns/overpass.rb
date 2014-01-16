@@ -45,7 +45,7 @@ module Overpass
           #%w{ node way relation}.each do |t|
           %w{ node }.each do |t|
             builder.query(type: t) do
-              builder.tag!("has-kv", k: place.osm_key, v: place.osm_value)
+              builder.tag!("has-kv", k: place.osm_key, v: place.osm_value) if place.osm_key
               builder.tag!("bbox-query", e: place.e, n: place.n, s: place.s, w: place.w)
             end
           end
@@ -62,6 +62,7 @@ module Overpass
     end
 
     def from_osm(attribs_hash)
+      attribs_hash["tags"] ||= {}
       Place.new(
         id: attribs_hash["id"],
         name: attribs_hash["tags"]["name"],

@@ -28,7 +28,7 @@ class Candidate
     builder = Builder::XmlMarkup.new(indent: 2)
     builder.instruct!
     xml = builder.tag!("osm-script", output: :json) do
-      builder.tag!("id-query", ref: osm_id, type: :place)
+      builder.tag!("id-query", ref: osm_id, type: :node)
       builder.print
     end
     xml
