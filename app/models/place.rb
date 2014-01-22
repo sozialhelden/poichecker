@@ -9,8 +9,27 @@ class Place < ActiveRecord::Base
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
 
+  scope :next, lambda { |place| where(data_set_id: place.data_set_id).where("#{table_name}.id > ?", place.id).order(id: :asc).limit(1) }
+  scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
+
+  def next
+    Place.with_coordinates.next(self).try(:first)
+  end
+
   def full_address
-    [[street, housenumber].join(' '),[postcode, city].join(' '), country].compact.join(', ')
+    [street_info.join(' '),city_info.join(' '), country].reject{|s| s.blank?}.compact.join(', ')
+  end
+
+  def street_info
+    [street, housenumber].reject{|s| s.blank?}
+  end
+
+  def city_info
+    [postcode, city].reject{|s| s.blank?}
+  end
+
+  def address_with_contact_details
+    [full_address, phone, website].reject{|s| s.blank?}.compact.join(', ')
   end
 
   def self.import(csv_file, data_set)
@@ -54,7 +73,9 @@ class Place < ActiveRecord::Base
       :postcode,
       :city,
       :phone,
-      :wheelchair
+      :wheelchair,
+      :website,
+      :phone
     ]
   end
 

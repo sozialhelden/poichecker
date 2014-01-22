@@ -4,11 +4,11 @@ class Candidate
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair
+  attr_accessor :id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :source
 
   def initialize(attributes = {})
     attributes.each do |name, value|
-      send("#{name}=", value) if respond_to?("#{name}=")
+      send("#{name}=", value) if respond_to?("#{name}=") and !value.blank?
     end
   end
 
@@ -17,7 +17,7 @@ class Candidate
   end
 
   def source
-    "OpenStreetMap"
+    @source || "OpenStreetMap"
   end
 
 

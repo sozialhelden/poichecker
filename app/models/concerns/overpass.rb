@@ -45,7 +45,8 @@ module Overpass
           #%w{ node way relation}.each do |t|
           %w{ node }.each do |t|
             builder.query(type: t) do
-              builder.tag!("has-kv", k: place.osm_key, v: place.osm_value) if place.osm_key
+              builder.tag!("has-kv", k: place.osm_key,  v: place.osm_value) if place.osm_key
+              builder.tag!("has-kv", k: "name",         regv: place.name.split.join('|')) if place.name
               builder.tag!("bbox-query", e: place.e, n: place.n, s: place.s, w: place.w)
             end
           end
@@ -56,7 +57,7 @@ module Overpass
           builder.recurse type:"down"
         end
 
-        builder.print
+        builder.print order: "quadtile"
       end
       xml
     end
