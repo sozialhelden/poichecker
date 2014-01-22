@@ -14,6 +14,9 @@ group :default do
   gem 'i18n'
   gem 'rails-i18n'
 
+  # Performance
+  gem 'delayed_job_active_record'
+
   # Active Admin related stuff
   gem 'activeadmin', github: 'gregbell/active_admin'
   gem 'draper', '>= 1.0.0'
@@ -27,8 +30,6 @@ group :default do
   # API and data fetching
   gem 'httparty'
 
-  # Performance
-  gem 'delayed_job_active_record'
 end
 
 group :asssets do
