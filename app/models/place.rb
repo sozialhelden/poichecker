@@ -35,14 +35,10 @@ class Place < ActiveRecord::Base
   def self.import(csv_file, data_set)
     CSV.parse(csv_file, headers: true, encoding: 'UTF-8', force_quotes: true, header_converters: :string) do |row|
       place_hash = valid_params(row.to_hash)
-      if place = data_set.places.where(name: place_hash[:name]).first
-        place.update!(place_hash)
-      else
-        begin
-          data_set.places.create!(place_hash)
-        rescue Exception => e
-          raise place_hash.inspect
-        end
+      begin
+        data_set.places.create!(place_hash)
+      rescue Exception => e
+        raise place_hash.inspect
       end
     end
   end
@@ -75,7 +71,9 @@ class Place < ActiveRecord::Base
       :phone,
       :wheelchair,
       :website,
-      :phone
+      :phone,
+      :osm_key,
+      :osm_value
     ]
   end
 
