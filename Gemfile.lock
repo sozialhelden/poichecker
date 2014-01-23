@@ -91,6 +91,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-i18n (0.10.2)
     draper (1.3.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -129,6 +130,7 @@ GEM
       activesupport (>= 3.0.0)
     kgio (2.8.1)
     libv8 (3.16.14.3)
+    libxml-ruby (2.7.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -185,6 +187,12 @@ GEM
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rgeo (0.3.20)
+    rosemary (0.3.12)
+      activemodel (>= 3.0.20)
+      builder (>= 2.1.2)
+      httparty (>= 0.10.0)
+      libxml-ruby (>= 2.4.0)
+      oauth (>= 0.4.7)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -244,6 +252,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   country_select
   delayed_job_active_record
+  devise-i18n
   draper (>= 1.0.0)
   geocoder
   haml
@@ -256,6 +265,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails-i18n
   rgeo
+  rosemary
   sass-rails (~> 4.0.0)
   sdoc
   therubyracer

@@ -10,10 +10,6 @@ group :default do
   # Use Haml for templates
   gem 'haml'
 
-  # Internationalisation
-  gem 'i18n'
-  gem 'rails-i18n'
-
   # Performance
   gem 'delayed_job_active_record'
 
@@ -22,6 +18,11 @@ group :default do
   gem 'draper', '>= 1.0.0'
   gem 'omniauth-osm'
 
+  # Internationalisation
+  gem 'i18n'
+  gem 'rails-i18n'
+  gem 'devise-i18n'
+
   # Geo Stuff
   gem 'geocoder'
   gem 'rgeo'
@@ -29,6 +30,7 @@ group :default do
 
   # API and data fetching
   gem 'httparty'
+  gem 'rosemary'
 
 end
 
