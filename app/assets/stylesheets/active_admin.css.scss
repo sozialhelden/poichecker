@@ -43,12 +43,25 @@ a.light-button {
 }
 
 .row.single {
+  height: 45px;
+
   th {
     display: none;
   }
 
   td {
     width: 100%;
+  }
+
+  input {
+    &.left_source {
+      border: 1px solid #A22;
+    }
+
+    &.right_source {
+      border: 1px solid #2A2;
+    }
+
   }
 
 }

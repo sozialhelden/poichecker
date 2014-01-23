@@ -16,24 +16,28 @@ class Candidate
     false
   end
 
-  def source
-    @source || "OpenStreetMap"
+  def merge_attributes(other_attributes)
+    attribs = self.attributes.dup
+    other_attributes.each do |key,value|
+      attribs[key] ||= value
+    end
+    attribs.delete("id")
+    attribs
   end
-
 
   def valid_keys
     [
       :id,
       :name,
-      :lat,
-      :lon,
       :street,
       :housenumber,
       :postcode,
       :city,
+      :wheelchair,
       :website,
       :phone,
-      :wheelchair
+      :lat,
+      :lon
     ]
   end
 
