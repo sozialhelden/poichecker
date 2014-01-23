@@ -80,5 +80,19 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-bundler'
 end
+
+group :development, :test do
+  gem 'rb-fsevent'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-annotate'
+  gem 'guard-pow',     require: false
+  gem 'guard-bundler', require: false
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]

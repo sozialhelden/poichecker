@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # == Schema Information
 #
 # Table name: data_sets
@@ -10,13 +9,11 @@
 #  updated_at :datetime
 #
 
-require 'csv'
+# Read about factories at https://github.com/thoughtbot/factory_girl
 
-class DataSet < ActiveRecord::Base
-
-  validates :license, :name, presence: true
-  validates :name, uniqueness: true
-
-  has_many :places, dependent: :destroy
-
+FactoryGirl.define do
+  factory :data_set do
+    name "T-Punkte"
+    license "CC-By-SA"
+  end
 end
