@@ -42,15 +42,17 @@ a.light-button {
   @include light-button;
 }
 
-.row.single {
-  height: 45px;
+.row {
+  &.single {
+    height: 45px;
 
-  th {
-    display: none;
-  }
+    th {
+      display: none;
+    }
 
-  td {
-    width: 100%;
+    td {
+      width: 100%;
+    }
   }
 
   input {
@@ -62,6 +64,8 @@ a.light-button {
       border: 1px solid #2A2;
     }
 
+    &.different {
+      border: 1px solid black;
+    }
   }
-
 }
