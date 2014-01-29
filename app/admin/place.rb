@@ -2,7 +2,6 @@
 ActiveAdmin.register Place do
   decorate_with PlaceDecorator
 
-  menu :label => proc{ "Orte" }
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair, :osm_key, :osm_value
 
   belongs_to :data_set, optional: true
@@ -47,7 +46,7 @@ ActiveAdmin.register Place do
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true do
     selectable_column
-    column "Koordinaten", :coordinates, sortable: :lat
+    column :coordinates, sortable: :lat
     column :name
     column :amenity, sortable: :osm_tag
     column :address
@@ -70,7 +69,7 @@ ActiveAdmin.register Place do
             span "★"
           end
           t.column :name
-          t.column "Address", :address_with_contact_details
+          t.column :address, :address_with_contact_details
         end
 
         if !place.candidates.empty?
@@ -79,7 +78,7 @@ ActiveAdmin.register Place do
           table_for place.candidates, table_options do |t|
             t.column "#", :pos
             t.column :name
-            t.column "Address", :address_with_contact_details
+            t.column :address, :address_with_contact_details
             t.column "Match?" do |c|
               link_to "✓", place_candidate_path(place.id, c.id), class: 'light-button'
             end

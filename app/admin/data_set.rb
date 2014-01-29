@@ -1,8 +1,10 @@
 # encoding: UTF-8
 ActiveAdmin.register DataSet do
 
-  menu :label => proc{ "Datensätze" }
   permit_params :name, :license
+
+  filter :name
+  filter :license
 
   index title: 'Datensätze' do
     selectable_column
