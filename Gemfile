@@ -94,5 +94,10 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
 end
+
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
