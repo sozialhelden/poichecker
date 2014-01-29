@@ -1,0 +1,41 @@
+de:
+  activerecord:
+    models:
+      place:
+        one: Ort
+        other: Orte
+      comment:
+        one: Kommentar
+        other: Kommentare
+      data_set:
+        one: Datensatz
+        other: Datensätze
+    attributes:
+      admin_user:
+        encrypted_password: verschlüsseltes Password
+        oauth_token: OAuth Token
+        oauth_secret: OAuth Geheimnis
+        osm_id: OpenStreetMap ID
+      data_set:
+        created_at: Erzeugt am
+        license: Lizenz
+        places: Orte
+        updated_at: Aktualisiert am
+      place:
+        amenity: OpenStreetMap
+        address: Adresse
+        city: Ort
+        coordinates: Koordinaten
+        country: Land
+        created_at: Erzeugt am
+        data_set: Datensatz
+        housenumber: Hausnummer
+        name: Name
+        lat: Breitengrad
+        lon: Längengrad
+        postcode: PLZ
+        street: Strasse
+        phone: Telefon
+        website: Webseite
+        wheelchair: Rollstuhlgerecht
+        updated_at: Aktualisiert am

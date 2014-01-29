@@ -16,6 +16,12 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/sozialhelden/geocoder.git
+  revision: 004cd6af281798207261b0bed04bcfd485ab3ef0
+  specs:
+    geocoder (1.1.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -121,7 +127,6 @@ GEM
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
-    geocoder (1.1.9)
     guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -333,7 +338,7 @@ DEPENDENCIES
   devise-i18n
   draper (>= 1.0.0)
   factory_girl_rails
-  geocoder
+  geocoder!
   guard
   guard-annotate
   guard-bundler
