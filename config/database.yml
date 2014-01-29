@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: matchy_test
   pool: 5
-  username: matchy
+  username: postgres
   password:
 
 production:
