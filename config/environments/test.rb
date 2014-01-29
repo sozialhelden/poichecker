@@ -1,6 +1,9 @@
 Matchy::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Set the secret_key_base for testing environment, so travis.ci would run properly.
+  config.secret_key_base = '0cbfba16d2d964b5c98b00d104b460ff9a28619662cec40f92af41f5975e0b6b5f57156ef94747fe1b329442fcc4c922b0e7e969d41ae565993edc2fa6ae7793'
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
