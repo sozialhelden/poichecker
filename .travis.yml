@@ -2,6 +2,13 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.0
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database matchy_test;' -U matchy
+
 notifications:
   email:
     - info@christophbuente.de
