@@ -82,7 +82,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rb-fsevent'
+  if RUBY_PLATFORM.downcase.include?("darwin") # I'm on Mac
+    gem 'rb-fsevent'
+  end
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-annotate'
