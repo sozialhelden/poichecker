@@ -1,5 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+require 'active_support/inflector'
 
 guard :rspec do
   watch(%r{^spec/.+_spec\.rb$})
@@ -20,6 +21,15 @@ guard :rspec do
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
+
+  # Factory girl
+  watch(%r{^spec/factories/(.+)\.rb$}) do |m|
+    %W[
+      spec/models/#{m[1].singularize}_spec.rb
+      spec/controllers/#{m[1]}_controller_spec.rb
+      spec/requests/#{m[1]}_spec.rb
+    ]
+  end
 end
 
 guard :bundler do
