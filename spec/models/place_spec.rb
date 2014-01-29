@@ -24,25 +24,93 @@
 #
 
 require 'spec_helper'
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/nominatim'
+  c.hook_into :webmock # or :fakeweb
+end
 
 describe Place do
 
-  let :place do
+  subject do
     FactoryGirl.build(:place)
   end
 
   describe "attributes" do
 
-    it { expect(place).to validate_presence_of :name }
+    it { expect(subject).to validate_presence_of :name }
+    it { expect(subject).to validate_presence_of :data_set_id }
 
     it "saves attributes" do
-      place.save!
-      expect(place).to be_valid
+      subject.save!
+      expect(subject).to be_valid
     end
   end
 
   describe "associations" do
-    it { expect(place).to belong_to :data_set }
+    it { expect(subject).to belong_to :data_set }
+  end
+
+  describe "address methods" do
+
+    it "assembles street info from street and housenumber" do
+      subject.street = 'a_street'
+      subject.housenumber = 'a_housenumber'
+      expect(subject.street_info).to eql ['a_street', 'a_housenumber']
+    end
+
+    it "assemles city info from city and postcode" do
+      subject.city = 'a_city'
+      subject.postcode = 'a_postcode'
+      expect(subject.city_info).to eql ['a_postcode', 'a_city']
+
+    end
+  end
+
+  describe "geocode" do
+
+    it "defines a set of attributes that belong to a address" do
+      expect(subject.address_keys).to eql %w{street housenumber city postcode country}
+    end
+
+    it "detects that address has been changed when street changed" do
+      subject.street = 'some_street'
+      expect(subject.address_changed?).to be_true
+    end
+
+    it "detects that address has been changed when housenumber changed" do
+      subject.housenumber = 'some_housenumber'
+      expect(subject.address_changed?).to be_true
+    end
+
+    it "detects that address has been changed when city changed" do
+      subject.city = 'some_city'
+      expect(subject.address_changed?).to be_true
+    end
+
+    it "detects that address has been changed when postcode changed" do
+      subject.postcode = 'some_postcode'
+      expect(subject.address_changed?).to be_true
+    end
+
+    it "detects that address has been changed when country changed" do
+      subject.country = 'some_country'
+      expect(subject.address_changed?).to be_true
+    end
+
+    it "re-geocodes lat/lon after address changes" do
+      VCR.use_cassette('leipziger_strasse') do
+        subject.street      = 'Leipziger Strasse'
+        subject.housenumber = '65'
+        subject.city        = 'Berlin'
+        subject.postcode    = '10117'
+        subject.save!
+        expect(subject.lat).to eql 52.5112595
+        expect(subject.lon).to eql 13.3933457
+      end
+    end
+
   end
 
 end

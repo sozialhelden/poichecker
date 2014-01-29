@@ -25,7 +25,6 @@ describe "Home Page" do
         end
 
         it "displays a link" do
-          save_and_open_page
           expect(page).to have_selector 'a', text: 'Sign in with OpenStreetMap'
         end
 

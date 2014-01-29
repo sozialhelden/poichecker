@@ -32,12 +32,17 @@ class Place < ActiveRecord::Base
 
   belongs_to :data_set
 
-  validates :name, presence: true
+  validates :name, :data_set_id, presence: true
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
+  after_validation :geocode, :if => :address_changed?
 
   scope :next, lambda { |place| where(data_set_id: place.data_set_id).where("#{table_name}.id > ?", place.id).order(id: :asc).limit(1) }
   scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
+
+  def address_changed?
+    changes.keys.any?{ |key| address_keys.include? key }
+  end
 
   def next
     Place.with_coordinates.next(self).try(:first)
@@ -60,7 +65,7 @@ class Place < ActiveRecord::Base
   end
 
   def self.import(csv_file, data_set)
-    CSV.parse(csv_file, headers: true, encoding: 'UTF-8', force_quotes: true, header_converters: :string) do |row|
+    CSV.parse(csv_file, headers: true, encoding: 'UTF-8', header_converters: :string) do |row|
       place_hash = valid_params(row.to_hash)
       begin
         data_set.places.create!(place_hash)
@@ -68,6 +73,10 @@ class Place < ActiveRecord::Base
         raise place_hash.inspect
       end
     end
+  end
+
+  def address_keys
+    %w{street housenumber city postcode country}
   end
 
   private
