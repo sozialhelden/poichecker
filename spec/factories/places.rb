@@ -27,6 +27,7 @@
 
 FactoryGirl.define do
   factory :place do
+    data_set
     name "Testplace"
     wheelchair "yes"
   end
