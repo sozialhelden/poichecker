@@ -95,6 +95,8 @@ ActiveAdmin.register Place do
           end
         end
 
+        active_admin_comments_for place
+
       end
       column span: 3 do
         panel "Map" do

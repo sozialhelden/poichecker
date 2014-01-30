@@ -31,6 +31,7 @@ class Place < ActiveRecord::Base
   include Overpass
 
   belongs_to :data_set
+  has_many :comments, as: :resource, dependent: :destroy, class_name: 'ActiveAdmin::Comment'
 
   validates :name, :data_set_id, presence: true
 
