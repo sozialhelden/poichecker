@@ -27,6 +27,7 @@ group :default do
   gem 'geocoder', github: 'sozialhelden/geocoder'
   gem 'rgeo'
   gem 'country_select'
+  gem 'nominatim'
 
   # API and data fetching
   gem 'httparty'

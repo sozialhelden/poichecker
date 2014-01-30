@@ -36,5 +36,5 @@ Geocoder.configure(
   # :distances => :linear    # :spherical or :linear
 
   # header information
-  :http_headers => { "User-Agent" => "Poichecker v1.0, (http://poichecker.de)" }
+  :http_headers => { "User-Agent" => "Poichecker v1.0, (http://poichecker.de)", "email" => "christoph@sozialhelden.de" }
 )

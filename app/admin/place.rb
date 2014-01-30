@@ -84,7 +84,7 @@ ActiveAdmin.register Place do
             end
           end
         else
-          h4 "Es wurde keine geeigneten Kandiaten in der OpenStreetMap gefunden."
+          h4 "Es wurde keine geeigneter Kandiaten in der OpenStreetMap gefunden."
         end
 
         panel "Nicht dabei?", class: :right do
