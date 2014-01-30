@@ -95,7 +95,7 @@ ActiveAdmin.register Place do
           end
         end
 
-        active_admin_comments_for place
+        active_admin_comments
 
       end
       column span: 3 do

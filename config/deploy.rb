@@ -14,7 +14,7 @@ set :linked_files, %w{config/database.yml config/osm.yml config/geocoder.yml con
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :rbenv_type, :system # :user or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.0.0-p353'
+set :rbenv_ruby, '2.1.0'
 set :rbenv_custom_path, '/opt/rbenv'
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
