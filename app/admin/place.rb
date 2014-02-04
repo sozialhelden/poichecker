@@ -72,19 +72,15 @@ ActiveAdmin.register Place do
           t.column :address, :address_with_contact_details
         end
 
-        if !place.candidates.empty?
-          h2 "Kandidaten"
+        h2 "Kandidaten"
 
-          table_for place.candidates, table_options do |t|
-            t.column "#", :pos
-            t.column :name
-            t.column :address, :address_with_contact_details
-            t.column "Match?" do |c|
-              link_to "✓", place_candidate_path(place.id, c.id), class: 'light-button'
-            end
+        table_for place.candidates, table_options do |t|
+          t.column "#", :pos
+          t.column :name
+          t.column :address, :address_with_contact_details
+          t.column "Match?" do |c|
+            link_to "✓", place_candidate_path(place.id, c.id), class: 'light-button'
           end
-        else
-          h4 "Es wurde keine geeigneter Kandiaten in der OpenStreetMap gefunden."
         end
 
         panel "Nicht dabei?", class: :right do
@@ -96,6 +92,8 @@ ActiveAdmin.register Place do
         end
 
         active_admin_comments
+
+        render partial: "spine_app"
 
       end
       column span: 3 do

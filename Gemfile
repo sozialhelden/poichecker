@@ -9,6 +9,9 @@ group :default do
 
   # Use Haml for templates
   gem 'haml'
+  gem 'json2-rails'
+  gem 'spine-rails'
+  gem 'eco'
 
   # Performance
   gem 'delayed_job_active_record'
