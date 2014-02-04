@@ -74,7 +74,7 @@ ActiveAdmin.register Place do
 
         h2 "Kandidaten"
 
-        table_for place.candidates, table_options do |t|
+        table_for place.candidates, table_options.merge(id: "index_table_candidates") do |t|
           t.column "#", :pos
           t.column :name
           t.column :address, :address_with_contact_details

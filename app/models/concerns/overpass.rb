@@ -9,7 +9,7 @@ module Overpass
     attr_accessor :pos, :candidates
 
     def candidates
-      @candidates ||= fetch_candidates
+      @candidates ||= [] #fetch_candidates
     end
 
     def fetch_candidates
