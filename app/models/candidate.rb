@@ -55,7 +55,7 @@ class Candidate
       result = HTTParty.post('http://overpass-api.de/api/interpreter', { :body => text })
       members = result.parsed_response['elements'].select{|el| el['type'] == 'node'}
       lon,lat = centroid(members)
-      attribs_hash = result.parsed_response['elements'].select{|el| el['type'] == 'way'}.try(:first)
+      attribs_hash = result.parsed_response['elements'].select{|el| el['type'] == osm_type}.try(:first)
       attribs_hash.delete("type")
       attribs_hash["lon"] = lon
       attribs_hash["lat"] = lat
