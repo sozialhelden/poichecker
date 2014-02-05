@@ -2,6 +2,8 @@
 ActiveAdmin.register Place do
   decorate_with PlaceDecorator
 
+  config.sort_order = "id_asc"
+
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair, :osm_key, :osm_value
 
   belongs_to :data_set, optional: true
@@ -36,21 +38,20 @@ ActiveAdmin.register Place do
   end
 
   filter :data_set
+  filter :wheelchair, as: :select, :collection => %w(yes limited no unknown)
   filter :name
   filter :street
   filter :housenumber
   filter :city
-  filter :wheelchair, as: :select, :collection => %w(yes limited no unknown)
-
-
+  filter :postcode
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true do
     selectable_column
+    column fa_icon("compass"), :matching_status, sortable: :osm_id
     column :coordinates, sortable: :lat
     column :name
-    column :amenity, sortable: :osm_tag
-    column :address
-    column "♿", :wheelchair_status
+    column :address, sortable: :street
+    column fa_icon("wheelchair"), :wheelchair_status, sortable: :wheelchair
     default_actions
   end
 
@@ -65,8 +66,8 @@ ActiveAdmin.register Place do
     columns do
       column span: 2 do
         table_for [resource], table_options do |t|
-          t.column "#" do |place|
-            span "★"
+          t.column fa_icon("map-marker") do |place|
+            span fa_icon("star")
           end
           t.column :name
           t.column :address, :address_with_contact_details
@@ -74,12 +75,12 @@ ActiveAdmin.register Place do
 
         h2 "Kandidaten"
 
-        table_for place.candidates, table_options.merge(id: "index_table_candidates") do |t|
-          t.column "#", :pos
+        table_for [], table_options.merge(id: "index_table_candidates") do |t|
+          t.column fa_icon("map-marker"), :pos
           t.column :name
           t.column :address, :address_with_contact_details
           t.column "Match?" do |c|
-            link_to "✓", place_candidate_path(place.id, c.id), class: 'light-button'
+            link_to fa_icon("check"), place_candidate_path(place.id, c.id), class: 'light-button'
           end
         end
 
@@ -120,8 +121,7 @@ ActiveAdmin.register Place do
        :priority_countries => ['Germany', 'AT', 'CH', 'NL', 'GB', 'FR']
     end
     f.inputs "OpenStreetMap" do
-      f.input :osm_key
-      f.input :osm_value
+      f.input :osm_id
       f.input :lat
       f.input :lon
     end

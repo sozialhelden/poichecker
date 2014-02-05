@@ -4,22 +4,43 @@ class PlaceDecorator < ApplicationDecorator
 
   def wheelchair_status
     arbre model: model do
-      status_tag(model.wheelchair, :class => model.wheelchair)
+      status_tag(model.wheelchair, class: model.wheelchair)
     end
   end
+
+  def matching_status
+    if model.osm_id
+      colum_header = fa_icon("check-square-o")
+      arbre model: model do
+        status_tag class: 'yes' do
+          colum_header
+        end
+      end
+
+    else
+      colum_header = fa_icon("square-o")
+      arbre model: model do
+        status_tag class: 'no' do
+          colum_header
+        end
+      end
+
+    end
+
+  end
+
+
+#  def matching_status
+#    arbre model: model do status_tag(fa_icon "check-square-o", class: 'matched') end
+#    if model.osm_id
+#      arbre { status_tag(fa_icon "check-square-o", class: 'matched') }
+#    else
+#      arbre { status_tag(fa_icon "square-o", class: 'unmatched') }
+#    end
+#  end
 
   def address
     model.address_with_contact_details
-  end
-
-  def amenity
-    if model.osm_key && model.osm_value
-      link_to"#{model.osm_key} => #{model.osm_value}","http://wiki.openstreetmap.org/wiki/Tag:#{model.osm_key}%3D#{model.osm_value}"
-    else
-      arbre do
-        span "fehlt"
-      end
-    end
   end
 
   def coordinates

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121161949) do
+ActiveRecord::Schema.define(version: 20140205110841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,8 +79,6 @@ ActiveRecord::Schema.define(version: 20140121161949) do
     t.integer  "data_set_id"
     t.integer  "original_id"
     t.integer  "osm_id",      limit: 8
-    t.string   "osm_key"
-    t.string   "osm_value"
     t.string   "name"
     t.float    "lat"
     t.float    "lon"

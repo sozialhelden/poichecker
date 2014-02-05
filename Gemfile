@@ -36,6 +36,9 @@ group :default do
   gem 'httparty'
   gem 'rosemary'
 
+  # Use Iconic webfonts
+  gem 'font-awesome-rails'
+
 end
 
 group :asssets do
