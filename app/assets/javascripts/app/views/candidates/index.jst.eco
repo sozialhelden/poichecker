@@ -1,8 +1,8 @@
 <% for candidate in @candidates: %>
   <tr class="<%= if _i%2 is 0 then 'even' else 'odd' %>" id="place_<%=  candidate.osm_id %>">
     <td class="col"><%= _i %></td>
-    <td class="col col-name"><%= candidate.address[candidate["type"]] %></td>
-    <td class="col col-address"><%= [[candidate.address.road, candidate.address.house_number].join(' '), [candidate.address.postcode, candidate.address.city || candidate.address.county].join(' ')].join(', ') %></td>
+    <td class="col col-name"><%= candidate.name() %></td>
+    <td class="col col-address"><%= [candidate.full_street(), candidate.full_city()].join(', ') %></td>
     <td class="col col-match">
       <a class="light-button" href='<%= "/places/#{@parent_id}/candidates/#{candidate.osm_id}" %>'><i class="fa fa-check"></i></a>
     </td>
