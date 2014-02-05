@@ -4,7 +4,7 @@
     <td class="col col-name"><%= candidate.name() %></td>
     <td class="col col-address"><%= [candidate.full_street(), candidate.full_city()].join(', ') %></td>
     <td class="col col-match">
-      <a class="light-button" href='<%= "/places/#{@parent_id}/candidates/#{candidate.osm_id}" %>'><i class="fa fa-check"></i></a>
+      <a class="light-button" href='<%= "/places/#{@parent_id}/candidates/#{candidate.osm_id}?osm_type=#{candidate.osm_type}" %>'><i class="fa fa-check"></i></a>
     </td>
   </tr>
 <% end %>

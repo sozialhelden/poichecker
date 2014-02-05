@@ -47,11 +47,11 @@ ActiveAdmin.register Place do
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true do
     selectable_column
-    column fa_icon("compass"), :matching_status, sortable: :osm_id
+    column fa_icon("compass", class: "larger"), :matching_status, sortable: :osm_id
     column :coordinates, sortable: :lat
     column :name
     column :address, sortable: :street
-    column fa_icon("wheelchair"), :wheelchair_status, sortable: :wheelchair
+    column fa_icon("wheelchair", class: "larger"), :wheelchair_status, sortable: :wheelchair
     default_actions
   end
 
@@ -66,7 +66,7 @@ ActiveAdmin.register Place do
     columns do
       column span: 2 do
         table_for [resource], table_options do |t|
-          t.column fa_icon("map-marker") do |place|
+          t.column fa_icon("map-marker", class: "larger") do |place|
             span fa_icon("star")
           end
           t.column :name
@@ -76,7 +76,7 @@ ActiveAdmin.register Place do
         h2 "Kandidaten"
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
-          t.column fa_icon("map-marker"), :pos
+          t.column fa_icon("map-marker", class: "larger"), :pos
           t.column :name
           t.column :address, :address_with_contact_details
           t.column "Match?" do |c|

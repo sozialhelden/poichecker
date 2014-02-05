@@ -25,7 +25,7 @@ ActiveAdmin.register Candidate do
     private
 
     def resource
-      @candidate ||= Candidate.find(params[:id])
+      @candidate ||= Candidate.find(params[:id], params[:osm_type])
     end
 
     def parent
