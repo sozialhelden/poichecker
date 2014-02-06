@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="1234" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 06 Feb 2014 11:47:49 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "version": 0.6,
+          "generator": "Overpass API",
+          "osm3s": {
+            "timestamp_osm_base": "2014-02-06T11:46:02Z",
+            "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+          },
+          "elements": [
+
+
+
+          ]
+        }
+    http_version: 
+  recorded_at: Thu, 06 Feb 2014 11:47:49 GMT
+recorded_with: VCR 2.8.0

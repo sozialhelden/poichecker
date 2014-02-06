@@ -28,7 +28,6 @@ require 'csv/string_converter'
 
 class Place < ActiveRecord::Base
   include Geo
-  include Overpass
 
   belongs_to :data_set
   has_many :comments, as: :resource, dependent: :destroy, class_name: 'ActiveAdmin::Comment'

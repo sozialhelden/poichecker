@@ -1,0 +1,145 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="15971186" type="way"/>
+          <union>
+            <item/>
+            <recurse type="down"/>
+          </union>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 06 Feb 2014 11:41:27 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "version": 0.6,
+          "generator": "Overpass API",
+          "osm3s": {
+            "timestamp_osm_base": "2014-02-06T11:32:01Z",
+            "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+          },
+          "elements": [
+
+        {
+          "type": "node",
+          "id": 160493780,
+          "lat": 52.5176375,
+          "lon": 13.3963825
+        },
+        {
+          "type": "node",
+          "id": 160493789,
+          "lat": 52.5184532,
+          "lon": 13.3962340
+        },
+        {
+          "type": "node",
+          "id": 160493796,
+          "lat": 52.5185431,
+          "lon": 13.3975681
+        },
+        {
+          "type": "node",
+          "id": 160493802,
+          "lat": 52.5177274,
+          "lon": 13.3977166
+        },
+        {
+          "type": "node",
+          "id": 437300220,
+          "lat": 52.5176790,
+          "lon": 13.3969988,
+          "tags": {
+            "entrance": "main"
+          }
+        },
+        {
+          "type": "node",
+          "id": 717670808,
+          "lat": 52.5176864,
+          "lon": 13.3963736,
+          "tags": {
+            "man_made": "surveillance",
+            "surveillance": "webcam",
+            "url": "http://www.dhm.de/webcams/WEB2.html",
+            "url:webcam": "http://www.dhm.de/webcams/pics/cam2_large.jpg",
+            "website": "http://dhm.de"
+          }
+        },
+        {
+          "type": "node",
+          "id": 717671051,
+          "lat": 52.5177713,
+          "lon": 13.3977086,
+          "tags": {
+            "man_made": "surveillance",
+            "surveillance": "webcam",
+            "url": "http://www.dhm.de/webcams/WEB1.html",
+            "url:webcam": "http://www.dhm.de/webcams/pics/cam1_large.jpg",
+            "website": "http://dhm.de"
+          }
+        },
+        {
+          "type": "node",
+          "id": 717671054,
+          "lat": 52.5184650,
+          "lon": 13.3964093,
+          "tags": {
+            "man_made": "surveillance",
+            "surveillance": "webcam",
+            "url": "http://www.dhm.de/webcams/WEB3.html",
+            "url:webcam": "http://www.dhm.de/webcams/pics/cam3_large.jpg",
+            "website": "http://dhm.de"
+          }
+        },
+        {
+          "type": "way",
+          "id": 15971186,
+          "nodes": [
+            160493780,
+            717670808,
+            160493789,
+            717671054,
+            160493796,
+            717671051,
+            160493802,
+            437300220,
+            160493780
+          ],
+          "tags": {
+            "building": "yes",
+            "name": "Zeughaus",
+            "name:en": "Arsenal",
+            "tourism": "attraction",
+            "wikipedia": "de:Zeughaus Berlin"
+          }
+        }
+
+          ]
+        }
+    http_version:
+  recorded_at: Thu, 06 Feb 2014 11:41:27 GMT
+recorded_with: VCR 2.8.0

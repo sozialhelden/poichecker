@@ -99,7 +99,7 @@ ActiveAdmin.register Place do
       end
       column span: 3 do
         panel "Map" do
-          render partial: "map", locals: { candidates: place.candidates }
+          render partial: "map"
         end
       end
     end
