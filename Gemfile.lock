@@ -180,7 +180,7 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    jbuilder (1.5.3)
+    jbuilder (2.0.2)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-rails (3.1.0)
@@ -392,7 +392,7 @@ DEPENDENCIES
   haml
   httparty
   i18n
-  jbuilder (~> 1.2)
+  jbuilder
   jquery-rails
   json2-rails
   launchy
