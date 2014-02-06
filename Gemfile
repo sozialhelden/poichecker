@@ -100,6 +100,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'coveralls',     require: false
 end
 
 group :test do

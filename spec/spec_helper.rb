@@ -7,6 +7,9 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'webmock/rspec'
 
+require 'coveralls'
+Coveralls.wear!
+
 WebMock.disable_net_connect!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
