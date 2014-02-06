@@ -39,6 +39,8 @@ class Place < ActiveRecord::Base
 
   scope :next, lambda { |place| where(data_set_id: place.data_set_id).where("#{table_name}.id > ?", place.id).order(id: :asc).limit(1) }
   scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
+  scope :matched,          -> { where.not(osm_id: nil) }
+  scope :unmatched,        -> { where(osm_id: nil) }
 
   def address_changed?
     changes.keys.any?{ |key| address_keys.include? key }

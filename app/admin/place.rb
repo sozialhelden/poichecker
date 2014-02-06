@@ -8,7 +8,7 @@ ActiveAdmin.register Place do
 
   belongs_to :data_set, optional: true
 
-  actions :all, :except => [:destroy]
+  actions :all, :except => [:destroy, :new, :create]
   config.batch_actions = false
 
   action_item :only => :index  do
@@ -19,6 +19,10 @@ ActiveAdmin.register Place do
 
     render "/places/upload_csv"
   end
+
+  scope :all
+  scope :matched
+  scope :unmatched, :default => true
 
   collection_action :import_csv, :method => :post do
     tmp_file = place_params[:csv_file].read
