@@ -12,6 +12,10 @@ describe AdminUsers::OmniauthCallbacksController do
         'secret' => 'secret'
       },
       'info' => {
+        'display_name' => 'a_funky_osm_name',
+        'id' => '174',
+        'lat' => '52.510911896456',
+        'lon' => '13.393013381407',
         'permissions' => ['allow_read_prefs', 'allow_write_api']
       }
     })
@@ -37,8 +41,9 @@ describe AdminUsers::OmniauthCallbacksController do
     it "updates the users' oauth credentials" do
       get :osm
       user.reload
-      user.oauth_token.should eql 'token'
-      user.oauth_secret.should eql 'secret'
+      expect(user.oauth_token).to eql 'token'
+      expect(user.oauth_secret).to eql 'secret'
+      expect(user.osm_username).to eql 'a_funky_osm_name'
     end
 
   end
@@ -61,7 +66,7 @@ describe AdminUsers::OmniauthCallbacksController do
 
   context "new user" do
 
-    it "does not create a new user" do
+    it "creates a new user" do
       lambda {
         get :osm
       }.should change(AdminUser, :count).by(1)
