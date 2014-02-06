@@ -40,6 +40,10 @@ class AdminUser < ActiveRecord::Base
     admin_user
   end
 
+  def display_name
+    osm_id.to_s
+  end
+
   def oauth_authorized?
     !!(oauth_token && oauth_secret)
   end
