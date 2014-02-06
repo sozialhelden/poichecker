@@ -31,10 +31,10 @@ class AdminUser < ActiveRecord::Base
 
   def self.find_for_osm_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
-    if admin_user = AdminUser.where(:osm_id => data.id).first
+    if admin_user = AdminUser.where(:osm_id => access_token.uid).first
       # found
     else
-      admin_user = AdminUser.create!(:osm_id => data.id, :password => Devise.friendly_token[0, 20])
+      admin_user = AdminUser.create!(:osm_id => access_token.uid, :password => Devise.friendly_token[0, 20])
     end
     admin_user.update_attributes(oauth_token: access_token.credentials.token, oauth_secret: access_token.credentials.secret)
     admin_user

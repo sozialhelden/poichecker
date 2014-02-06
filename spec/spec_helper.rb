@@ -50,4 +50,7 @@ RSpec.configure do |config|
 
   # Capybara DSL
   config.include Capybara::DSL
+
+  # Add support for devise and oauth specs.
+  config.include Devise::TestHelpers, :type => :controller
 end
