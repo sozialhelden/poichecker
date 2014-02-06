@@ -27,7 +27,7 @@ group :default do
   gem 'devise-i18n'
 
   # Geo Stuff
-  gem 'geocoder', github: 'sozialhelden/geocoder'
+  gem 'geocoder', github: 'alexreisner/geocoder'
   gem 'rgeo'
   gem 'country_select'
   gem 'nominatim'

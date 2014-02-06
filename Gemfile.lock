@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/alexreisner/geocoder.git
+  revision: a890dfa744d115692d97fab7e224dcfc57ac546b
+  specs:
+    geocoder (1.1.9)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 60d8be97ec2c29a871f55bd28e00ca9ec9257028
   specs:
@@ -15,12 +21,6 @@ GIT
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
-
-GIT
-  remote: git://github.com/sozialhelden/geocoder.git
-  revision: 004cd6af281798207261b0bed04bcfd485ab3ef0
-  specs:
-    geocoder (1.1.9)
 
 GEM
   remote: https://rubygems.org/
@@ -149,7 +149,7 @@ GEM
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
-    guard (2.3.0)
+    guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)
