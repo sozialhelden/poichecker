@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/alexreisner/geocoder.git
-  revision: a890dfa744d115692d97fab7e224dcfc57ac546b
+  revision: 66a0a11891aa4354155f4ee627bf5ddd33e4d413
   specs:
     geocoder (1.1.9)
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 60d8be97ec2c29a871f55bd28e00ca9ec9257028
+  revision: c9e7774c0768dadac82681d2d233b89d012b8dc5
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -71,9 +71,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
-    capistrano-bundler (1.1.1)
+    capistrano-bundler (1.1.2)
       capistrano (~> 3.0)
-      sshkit (>= 1.2.0)
+      sshkit (~> 1.2)
     capistrano-rails (1.1.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -88,6 +88,9 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    celluloid-io (0.15.0)
+      celluloid (>= 0.15.0)
+      nio4r (>= 0.5.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -163,7 +166,7 @@ GEM
       guard (~> 2.2)
     guard-pow (2.0.0)
       guard (~> 2.0)
-    guard-rspec (4.2.5)
+    guard-rspec (4.2.6)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
@@ -198,8 +201,9 @@ GEM
       addressable (~> 2.3)
     libv8 (3.16.14.3)
     libxml-ruby (2.7.0)
-    listen (2.4.0)
+    listen (2.5.0)
       celluloid (>= 0.15.2)
+      celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lumberjack (1.0.4)
@@ -216,6 +220,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
+    nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     nominatim (0.0.5)
@@ -331,8 +336,8 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
-    term-ansicolor (1.2.2)
-      tins (~> 0.8)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -341,7 +346,7 @@ GEM
       atomic
     tilt (1.4.1)
     timers (1.1.0)
-    tins (0.13.2)
+    tins (1.0.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
