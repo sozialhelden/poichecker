@@ -20,6 +20,14 @@ describe Candidate do
     it { expect(subject).to validate_presence_of :lon }
   end
 
+  describe ".to_osm_attributes" do
+
+    it "does not contain blank or nil values" do
+      flattend_key_values = subject.to_osm_attributes.values.flat_map(&:to_a).flatten
+      expect(flattend_key_values).not_to include(nil)
+    end
+  end
+
   describe "overpass" do
 
     it "finds a node via Overpass API" do

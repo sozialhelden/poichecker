@@ -4,6 +4,30 @@ require 'httparty'
 module Overpass
   extend ActiveSupport::Concern
 
+  included do
+    def to_osm_attributes
+      osm_attributes_hash = {}
+
+      %w{id lat lon}.each do |key|
+        value = send(key)
+        osm_attributes_hash[key] = value unless value.blank?
+      end
+      osm_attributes_hash["tag"] = {}
+
+      %w{street housenumber postcode city}.each do |key|
+        value = send(key)
+        osm_attributes_hash["tag"]["addr:#{key}"] = value unless value.blank?
+      end
+
+      %w{name website phone wheelchair}.each do |key|
+        value = send(key)
+        osm_attributes_hash["tag"][key] = value unless value.blank?
+      end
+      osm_attributes_hash
+
+    end
+  end
+
   module ClassMethods
 
     def find(osm_id, osm_type='node')
@@ -12,6 +36,8 @@ module Overpass
 
       if element_hash = parse_for_element(result, osm_type)
         element_hash.delete("type")
+        element_hash['osm_id']   ||= osm_id
+        element_hash['osm_type'] ||= osm_type
 
         if osm_type ==  'way'
           members = parse_for_members(result)
@@ -74,5 +100,6 @@ module Overpass
         wheelchair: attribs_hash["tags"]["wheelchair"]
       )
     end
+
   end
 end

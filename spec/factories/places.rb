@@ -6,8 +6,6 @@
 #  data_set_id :integer
 #  original_id :integer
 #  osm_id      :integer
-#  osm_key     :string(255)
-#  osm_value   :string(255)
 #  name        :string(255)
 #  lat         :float
 #  lon         :float
@@ -30,5 +28,7 @@ FactoryGirl.define do
     data_set
     name "Testplace"
     wheelchair "yes"
+    lat 52.0
+    lon 13.0
   end
 end

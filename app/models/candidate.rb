@@ -5,7 +5,7 @@ class Candidate
   extend ActiveModel::Naming
   include Overpass
 
-  attr_accessor :id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair
+  attr_accessor :id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :osm_id, :osm_type
 
   validates :lat, :lon, presence: true
 
@@ -42,6 +42,23 @@ class Candidate
       :lat,
       :lon
     ]
+  end
+
+  def tags
+    [
+      :name,
+      :street,
+      :housenumber,
+      :postcode,
+      :city,
+      :wheelchair,
+      :website,
+      :phone,
+    ].inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
+      value = send(key)
+      a[key.to_s] = value unless value.blank?
+      a
+    end
   end
 
   def attributes()

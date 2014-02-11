@@ -18,6 +18,8 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  osm_username           :string(255)
+#  changeset_id           :integer
 #
 
 class AdminUser < ActiveRecord::Base
@@ -49,6 +51,10 @@ class AdminUser < ActiveRecord::Base
 
   def oauth_authorized?
     !!(oauth_token && oauth_secret)
+  end
+
+  def client
+    ::Rosemary::OauthClient.new(access_token)
   end
 
   def access_token
