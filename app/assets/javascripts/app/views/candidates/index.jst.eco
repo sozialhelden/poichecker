@@ -1,6 +1,6 @@
 <% for candidate in @candidates: %>
   <tr class="<%= if _i%2 is 0 then 'even' else 'odd' %>" id="place_<%=  candidate.osm_id %>">
-    <td class="col"><%= _i %></td>
+    <td class="col"><%= _i + 1 %></td>
     <td class="col col-name"><%= candidate.name() %></td>
     <td class="col col-address"><%= [candidate.full_street(), candidate.full_city()].join(', ') %></td>
     <td class="col col-match">
