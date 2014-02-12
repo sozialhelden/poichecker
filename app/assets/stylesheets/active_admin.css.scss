@@ -48,9 +48,9 @@ a.light-button {
 }
 
 .row {
-  &.single {
-    height: 45px;
+  height: 45px;
 
+  &.single {
     th {
       display: none;
     }
@@ -83,6 +83,12 @@ a.light-button {
       &.new {
         background-color: lighten($merge-attention, 55%);
         border: 1px dashed $merge-same;
+      }
+
+      &.old {
+        background-color: lighten($merge-same, 55%);
+        border: 1px dashed $merge-same;
+
       }
     }
   }
