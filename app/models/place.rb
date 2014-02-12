@@ -20,6 +20,7 @@
 #  wheelchair  :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  osm_type    :string(255)
 #
 
 require 'csv/string_converter'
