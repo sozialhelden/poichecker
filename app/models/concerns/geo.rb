@@ -22,6 +22,14 @@ module Geo
       bbox
     end
 
+    def bbox_string
+      bb = to_bbox
+      # left, top, right, bottom
+      [
+        bb.min_x, bb.max_y, bb.max_x, bb.min_y
+      ].join(',')
+    end
+
     def widen_by_meters(meters=1000)
       south_west = factory.point(self.lon - degrees_per_meter_longitude(meters/2) , self.lat - degrees_per_meter_latitude(meters/2))
       north_east = factory.point(self.lon + degrees_per_meter_longitude(meters/2) , self.lat + degrees_per_meter_latitude(meters/2))
