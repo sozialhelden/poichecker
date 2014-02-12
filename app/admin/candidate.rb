@@ -40,7 +40,7 @@ ActiveAdmin.register Candidate do
         panel "Quelle: Datenspende" do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for place do
-              %w{name street housenumber postcode city wheelchair website phone lat lon}.each do |attrib|
+              %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
                 row attrib, class: "single left-source" do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+A22(#{place.lon},#{place.lat})/#{place.lon},#{place.lat},17/480x320.png64", style: "width:100%"
                   render partial: "left_form_field", locals: { form: form, attrib: attrib, value: p.send(attrib) }
@@ -58,9 +58,10 @@ ActiveAdmin.register Candidate do
             form.hidden_field :osm_type, value: params[:osm_type]
             attributes_table_for result do
               result.valid_keys.reject{|a| a == :id}.each do |attrib|
+                next if attrib == :lat || attrib == :lon
                 row attrib do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/#{result.lon},#{result.lat},17/480x320.png64", style: "width:100%"
-                  form.text_field attrib, value: p.send(attrib), label: true, class: [(place.send(attrib) != resource.send(attrib) ? 'different' : 'same'),p.send(attrib).blank? ? 'blank' : nil, resource.send(attrib).blank? ? 'new' : nil]
+                  form.text_field attrib, value: p.send(attrib), label: true, class: [(place.send(attrib) != resource.send(attrib) ? 'different' : 'same'),p.send(attrib).blank? ? 'blank' : nil, resource.send(attrib).blank? ? 'new' : nil, place.send(attrib).blank? ? 'old' : nil]
                 end
               end
               row :action do |p|
@@ -75,7 +76,7 @@ ActiveAdmin.register Candidate do
         panel "Quelle: OpenStreetMap" do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for resource do
-              %w{name street housenumber postcode city wheelchair website phone lat lon}.each do |attrib|
+              %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
                 row attrib, class: "single right-source" do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+2A2(#{resource.lon},#{resource.lat})/#{resource.lon},#{resource.lat},17/480x320.png64", style: "width:100%"
                   render partial: "right_form_field", locals: { form: form, attrib: attrib, value: p.send(attrib) }
