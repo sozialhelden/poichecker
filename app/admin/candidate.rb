@@ -59,7 +59,7 @@ ActiveAdmin.register Candidate do
               result.valid_keys.reject{|a| a == :id}.each do |attrib|
                 row attrib do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/#{result.lon},#{result.lat},17/480x320.png64", style: "width:100%"
-                  form.text_field attrib, value: p.send(attrib), label: true
+                  form.text_field attrib, value: p.send(attrib), label: true, class: [(place.send(attrib) != resource.send(attrib) ? 'different' : 'same'),p.send(attrib).blank? ? 'blank' : nil, resource.send(attrib).blank? ? 'new' : nil]
                 end
               end
               row :action do |p|

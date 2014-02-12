@@ -1,0 +1,4 @@
+= link_to "&laquo; #{t 'shared.back' }".html_safe, data_set_places_path(place.data_set_id), class: 'light-button'
+- if place.next
+  = link_to "#{t 'shared.skip'} &raquo;".html_safe, data_set_place_path(place.data_set_id, place.next), class: 'light-button'
+

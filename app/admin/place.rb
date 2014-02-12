@@ -88,12 +88,8 @@ ActiveAdmin.register Place do
           end
         end
 
-        panel "Nicht dabei?", class: :right do
-          if place.next
-            link_to "Next &raquo;".html_safe, data_set_place_path(place.data_set_id, place.next), class: 'light-button'
-          else
-            link_to "Back &raquo;".html_safe, data_sets_path, class: 'light-button'
-          end
+        panel I18n.t('places.show.actions'), class: :right do
+          render partial: "actions", locals: { place: place }
         end
 
         active_admin_comments

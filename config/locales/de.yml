@@ -42,3 +42,12 @@ de:
         website: Webseite
         wheelchair: Rollstuhlgerecht
         updated_at: Aktualisiert am
+  places:
+    show:
+      actions: Was kann ich jetzt tun?
+
+
+  shared:
+    back: Zurück
+    next: Weiter
+    skip: Überspringen

@@ -17,6 +17,10 @@ $wheelchair-limited: #F19D46;
 $wheelchair-no: #D6382F;
 $wheelchair-unknown: lighten(black, 70%);
 
+$merge-same: #22AA22;
+$merge-diff: #AA2222;
+$merge-attention: #AAAA22;
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
@@ -57,16 +61,29 @@ a.light-button {
   }
 
   input {
-    &.left_source {
-      border: 1px solid #A22;
+    &.changed {
+      background-color: lighten($merge-same, 55%);
+      border: 1px solid $merge-same;
     }
 
-    &.right_source {
-      border: 1px solid #2A2;
+    &.same {
+      background-color: lighten($merge-same, 55%);
+      border: 1px solid $merge-same;
+
+      &.blank {
+        background-color: white;
+        border: 1px solid #c9d0d6;
+      }
     }
 
     &.different {
-      border: 1px solid black;
+      background-color: lighten($merge-diff, 55%);
+      border: 1px dashed $merge-diff;
+
+      &.new {
+        background-color: lighten($merge-attention, 55%);
+        border: 1px dashed $merge-same;
+      }
     }
   }
 }

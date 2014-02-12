@@ -35,7 +35,7 @@ class Place < ActiveRecord::Base
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
   after_validation :geocode, :if => :address_changed?
 
-  scope :next, lambda { |place| where(data_set_id: place.data_set_id).where("#{table_name}.id > ?", place.id).order(id: :asc).limit(1) }
+
   scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
   scope :matched,          -> { where.not(osm_id: nil) }
   scope :unmatched,        -> { where(osm_id: nil) }
@@ -45,7 +45,12 @@ class Place < ActiveRecord::Base
   end
 
   def next
-    Place.with_coordinates.next(self).try(:first)
+    self.class.where(data_set_id: self.data_set_id).
+    where("#{Place.table_name}.id > ?", self.id).
+    where(osm_id: nil).
+    order(id: :asc).
+    limit(1).with_coordinates.
+    try(:first)
   end
 
   def full_address
