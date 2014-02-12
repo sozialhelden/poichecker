@@ -1,15 +1,18 @@
 de:
   activerecord:
     models:
-      place:
-        one: Ort
-        other: Orte
+      candidate:
+        one: Kandidat
+        other: Kandidaten
       comment:
         one: Kommentar
         other: Kommentare
       data_set:
         one: Datensatz
         other: Datensätze
+      place:
+        one: Ort
+        other: Orte
     attributes:
       admin_user:
         encrypted_password: verschlüsseltes Password
