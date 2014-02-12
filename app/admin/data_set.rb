@@ -1,19 +1,18 @@
 # encoding: UTF-8
 ActiveAdmin.register DataSet do
+  decorate_with DataSetDecorator
 
   permit_params :name, :license
 
   filter :name
   filter :license
 
-  index title: 'Datensätze' do
+  index :download_links => false do
     selectable_column
     column :id
     column :name
     column :license
-    column :orte do |data_set|
-      link_to "Check now: #{data_set.places.count}", data_set_places_path(data_set), class: 'light-button'
-    end
+    column :orte
     default_actions
 
   end

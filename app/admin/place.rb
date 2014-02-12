@@ -49,7 +49,7 @@ ActiveAdmin.register Place do
   filter :city
   filter :postcode
 
-  index title: proc{ parent.name rescue 'Orte' }, :default => true do
+  index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
     column fa_icon("compass", class: "larger"), :matching_status, sortable: :osm_id
     column :coordinates, sortable: :lat
