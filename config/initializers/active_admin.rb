@@ -1,3 +1,5 @@
+require 'active_admin/views/poi_checker_footer'
+
 ActiveAdmin.setup do |config|
 
   # == Site Title
@@ -231,5 +233,10 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+
+  # == Factories
+  #
+  # Use a custom factory for the footer.
+  config.view_factory.footer = ActiveAdmin::Views::PoiCheckerFooter
 
 end
