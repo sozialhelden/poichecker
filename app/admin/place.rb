@@ -8,7 +8,7 @@ ActiveAdmin.register Place do
 
   belongs_to :data_set, optional: true
 
-  actions :all, :except => [:destroy, :new, :create]
+  actions :all, :except => [:destroy, :create]
   config.batch_actions = false
 
   action_item :only => :index  do
@@ -51,12 +51,12 @@ ActiveAdmin.register Place do
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
-    column fa_icon("compass", class: "larger"), :matching_status, sortable: :osm_id
-    column :coordinates, sortable: :lat
     column :name
     column :address, sortable: :street
-    column fa_icon("wheelchair", class: "larger"), :wheelchair_status, sortable: :wheelchair
-    default_actions
+    column :wheelchair_status, sortable: :wheelchair
+    column '' do |place|
+      link_to "Check now", data_set_place_path(place.data_set_id, place)
+    end
   end
 
   show do
@@ -70,8 +70,8 @@ ActiveAdmin.register Place do
     columns do
       column span: 2 do
         table_for [resource], table_options do |t|
-          t.column fa_icon("map-marker", class: "larger") do |place|
-            span fa_icon("star")
+          t.column icon(:map_pin_fill) do |place|
+            icon(:star)
           end
           t.column :name
           t.column :address, :address_with_contact_details
@@ -80,7 +80,7 @@ ActiveAdmin.register Place do
         h2 "Kandidaten"
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
-          t.column fa_icon("map-marker", class: "larger"), :pos
+          t.column icon(:map_pin_fill), :pos
           t.column :name
           t.column :address, :address_with_contact_details
           t.column "Match?" do |c|
@@ -88,7 +88,7 @@ ActiveAdmin.register Place do
           end
         end
 
-        panel I18n.t('places.show.actions'), class: :right do
+        panel I18n.t('places.show.actions'), id: :actions do
           render partial: "actions", locals: { place: place }
         end
 

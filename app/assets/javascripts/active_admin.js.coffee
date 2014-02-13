@@ -2,7 +2,7 @@
 #= require app
 
 $ ->
-  $('#attributes_table_candidate input').each (index, field) ->
+  $('.attributes_table.candidate input').each (index, field) ->
     $(field).on 'change', false, ->
       $(this).removeClass('different').removeClass('new').removeClass('blank').addClass('changed')
 

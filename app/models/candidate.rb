@@ -5,7 +5,7 @@ class Candidate
   extend ActiveModel::Naming
   include Overpass
 
-  attr_accessor :id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :osm_id, :osm_type
+  attr_accessor :id, :place_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :osm_id, :osm_type
 
   validates :lat, :lon, presence: true
 
@@ -28,7 +28,7 @@ class Candidate
     attribs
   end
 
-  def valid_keys
+  def self.valid_keys
     [
       :id,
       :name,
@@ -62,10 +62,14 @@ class Candidate
   end
 
   def attributes()
-    self.valid_keys.inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
+    self.class.valid_keys.inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
       value = send(key)
       a[key.to_s] = value
       a
     end
+  end
+
+  def build(attribs)
+    self.class.new(attribs)
   end
 end

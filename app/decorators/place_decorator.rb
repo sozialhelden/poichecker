@@ -4,7 +4,7 @@ class PlaceDecorator < ApplicationDecorator
 
   def wheelchair_status
     arbre model: model do
-      status_tag(model.wheelchair, class: model.wheelchair)
+      status_tag(model.wheelchair, class: model.wheelchair) unless model.wheelchair.blank?
     end
   end
 

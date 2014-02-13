@@ -41,6 +41,10 @@ class Place < ActiveRecord::Base
   scope :matched,          -> { where.not(osm_id: nil) }
   scope :unmatched,        -> { where(osm_id: nil) }
 
+  def candidates
+    Candidate.new(place_id: self.id)
+  end
+
   def address_changed?
     changes.keys.any?{ |key| address_keys.include? key }
   end

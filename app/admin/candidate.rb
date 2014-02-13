@@ -4,7 +4,7 @@ ActiveAdmin.register Candidate do
 
   belongs_to :place
 
-  actions :all, :except => [:destroy, :new, :update, :index, :edit, :index]
+  actions :all, :except => [:destroy, :update, :edit, :index]
 
   permit_params :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :id, :osm_type
 
@@ -23,15 +23,30 @@ ActiveAdmin.register Candidate do
 
   controller do
 
+    def create
+      OsmCreateJob.enqueue(Candidate.new(params[:candidate]).tags, current_admin_user.id, params[:place_id])
+      current_place = Place.find(params[:place_id])
+      if next_place = current_place.next
+        redirect_to data_set_place_path(current_place.data_set_id, next_place)
+      else
+        redirect_to data_set_path(current_place.data_set_id)
+      end
+    end
+
     private
 
     def resource
-      @candidate ||= Candidate.find(params[:id], params[:osm_type])
+      @candidate = Candidate.find(params[:id], params[:osm_type]) if params[:id]
+      @candidate ||= Candidate.new(@place.attributes)
     end
 
     def parent
       @place ||= Place.find(params[:place_id])
     end
+  end
+
+  form do |form|
+    render template: 'admin/candidates/new'
   end
 
   show title: proc{ parent.name rescue 'Orte' } do
@@ -57,7 +72,7 @@ ActiveAdmin.register Candidate do
             result = Candidate.new(resource.merge_attributes(place.attributes))
             form.hidden_field :osm_type, value: params[:osm_type]
             attributes_table_for result do
-              result.valid_keys.reject{|a| a == :id}.each do |attrib|
+              Candidate.valid_keys.reject{|a| a == :id}.each do |attrib|
                 next if attrib == :lat || attrib == :lon
                 row attrib do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/#{result.lon},#{result.lat},17/480x320.png64", style: "width:100%"

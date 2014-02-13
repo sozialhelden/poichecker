@@ -43,8 +43,16 @@ $merge-attention: #AAAA22;
   }
 }
 
-a.light-button {
+a.light-button, button.light-button{
   @include light-button;
+}
+
+a.primary-button, button.primary-button{
+  @include dark-button;
+}
+
+span.icon {
+  vertical-align: baseline;
 }
 
 .row {
@@ -97,5 +105,11 @@ a.light-button {
 i.fa{
   &.larger {
     font-size: 140%;
+  }
+}
+
+#actions.panel {
+  .panel_contents {
+    text-align: center;
   }
 }

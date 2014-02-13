@@ -1,0 +1,38 @@
+columns do
+  column do
+    link_to t('active_admin.cancel'), data_set_place_path(place.data_set_id, place), class: 'light-button'
+  end
+
+  column span: 3 do
+    panel "Quelle: Datenspende" do
+      form_for :source, url: '/', disabled: true do |form|
+        attributes_table_for place do
+          %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
+            row attrib, class: "single left-source" do |p|
+              #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+A22(#{place.lon},#{place.lat})/#{place.lon},#{place.lat},17/480x320.png64", style: "width:100%"
+              render partial: "left_form_field", locals: { form: form, attrib: attrib, value: p.send(attrib) }
+            end
+          end
+        end
+      end
+    end
+  end
+  column span: 3 do
+    panel "Neuer Datensatz" do
+      form_for :candidate, url: place_candidates_path(place.id), method: :post do |form|
+        result = Candidate.new(place.attributes)
+        attributes_table_for result do
+          Candidate.valid_keys.each do |attrib|
+            next if attrib == :id || attrib == :lat || attrib == :lon
+            row attrib do |p|
+              form.text_field attrib, value: p.send(attrib), label: true, class: [p.send(attrib).blank? ? 'blank' : nil, resource.send(attrib).blank? ? 'new' : nil]
+            end
+          end
+          row :action do |p|
+            form.submit
+          end
+        end
+      end
+    end
+  end
+end

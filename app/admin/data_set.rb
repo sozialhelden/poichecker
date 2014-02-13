@@ -2,10 +2,12 @@
 ActiveAdmin.register DataSet do
   decorate_with DataSetDecorator
 
-  permit_params :name, :license
+  permit_params :name, :license, :description
 
   filter :name
   filter :license
+  filter :description
+  filter :created_at
 
   index :download_links => false do
     selectable_column
