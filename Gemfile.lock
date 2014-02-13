@@ -199,6 +199,7 @@ GEM
     kgio (2.9.1)
     launchy (2.4.2)
       addressable (~> 2.3)
+    leaflet-rails (0.7.2)
     libv8 (3.16.14.3)
     libxml-ruby (2.7.0)
     listen (2.5.0)
@@ -401,6 +402,7 @@ DEPENDENCIES
   jquery-rails
   json2-rails
   launchy
+  leaflet-rails
   nominatim
   omniauth-osm
   pg

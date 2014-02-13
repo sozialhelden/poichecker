@@ -31,6 +31,7 @@ group :default do
   gem 'rgeo'
   gem 'country_select'
   gem 'nominatim'
+  gem 'leaflet-rails'
 
   # API and data fetching
   gem 'httparty'

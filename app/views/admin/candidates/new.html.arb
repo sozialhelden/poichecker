@@ -1,9 +1,8 @@
 columns do
+  # column do
+  #  link_to t('active_admin.cancel'), data_set_place_path(place.data_set_id, place), class: 'light-button'
+  # end
   column do
-    link_to t('active_admin.cancel'), data_set_place_path(place.data_set_id, place), class: 'light-button'
-  end
-
-  column span: 3 do
     panel "Quelle: Datenspende" do
       form_for :source, url: '/', disabled: true do |form|
         attributes_table_for place do
@@ -17,7 +16,7 @@ columns do
       end
     end
   end
-  column span: 3 do
+  column do
     panel "Neuer Datensatz" do
       form_for :candidate, url: place_candidates_path(place.id), method: :post do |form|
         result = Candidate.new(place.attributes)
@@ -33,6 +32,11 @@ columns do
           end
         end
       end
+    end
+  end
+  column do
+    panel "Karte" do
+      render partial: 'leaflet'
     end
   end
 end
