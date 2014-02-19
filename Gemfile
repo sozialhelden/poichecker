@@ -96,6 +96,7 @@ group :development, :test do
   gem 'guard-annotate'
   gem 'guard-pow',     require: false
   gem 'guard-bundler', require: false
+  gem 'guard-migrate', require: false
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'

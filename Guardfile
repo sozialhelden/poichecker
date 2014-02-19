@@ -52,7 +52,7 @@ guard :pow do
 end
 
 
-guard :annotate do
+guard :annotate, :tests => true  do
   watch( 'db/schema.rb' )
 
   # Uncomment the following line if you also want to run annotate anytime
@@ -63,3 +63,9 @@ guard :annotate do
   # with the ":routes => true" option
   watch( 'config/routes.rb' )
 end
+
+guard :migrate do
+  watch(%r{^db/migrate/(\d+).+\.rb})
+  watch('db/seeds.rb')
+end
+
