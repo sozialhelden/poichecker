@@ -7,7 +7,7 @@ class OsmCreateJob < Struct.new(:element_type, :tags, :user_id, :place_id)
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
-    new('node', tags, user_id).tap do |job|
+    new('node', tags, user_id, place_id).tap do |job|
       Delayed::Job.enqueue(job)
     end
   end

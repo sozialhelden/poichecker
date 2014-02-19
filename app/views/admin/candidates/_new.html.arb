@@ -1,0 +1,13 @@
+columns do
+  column do
+    render partial: '/places/form'
+  end
+  column do
+    render partial: 'form'
+  end
+  column do
+    panel "Karte" do
+      render partial: 'leaflet'
+    end
+  end
+end

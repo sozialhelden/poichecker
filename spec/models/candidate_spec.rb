@@ -12,7 +12,7 @@ describe Candidate do
   end
 
   subject do
-    Candidate.new
+    FactoryGirl.build(:candidate)
   end
 
   describe "attributes" do
@@ -23,8 +23,8 @@ describe Candidate do
   describe ".to_osm_attributes" do
 
     it "does not contain blank or nil values" do
-      flattend_key_values = subject.to_osm_attributes.values.flat_map(&:to_a).flatten
-      expect(flattend_key_values).not_to include(nil)
+      tag_values = subject.to_osm_tags.values
+      expect(tag_values).not_to include(nil)
     end
   end
 

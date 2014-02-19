@@ -42,6 +42,12 @@ de:
         website: Webseite
         wheelchair: Rollstuhlgerecht
         updated_at: Aktualisiert am
+
+
+  formtastic:
+    hints:
+      candidate:
+        lat: "Platziere den Marker auf der Karte."
   places:
     show:
       actions: Was kann ich jetzt tun?

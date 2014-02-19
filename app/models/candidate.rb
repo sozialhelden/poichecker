@@ -1,22 +1,14 @@
 # encoding: UTF-8
-class Candidate
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
+class Candidate < ActiveRecord::Base
   include Overpass
 
-  attr_accessor :id, :place_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :osm_id, :osm_type
+  attr_accessor :data_set_id, :original_id, :country
 
   validates :lat, :lon, presence: true
 
-  def initialize(attributes = {})
-    attributes.each do |name, value|
-      send("#{name}=", value) if respond_to?("#{name}=") and !value.blank?
-    end
-  end
-
-  def persisted?
-    false
+  # We do not want to save something to the database.
+  def save
+    true
   end
 
   def merge_attributes(other_attributes)

@@ -1,0 +1,16 @@
+= semantic_form_for [:place, @candidate] do |f|
+  = f.inputs "Neuer Datensatz" do
+    = f.input :name
+    = f.input :street
+    = f.input :housenumber
+    = f.input :postcode
+    = f.input :city
+    = f.input :wheelchair
+    = f.input :website
+    = f.input :phone
+    = f.input :lat, input_html: { value: nil, readonly: true }, hint: true
+    = f.input :lon, input_html: { value: nil, readonly: true }
+  = f.actions do
+    = f.action :submit
+    = f.action :cancel
+

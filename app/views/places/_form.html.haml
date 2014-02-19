@@ -1,0 +1,10 @@
+= semantic_form_for @place, html: { disabled: true } do |f|
+  = f.inputs "Quelle: Datenspende" do
+    = f.input :name, label: false, as: :text_with_apply
+    = f.input :street, label: false, as: :text_with_apply
+    = f.input :housenumber, label: false, as: :text_with_apply
+    = f.input :postcode, label: false, as: :text_with_apply
+    = f.input :city, label: false, as: :text_with_apply
+    = f.input :wheelchair, label: false, as: :text_with_apply
+    = f.input :website, label: false, as: :text_with_apply
+    = f.input :phone, label: false, as: :text_with_apply

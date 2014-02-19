@@ -42,7 +42,9 @@ describe Place do
     it { expect(subject).to validate_presence_of :data_set_id }
 
     it "saves attributes" do
-      subject.save!
+      VCR.use_cassette('leipziger_strasse') do
+        subject.save!
+      end
       expect(subject).to be_valid
     end
   end

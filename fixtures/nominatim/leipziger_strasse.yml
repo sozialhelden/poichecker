@@ -9,17 +9,19 @@ http_interactions:
     headers:
       User-Agent:
       - Poichecker v1.0, (http://poichecker.de)
+      Email:
+      - christoph@sozialhelden.de
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 29 Jan 2014 11:19:31 GMT
+      - Tue, 18 Feb 2014 15:17:26 GMT
       Server:
       - Apache/2.2.22 (Ubuntu)
       Content-Location:
@@ -35,7 +37,7 @@ http_interactions:
       Access-Control-Max-Age:
       - '8640000'
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Connection:
       - close
       Transfer-Encoding:
@@ -44,24 +46,24 @@ http_interactions:
       - application/json; charset=UTF-8
     body:
       encoding: UTF-8
-      string: '[{"place_id":"9418000","licence":"Data \u00a9 OpenStreetMap contributors,
-        ODbL 1.0. http:\/\/www.openstreetmap.org\/copyright","osm_type":"node","osm_id":"929042719","boundingbox":["52.5112571716309","52.5112609863281","13.3933448791504","13.3933458328247"],"lat":"52.5112595","lon":"13.3933457","display_name":"L\u00f6wenbr\u00e4u
-        am Gendarmenmarkt, 65, Leipziger Stra\u00dfe, Berliner Urstromtal, Mitte,
-        Berlin, 10117, Deutschland, Europ\u00e4ische Union","class":"amenity","type":"restaurant","importance":0.801,"icon":"http:\/\/nominatim.openstreetmap.org\/images\/mapicons\/food_restaurant.p.20.png","address":{"restaurant":"L\u00f6wenbr\u00e4u
-        am Gendarmenmarkt","house_number":"65","road":"Leipziger Stra\u00dfe","neighbourhood":"Berliner
-        Urstromtal","suburb":"Mitte","city_district":"Mitte","city":"Berlin","state":"Berlin","postcode":"10117","country":"Deutschland","country_code":"de","continent":"Europ\u00e4ische
-        Union"}},{"place_id":"17714580","licence":"Data \u00a9 OpenStreetMap contributors,
-        ODbL 1.0. http:\/\/www.openstreetmap.org\/copyright","osm_type":"node","osm_id":"1581091245","boundingbox":["52.5109901428223","52.5109939575195","13.393102645874","13.3931035995483"],"lat":"52.5109931","lon":"13.3931029","display_name":"Reinigung
-        und \u00c4nderungen, 65, Leipziger Stra\u00dfe, Berliner Urstromtal, Mitte,
-        Berlin, 10117, Deutschland, Europ\u00e4ische Union","class":"shop","type":"dry_cleaning","importance":0.801,"address":{"dry_cleaning":"Reinigung
-        und \u00c4nderungen","house_number":"65","road":"Leipziger Stra\u00dfe","neighbourhood":"Berliner
-        Urstromtal","suburb":"Mitte","city_district":"Mitte","city":"Berlin","state":"Berlin","postcode":"10117","country":"Deutschland","country_code":"de","continent":"Europ\u00e4ische
-        Union"}},{"place_id":"17054506","licence":"Data \u00a9 OpenStreetMap contributors,
-        ODbL 1.0. http:\/\/www.openstreetmap.org\/copyright","osm_type":"node","osm_id":"1553805762","boundingbox":["52.5109710693359","52.5109748840332","13.393045425415","13.3930463790894"],"lat":"52.5109736","lon":"13.3930459","display_name":"65,
-        Leipziger Stra\u00dfe, Berliner Urstromtal, Mitte, Berlin, 10117, Deutschland,
-        Europ\u00e4ische Union","class":"place","type":"house","importance":0.801,"address":{"house_number":"65","road":"Leipziger
-        Stra\u00dfe","neighbourhood":"Berliner Urstromtal","suburb":"Mitte","city_district":"Mitte","city":"Berlin","state":"Berlin","postcode":"10117","country":"Deutschland","country_code":"de","continent":"Europ\u00e4ische
-        Union"}}]'
+      string: "[{\"place_id\":\"9418000\",\"licence\":\"Data \\u00a9 OpenStreetMap
+        contributors, ODbL 1.0. http:\\/\\/www.openstreetmap.org\\/copyright\",\"osm_type\":\"node\",\"osm_id\":\"929042719\",\"boundingbox\":[\"52.5112571716309\",\"52.5112609863281\",\"13.3933448791504\",\"13.3933458328247\"],\"lat\":\"52.5112595\",\"lon\":\"13.3933457\",\"display_name\":\"L\\u00f6wenbr\\u00e4u
+        am Gendarmenmarkt, 65, Leipziger Stra\\u00dfe, Berliner Urstromtal, Mitte,
+        Berlin, 10117, Deutschland, Europ\\u00e4ische Union\",\"class\":\"amenity\",\"type\":\"restaurant\",\"importance\":0.801,\"icon\":\"http:\\/\\/nominatim.openstreetmap.org\\/images\\/mapicons\\/food_restaurant.p.20.png\",\"address\":{\"restaurant\":\"L\\u00f6wenbr\\u00e4u
+        am Gendarmenmarkt\",\"house_number\":\"65\",\"road\":\"Leipziger Stra\\u00dfe\",\"neighbourhood\":\"Berliner
+        Urstromtal\",\"suburb\":\"Mitte\",\"city_district\":\"Mitte\",\"city\":\"Berlin\",\"state\":\"Berlin\",\"postcode\":\"10117\",\"country\":\"Deutschland\",\"country_code\":\"de\",\"continent\":\"Europ\\u00e4ische
+        Union\"}},{\"place_id\":\"17714580\",\"licence\":\"Data \\u00a9 OpenStreetMap
+        contributors, ODbL 1.0. http:\\/\\/www.openstreetmap.org\\/copyright\",\"osm_type\":\"node\",\"osm_id\":\"1581091245\",\"boundingbox\":[\"52.5109901428223\",\"52.5109939575195\",\"13.393102645874\",\"13.3931035995483\"],\"lat\":\"52.5109931\",\"lon\":\"13.3931029\",\"display_name\":\"Reinigung
+        und \\u00c4nderungen, 65, Leipziger Stra\\u00dfe, Berliner Urstromtal, Mitte,
+        Berlin, 10117, Deutschland, Europ\\u00e4ische Union\",\"class\":\"shop\",\"type\":\"dry_cleaning\",\"importance\":0.801,\"address\":{\"dry_cleaning\":\"Reinigung
+        und \\u00c4nderungen\",\"house_number\":\"65\",\"road\":\"Leipziger Stra\\u00dfe\",\"neighbourhood\":\"Berliner
+        Urstromtal\",\"suburb\":\"Mitte\",\"city_district\":\"Mitte\",\"city\":\"Berlin\",\"state\":\"Berlin\",\"postcode\":\"10117\",\"country\":\"Deutschland\",\"country_code\":\"de\",\"continent\":\"Europ\\u00e4ische
+        Union\"}},{\"place_id\":\"17054506\",\"licence\":\"Data \\u00a9 OpenStreetMap
+        contributors, ODbL 1.0. http:\\/\\/www.openstreetmap.org\\/copyright\",\"osm_type\":\"node\",\"osm_id\":\"1553805762\",\"boundingbox\":[\"52.5109710693359\",\"52.5109748840332\",\"13.393045425415\",\"13.3930463790894\"],\"lat\":\"52.5109736\",\"lon\":\"13.3930459\",\"display_name\":\"65,
+        Leipziger Stra\\u00dfe, Berliner Urstromtal, Mitte, Berlin, 10117, Deutschland,
+        Europ\\u00e4ische Union\",\"class\":\"place\",\"type\":\"house\",\"importance\":0.801,\"address\":{\"house_number\":\"65\",\"road\":\"Leipziger
+        Stra\\u00dfe\",\"neighbourhood\":\"Berliner Urstromtal\",\"suburb\":\"Mitte\",\"city_district\":\"Mitte\",\"city\":\"Berlin\",\"state\":\"Berlin\",\"postcode\":\"10117\",\"country\":\"Deutschland\",\"country_code\":\"de\",\"continent\":\"Europ\\u00e4ische
+        Union\"}}]"
     http_version: 
-  recorded_at: Wed, 29 Jan 2014 11:19:32 GMT
+  recorded_at: Tue, 18 Feb 2014 15:17:28 GMT
 recorded_with: VCR 2.8.0

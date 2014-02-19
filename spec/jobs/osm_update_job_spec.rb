@@ -1,8 +1,17 @@
 require 'spec_helper'
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/nominatim'
+  c.hook_into :webmock # or :fakeweb
+end
+
 describe OsmUpdateJob do
 
-  let(:place)         { FactoryGirl.create(:place)                                }
+  let(:place)         do
+    VCR.use_cassette('leipziger_strasse') do
+      FactoryGirl.create(:place)
+    end
+  end
   let(:candidate)     { FactoryGirl.build(:candidate)                             }
   let(:user)          { FactoryGirl.create(:admin_user)                           }
   let(:changeset)     { Rosemary::Changeset.new(:id => 12345)                     }
@@ -11,7 +20,7 @@ describe OsmUpdateJob do
   subject { OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, { 'addr:housenumber' => 99 }, user.id ) }
 
   it "should fail the job when element cannot be found" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_attributes, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
     api = double(:find_or_create_open_changeset => changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::NotFound.new('NOT FOUND'))
@@ -23,7 +32,7 @@ describe OsmUpdateJob do
   end
 
   it "should fail the job if api is not reachable" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
     api = double(find_or_create_open_changeset: changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::Unavailable.new('Unavailable'))
@@ -35,7 +44,7 @@ describe OsmUpdateJob do
   end
 
   it "should not update when no changes have been made" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
     api = double(:find_or_create_open_changeset => changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
@@ -51,7 +60,7 @@ describe OsmUpdateJob do
     place.lat, place.lon = 45, 10
 
     # change at least one tag to trigger the save action
-    tags = candidate.to_osm_attributes
+    tags = candidate.to_osm_tags
     job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, tags.merge({'access' => 'public'}), user.id )
 
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
@@ -66,10 +75,8 @@ describe OsmUpdateJob do
   end
 
   it "should not update the node when nothing has been changed" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.tags, user.id )
-
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
-    Rails.logger.error(unedited_node.inspect)
     api = double(:find_or_create_open_changeset => changeset)
 
     expect(Rosemary::Api).to receive(:new).and_return(api)

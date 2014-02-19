@@ -28,6 +28,9 @@ class OsmUpdateJob < Struct.new(:element_id, :element_type, :tags, :user_id)
 
       # logger.warn ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
       # logger.warn(element_to_compare.tags.inspect)
+      # logger.warn "++++++++++++++++++++++++++++++++++++++++"
+      # logger.warn(tags.inspect)
+      # logger.warn "========================================"
       # logger.warn(element.tags.inspect)
       # logger.warn "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 

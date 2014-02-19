@@ -9,9 +9,9 @@ ActiveAdmin.register Candidate do
   permit_params :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :id, :osm_type
 
   member_action :merge, :method => :post do
-    @candidate = Candidate.new(params[:candidate])
+    @candidate = Candidate.new(permitted_params["candidate"])
 
-    OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.attributes, current_admin_user.id)
+    OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id)
     current_place = Place.find(params[:place_id])
     current_place.update_attributes(osm_id: params[:id], osm_type: params[:osm_type])
     if next_place = current_place.next
@@ -23,13 +23,26 @@ ActiveAdmin.register Candidate do
 
   controller do
 
+    def new
+      @place = Place.find(params[:place_id])
+      @candidate = Candidate.new(@place.attributes)
+      new!
+    end
+
     def create
-      OsmCreateJob.enqueue(Candidate.new(params[:candidate]).tags, current_admin_user.id, params[:place_id])
-      current_place = Place.find(params[:place_id])
-      if next_place = current_place.next
-        redirect_to data_set_place_path(current_place.data_set_id, next_place)
-      else
-        redirect_to data_set_path(current_place.data_set_id)
+      @candidate = Candidate.new(permitted_params["candidate"])
+      create! do |format|
+        if @candidate.valid? # success
+          format.html do
+            current_place = Place.find(params[:place_id])
+            OsmCreateJob.enqueue(@candidate.attributes, current_admin_user.id, current_place.id)
+            if next_place = current_place.next
+              redirect_to data_set_place_path(current_place.data_set_id, next_place)
+            else
+              redirect_to data_set_path(current_place.data_set_id)
+            end
+          end
+        end
       end
     end
 
@@ -41,13 +54,16 @@ ActiveAdmin.register Candidate do
     end
 
     def parent
-      @place ||= Place.find(params[:place_id])
+      @place = Place.find(params[:place_id])
     end
+
+    def begin_of_association_chain
+      @place = Place.find(params[:place_id])
+    end
+
   end
 
-  form do |form|
-    render template: 'admin/candidates/new'
-  end
+  form partial: 'admin/candidates/new'
 
   show title: proc{ parent.name rescue 'Orte' } do
     columns do
@@ -68,7 +84,7 @@ ActiveAdmin.register Candidate do
 
       column do
         panel "Ergebnis" do
-          form_for :candidate, url: merge_place_candidate_path(place.id,resource.id) do |form|
+          form_for candidate, url: merge_place_candidate_path(place.id,resource.id) do |form|
             result = Candidate.new(resource.merge_attributes(place.attributes))
             form.hidden_field :osm_type, value: params[:osm_type]
             attributes_table_for result do

@@ -12,19 +12,24 @@ module Overpass
         value = send(key)
         osm_attributes_hash[key] = value unless value.blank?
       end
-      osm_attributes_hash["tag"] = {}
+      osm_attributes_hash["tag"] = to_osm_tags
 
+      osm_attributes_hash
+
+    end
+
+    def to_osm_tags
+      osm_attributes_hash = {}
       %w{street housenumber postcode city}.each do |key|
         value = send(key)
-        osm_attributes_hash["tag"]["addr:#{key}"] = value unless value.blank?
+        osm_attributes_hash["addr:#{key}"] = value unless value.blank?
       end
 
       %w{name website phone wheelchair}.each do |key|
         value = send(key)
-        osm_attributes_hash["tag"][key] = value unless value.blank?
+        osm_attributes_hash[key] = value unless value.blank?
       end
       osm_attributes_hash
-
     end
   end
 
