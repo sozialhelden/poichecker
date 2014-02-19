@@ -105,7 +105,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock'
+  gem 'webmock', '<1.16'
   gem 'vcr'
 end
 # Use debugger
