@@ -20,6 +20,7 @@
 #  updated_at             :datetime
 #  osm_username           :string(255)
 #  changeset_id           :integer
+#  role                   :string(255)
 #
 
 class AdminUser < ActiveRecord::Base
@@ -62,5 +63,9 @@ class AdminUser < ActiveRecord::Base
       consumer = OAuth::Consumer.new(OpenStreetMapConfig.oauth_key, OpenStreetMapConfig.oauth_secret, :site => OpenStreetMapConfig.oauth_site)
       access_token = OAuth::AccessToken.new(consumer, oauth_token, oauth_secret)
     end
+  end
+
+  def admin?
+    role == 'admin'
   end
 end

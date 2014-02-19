@@ -20,6 +20,7 @@
 #  updated_at             :datetime
 #  osm_username           :string(255)
 #  changeset_id           :integer
+#  role                   :string(255)
 #
 
 require 'spec_helper'
@@ -51,6 +52,13 @@ describe AdminUser do
       subject.email = nil
       subject.osm_id = 174
       expect(subject.display_name).to eql '174'
+    end
+  end
+
+  describe ".role" do
+
+    it "should be an admin" do
+      expect(subject.role).to eql 'admin'
     end
   end
 end

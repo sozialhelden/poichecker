@@ -67,6 +67,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    cancan (1.6.10)
     capistrano (3.1.0)
       i18n
       rake (>= 10.0.0)
@@ -377,6 +378,7 @@ DEPENDENCIES
   activeadmin!
   better_errors
   binding_of_caller
+  cancan
   capistrano (~> 3.1.0)
   capistrano-bundler
   capistrano-rails

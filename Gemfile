@@ -20,6 +20,7 @@ group :default do
   gem 'activeadmin', github: 'gregbell/active_admin'
   gem 'draper', '>= 1.0.0'
   gem 'omniauth-osm'
+  gem 'cancan'
 
   # Internationalisation
   gem 'i18n'

@@ -1,4 +1,7 @@
 de:
+  active_admin:
+    access_denied:
+      message: "Sie haben nicht die Berechtigung für diese Seite."
   activerecord:
     models:
       candidate:
