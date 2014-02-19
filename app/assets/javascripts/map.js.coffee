@@ -1,3 +1,5 @@
+#= require leaflet
+
 $ ->
   onMarkerDrag = (e) ->
     $("#candidate_lat").val e.target._latlng.lat

@@ -21,5 +21,8 @@ module Matchy
     config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/lib/**/*.rb"]
+
+    # Needed for the ActiveAdmin's manifest assets.
+    config.assets.precompile += ['map.js']
   end
 end
