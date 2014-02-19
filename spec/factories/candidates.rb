@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: candidates
+#
+#  id          :integer          not null, primary key
+#  place_id    :integer
+#  lat         :float
+#  lon         :float
+#  name        :string(255)
+#  housenumber :string(255)
+#  street      :string(255)
+#  postcode    :string(255)
+#  city        :string(255)
+#  website     :string(255)
+#  phone       :string(255)
+#  wheelchair  :string(255)
+#  osm_id      :integer
+#  osm_type    :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
