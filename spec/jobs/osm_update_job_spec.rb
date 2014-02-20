@@ -17,10 +17,10 @@ describe OsmUpdateJob do
   let(:changeset)     { Rosemary::Changeset.new(:id => 12345)                     }
   let(:unedited_node) { Rosemary::Node.new(:tags => { 'addr:housenumber' => 10 }) }
 
-  subject { OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, { 'addr:housenumber' => 99 }, user.id ) }
+  subject { OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, { 'addr:housenumber' => 99 }, user.id, place.id ) }
 
   it "should fail the job when element cannot be found" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id, place.id )
     api = double(:find_or_create_open_changeset => changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::NotFound.new('NOT FOUND'))
@@ -32,7 +32,7 @@ describe OsmUpdateJob do
   end
 
   it "should fail the job if api is not reachable" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id, place.id )
     api = double(find_or_create_open_changeset: changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::Unavailable.new('Unavailable'))
@@ -44,7 +44,7 @@ describe OsmUpdateJob do
   end
 
   it "should not update when no changes have been made" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id, place.id )
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
     api = double(:find_or_create_open_changeset => changeset)
     expect(Rosemary::Api).to receive(:new).and_return(api)
@@ -61,7 +61,7 @@ describe OsmUpdateJob do
 
     # change at least one tag to trigger the save action
     tags = candidate.to_osm_tags
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, tags.merge({'access' => 'public'}), user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, tags.merge({'access' => 'public'}), user.id, place.id )
 
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
     api = double(:find_or_create_open_changeset => changeset)
@@ -75,7 +75,7 @@ describe OsmUpdateJob do
   end
 
   it "should not update the node when nothing has been changed" do
-    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id )
+    job = OsmUpdateJob.enqueue(candidate.osm_id, candidate.osm_type, candidate.to_osm_tags, user.id, place.id )
     unedited_node = Rosemary::Node.new(candidate.to_osm_attributes)
     api = double(:find_or_create_open_changeset => changeset)
 
@@ -89,8 +89,7 @@ describe OsmUpdateJob do
   end
 
   it "updates the tags" do
-
-    job = OsmUpdateJob.enqueue(1, 'node', { 'addr:housenumber' => 99 }, user.id )
+    job = OsmUpdateJob.enqueue(1, 'node', { 'addr:housenumber' => 99 }, user.id, place.id )
 
     api = double(:find_or_create_open_changeset => changeset)
 
@@ -100,7 +99,12 @@ describe OsmUpdateJob do
     successes, failures = Delayed::Worker.new.work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
+  end
 
+  it "updates places osm_id, osm_username and place_id" do
+    expect(Place).to receive(:find).with(place.id).and_return(place)
+    expect(place).to receive(:update_attributes).with(osm_id: 1, osm_type: 'node', matcher_id: user.id )
+    job = OsmUpdateJob.enqueue(1, 'node', { 'addr:housenumber' => 99 }, user.id, place.id )
   end
 
   it "tries to reuse the users changeset" do
@@ -147,7 +151,7 @@ describe OsmUpdateJob do
       wheelchair_node.add_tags( 'wheelchair' => 'yes')
       wheelchair_node.tags["wheelchair"].should eql 'yes'
 
-      job = OsmUpdateJob.enqueue(1, 'node', { 'wheelchair' => 'unknown', 'addr:housenumber' => 99 }, user.id )
+      job = OsmUpdateJob.enqueue(1, 'node', { 'wheelchair' => 'unknown', 'addr:housenumber' => 99 }, user.id, place.id )
 
       api = double(:find_or_create_open_changeset => changeset)
 

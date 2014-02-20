@@ -32,6 +32,8 @@ class AdminUser < ActiveRecord::Base
  validates :email, uniqueness: { allow_nil: true, allow_blank: true }
  validates :osm_id, presence: true
 
+ has_many :matched_places, class_name: Place, foreign_key: :matcher_id
+
   def self.find_for_osm_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
     if admin_user = AdminUser.where(:osm_id => data.id).first
@@ -47,7 +49,8 @@ class AdminUser < ActiveRecord::Base
   end
 
   def display_name
-    osm_username || email || osm_id.to_s
+    (osm_username || email || osm_id.to_s) +
+    " (#{matched_places.count})"
   end
 
   def oauth_authorized?

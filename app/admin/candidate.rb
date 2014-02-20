@@ -11,9 +11,8 @@ ActiveAdmin.register Candidate do
   member_action :merge, :method => :post do
     @candidate = Candidate.new(permitted_params["candidate"])
 
-    OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id)
     current_place = Place.find(params[:place_id])
-    current_place.update_attributes(osm_id: params[:id], osm_type: params[:osm_type])
+    OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id, current_place.id)
     if next_place = current_place.next
       redirect_to data_set_place_path(current_place.data_set_id, next_place)
     else

@@ -36,6 +36,7 @@ class Ability
     case user.role
     when "admin"
       can [:manage, :download], :all
+      cannot :create, AdminUser
       can :upload_csv, Place
     else
       can    :read,  :all

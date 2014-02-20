@@ -36,7 +36,7 @@ describe Place do
     FactoryGirl.build(:place)
   end
 
-  describe "attributes" do
+  describe "validations" do
 
     it { expect(subject).to validate_presence_of :name }
     it { expect(subject).to validate_presence_of :data_set_id }
@@ -51,6 +51,7 @@ describe Place do
 
   describe "associations" do
     it { expect(subject).to belong_to :data_set }
+    it { expect(subject).to belong_to :matcher }
   end
 
   describe "address methods" do

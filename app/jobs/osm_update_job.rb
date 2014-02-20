@@ -1,12 +1,15 @@
 class OsmUpdateJob < Struct.new(:element_id, :element_type, :tags, :user_id)
 
-  def self.enqueue(element_id, element_type, tags, user_id)
+  def self.enqueue(element_id, element_type, tags, user_id, place_id)
 
     # Do not enqeue job if not in production or test environment
-    return unless Rails.env.production? || Rails.env.test?
+    # return unless Rails.env.production? || Rails.env.test?
 
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
+
+    current_place = Place.find(place_id)
+    current_place.update_attributes(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
 
     new(element_id, element_type, tags, user_id).tap do |job|
       Delayed::Job.enqueue(job)

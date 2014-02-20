@@ -29,6 +29,7 @@ class Place < ActiveRecord::Base
   include Geo
 
   belongs_to :data_set
+  belongs_to :matcher, class_name: AdminUser
   has_many :comments, as: :resource, dependent: :destroy, class_name: 'ActiveAdmin::Comment'
 
   validates :name, :data_set_id, presence: true

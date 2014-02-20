@@ -36,22 +36,26 @@ describe AdminUser do
     it { expect(subject).to validate_uniqueness_of :email }
   end
 
+  describe "associations" do
+    it { expect(subject).to have_many :matched_places }
+  end
+
   describe ".display_name" do
 
     it "uses osm_name as first choice" do
-      expect(subject.display_name).to eql 'a_osm_username'
+      expect(subject.display_name).to eql 'a_osm_username (0)'
     end
 
     it "uses email as second choice" do
       subject.osm_username = nil
-      expect(subject.display_name).to eql 'tim@example.com'
+      expect(subject.display_name).to eql 'tim@example.com (0)'
     end
 
     it "uses osm_id as last choice" do
       subject.osm_username = nil
       subject.email = nil
       subject.osm_id = 174
-      expect(subject.display_name).to eql '174'
+      expect(subject.display_name).to eql '174 (0)'
     end
   end
 
