@@ -15,6 +15,12 @@ ActiveAdmin.register Place do
   scope :matched
   scope :unmatched, :default => true
 
+  filter :name
+  filter :street
+  filter :housenumber
+  filter :city
+  filter :postcode
+
   action_item only: :index, if: -> { can?(:upload_csv, Place) }  do
     link_to 'Upload CSV', :action => 'upload_csv'
   end
@@ -41,14 +47,6 @@ ActiveAdmin.register Place do
     end
 
   end
-
-  filter :data_set
-  filter :wheelchair, as: :select, :collection => %w(yes limited no unknown)
-  filter :name
-  filter :street
-  filter :housenumber
-  filter :city
-  filter :postcode
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
