@@ -68,4 +68,8 @@ class AdminUser < ActiveRecord::Base
   def admin?
     role == 'admin'
   end
+
+  def admin!
+    update_attribute(:role, 'admin')
+  end
 end

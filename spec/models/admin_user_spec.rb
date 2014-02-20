@@ -58,7 +58,12 @@ describe AdminUser do
   describe ".role" do
 
     it "is not an admin by default" do
-      expect(subject.role).to be_nil
+      expect(subject.admin?).to be_false
+    end
+
+    it "makes for an admin" do
+      subject.admin!
+      expect(subject.admin?).to be_true
     end
   end
 
