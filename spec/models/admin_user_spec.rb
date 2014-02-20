@@ -28,7 +28,7 @@ require 'spec_helper'
 describe AdminUser do
 
   subject do
-    FactoryGirl.build(:admin_user)
+    FactoryGirl.build(:user)
   end
 
   describe "validations" do
@@ -57,8 +57,38 @@ describe AdminUser do
 
   describe ".role" do
 
-    it "should be an admin" do
-      expect(subject.role).to eql 'admin'
+    it "is not an admin by default" do
+      expect(subject.role).to be_nil
+    end
+  end
+
+  describe "abilities" do
+    subject(:ability){ Ability.new(user) }
+    let(:user){ nil }
+
+    describe "for user" do
+      let(:user){ FactoryGirl.build(:user) }
+
+      it { expect(subject).to be_able_to(    :read,       Place) }
+      it { expect(subject).not_to be_able_to(:write,      Place) }
+      it { expect(subject).not_to be_able_to(:upload_csv, Place) }
+
+      it { expect(subject).to be_able_to(    :read,  Candidate) }
+      it { expect(subject).not_to be_able_to(:write, Candidate) }
+
+      it { expect(subject).to be_able_to(    :read,  ActiveAdmin::Comment) }
+      it { expect(subject).to be_able_to(  :create, ActiveAdmin::Comment) }
+
+      it { expect(subject).not_to be_able_to(:read,  AdminUser) }
+
+    end
+
+    describe "for admin" do
+      let(:user){ FactoryGirl.build(:admin) }
+
+      it { expect(subject).to be_able_to(:manage,     :all) }
+      it { expect(subject).to be_able_to(:upload_csv, Place) }
+
     end
   end
 end

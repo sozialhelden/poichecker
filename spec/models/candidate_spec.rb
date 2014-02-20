@@ -60,7 +60,7 @@ describe Candidate do
       end
     end
 
-    it "find an invalid node via Overpass API" do
+    it "finds an invalid node via Overpass API" do
       VCR.use_cassette('no_node') do
         no_candidate = Candidate.find(1234, 'node')
         expect(no_candidate).to be_nil
@@ -76,7 +76,7 @@ describe Candidate do
       end
     end
 
-    it "find an invalid way via Overpass API" do
+    it "finds an invalid way via Overpass API" do
       VCR.use_cassette('no_way') do
         no_candidate = Candidate.find(1234, 'way')
         expect(no_candidate).to be_nil

@@ -31,14 +31,17 @@ class Ability
 
     user ||= AdminUser.new
 
-    alias_action :create, :read, :update, :destroy, :to => :crud
+    alias_action :create, :update, :destroy, :to => :write
 
     case user.role
     when "admin"
       can [:manage, :download], :all
+      can :upload_csv, Place
     else
-      cannot :read, :all
-      can [:crud], :all
+      can    :read,  :all
+      cannot :read,  AdminUser
+      cannot :write, :all
+      can    :create, ActiveAdmin::Comment
     end
   end
 end

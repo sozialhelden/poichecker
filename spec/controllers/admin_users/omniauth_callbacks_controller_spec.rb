@@ -51,7 +51,7 @@ describe AdminUsers::OmniauthCallbacksController do
   context "known user" do
 
     before do
-      FactoryGirl.create(:admin_user, :osm_id => 174)
+      FactoryGirl.create(:user, :osm_id => 174)
     end
 
     it "does not create a new user" do

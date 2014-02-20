@@ -6,25 +6,26 @@ ActiveAdmin.register Place do
 
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair, :osm_key, :osm_value
 
-  belongs_to :data_set, optional: true
+  belongs_to :data_set
 
   actions :all, :except => [:destroy, :create]
   config.batch_actions = false
-
-  action_item :only => :index  do
-    link_to 'Upload CSV', :action => 'upload_csv'
-  end
-
-  collection_action :upload_csv, :title => "Upload Dataset" do
-
-    render "/places/upload_csv"
-  end
 
   scope :all
   scope :matched
   scope :unmatched, :default => true
 
+  action_item only: :index, if: -> { can?(:upload_csv, Place) }  do
+    link_to 'Upload CSV', :action => 'upload_csv'
+  end
+
+  collection_action :upload_csv, :title => "Upload Dataset" do
+    authorize! :upload_csv, Place
+    render "/places/upload_csv"
+  end
+
   collection_action :import_csv, :method => :post do
+    authorize! :upload_csv, Place
     tmp_file = place_params[:csv_file].read
     data_set = DataSet.find(place_params[:data_set_id])
     Place.import(tmp_file, data_set)

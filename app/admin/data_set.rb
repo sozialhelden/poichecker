@@ -15,7 +15,7 @@ ActiveAdmin.register DataSet do
     column :name
     column :license
     column :orte
-    default_actions
+    default_actions if current_admin_user.admin?
 
   end
 end

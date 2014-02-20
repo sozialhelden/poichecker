@@ -6,6 +6,7 @@ require 'rspec/autorun'
 
 require 'capybara/rspec'
 require 'webmock/rspec'
+require 'cancan/matchers'
 
 require 'coveralls'
 Coveralls.wear!

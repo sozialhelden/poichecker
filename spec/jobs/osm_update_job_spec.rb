@@ -13,7 +13,7 @@ describe OsmUpdateJob do
     end
   end
   let(:candidate)     { FactoryGirl.build(:candidate)                             }
-  let(:user)          { FactoryGirl.create(:admin_user)                           }
+  let(:user)          { FactoryGirl.create(:user)                                 }
   let(:changeset)     { Rosemary::Changeset.new(:id => 12345)                     }
   let(:unedited_node) { Rosemary::Node.new(:tags => { 'addr:housenumber' => 10 }) }
 
