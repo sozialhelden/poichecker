@@ -8,7 +8,7 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
         column do
           active_admin_form_for(current_admin_user, :as => :admin_user, :url => admin_user_path(current_admin_user)) do |f|
-            f.inputs "Willkommen bei Matchy" do
+            f.inputs "Willkommen bei Poichecker" do
               f.input :email, hint: "Damit informieren wir Dich über neue Datenspenden, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen."
             end
             f.actions do

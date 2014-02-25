@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Matchy::Application.load_tasks
+Poichecker::Application.load_tasks

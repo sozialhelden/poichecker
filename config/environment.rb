@@ -5,4 +5,4 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 # Initialize the Rails application.
-Matchy::Application.initialize!
+Poichecker::Application.initialize!

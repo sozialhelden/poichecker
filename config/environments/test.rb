@@ -1,4 +1,4 @@
-Matchy::Application.configure do
+Poichecker::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Set the secret_key_base for testing environment, so travis.ci would run properly.
