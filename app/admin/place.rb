@@ -81,7 +81,7 @@ ActiveAdmin.register Place do
           t.column :name
           t.column :address, :address_with_contact_details
           t.column "Match?" do |c|
-            link_to fa_icon("check"), place_candidate_path(place.id, c.id), class: 'light-button'
+            link_to icon(:check), place_candidate_path(place.id, c.id), class: 'light-button'
           end
         end
 

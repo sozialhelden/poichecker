@@ -55,7 +55,7 @@ de:
         lat: "Platziere den Marker auf der Karte."
   places:
     show:
-      actions: Was kann ich jetzt tun?
+      actions: Ort nicht dabei?
 
 
   shared:
@@ -65,3 +65,9 @@ de:
     next: Weiter
     skip: Überspringen
 
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} wurde erfolgreich gespeichert."
+      merge:
+        notice: "%{resource_name} wurde erfolgreich gemerged."

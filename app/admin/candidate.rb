@@ -14,9 +14,9 @@ ActiveAdmin.register Candidate do
     current_place = Place.find(params[:place_id])
     OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id, current_place.id)
     if next_place = current_place.next
-      redirect_to data_set_place_path(current_place.data_set_id, next_place)
+      redirect_to data_set_place_path(current_place.data_set_id, next_place), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
     else
-      redirect_to data_set_path(current_place.data_set_id)
+      redirect_to data_set_path(current_place.data_set_id), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
     end
   end
 
@@ -30,19 +30,11 @@ ActiveAdmin.register Candidate do
 
     def create
       @candidate = Candidate.new(permitted_params["candidate"])
-      create! do |format|
-        if @candidate.valid? # success
-          format.html do
-            current_place = Place.find(params[:place_id])
-            OsmCreateJob.enqueue(@candidate.attributes, current_admin_user.id, current_place.id)
-            if next_place = current_place.next
-              redirect_to data_set_place_path(current_place.data_set_id, next_place)
-            else
-              redirect_to data_set_path(current_place.data_set_id)
-            end
-          end
-        end
-      end
+      current_place = Place.find(params[:place_id])
+      next_place = current_place.next
+      OsmCreateJob.enqueue(@candidate.attributes, current_admin_user.id, current_place.id) if @candidate.valid? # success
+      next_url = next_place ? data_set_place_path(current_place.data_set_id, next_place) : data_set_path(current_place.data_set_id)
+      create! { next_url }
     end
 
     private
@@ -95,7 +87,7 @@ ActiveAdmin.register Candidate do
                 end
               end
               row :action do |p|
-                form.submit
+                form.submit "Speichern in OpenStreetMap"
               end
             end
           end

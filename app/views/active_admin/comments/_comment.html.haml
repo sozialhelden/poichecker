@@ -1,4 +1,4 @@
 %li
   = link_to comment.author.display_name, '/'
   über
-  = link_to comment.resource.name, data_set_place_path(comment.resource.data_set_id, comment.resource)
+  -#= link_to comment.resource.name, resource_path(:place, comment.resource)
