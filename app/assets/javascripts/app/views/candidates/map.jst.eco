@@ -1,5 +1,0 @@
-<% pins = ["pin-l-star+F22(#{@lon},#{@lat})"] %>
-<% for candidate in @candidates: %>
-  <% pins.push "pin-s-#{_i + 1}(#{candidate.lon},#{candidate.lat})" %>
-<% end %>
-<img src='<%= "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/#{pins.join(",")}/#{@lon},#{@lat},16/640x640.png64"%>' style="width:100%" />

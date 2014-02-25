@@ -50,12 +50,10 @@ ActiveAdmin.register Place do
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
-    column :name
-    column :address, sortable: :street
-    column :wheelchair_status, sortable: :wheelchair
-    column '' do |place|
-      link_to "Check now", data_set_place_path(place.data_set_id, place)
+    column :name do |place|
+      link_to place.name, data_set_place_path(place.data_set_id, place)
     end
+    column :address, sortable: :street
   end
 
   show do
@@ -70,7 +68,7 @@ ActiveAdmin.register Place do
       column span: 2 do
         table_for [resource], table_options do |t|
           t.column icon(:map_pin_fill) do |place|
-            icon(:star)
+            span "●", class: :circle
           end
           t.column :name
           t.column :address, :address_with_contact_details
