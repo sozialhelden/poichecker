@@ -1,5 +1,5 @@
 set :stage, :staging
-set :deploy_to, '/var/apps/matchy/staging'
+set :deploy_to, '/var/apps/poichecker/staging'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 

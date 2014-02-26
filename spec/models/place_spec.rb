@@ -20,6 +20,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  osm_type    :string(255)
+#  matcher_id  :integer
 #
 
 require 'spec_helper'
