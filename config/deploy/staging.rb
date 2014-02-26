@@ -1,6 +1,8 @@
 set :stage, :staging
 set :deploy_to, '/var/apps/matchy/staging'
 
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary

@@ -1,5 +1,7 @@
 set :stage, :production
-set :deploy_to, '/var/apps/matchy/production'
+set :deploy_to, '/var/apps/poichecker/production'
+
+set :branch, :production
 
 # Simple Role Syntax
 # ==================

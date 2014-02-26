@@ -1,7 +1,5 @@
-set :application, 'matchy'
-set :repo_url, 'git@github.com:sozialhelden/matchy.git'
-
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :application, 'poichecker'
+set :repo_url, 'git@github.com:sozialhelden/poichecker.git'
 
 # set :deploy_to, '/var/apps/matchy/staging'
 # set :scm, :git
