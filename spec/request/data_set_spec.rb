@@ -40,17 +40,46 @@ describe "DataSets", type: :controller do
       it "has a place column" do
         expect(page).to have_selector '#index_table_data_sets thead th.col-orte'
       end
+
+      it "has a name filter" do
+        expect(page).to have_selector '.filter_form input#q_name'
+      end
+
+      it "has no batch action selector" do
+        expect(page).not_to have_selector '.batch_actions_selector'
+      end
     end
 
     shared_examples "admin specific" do
       it "has a create button" do
         expect(page).to have_selector '.action_items .action_item a', text: 'Datensatz erstellen'
       end
+
+      it "has a link to admin resource" do
+        expect(page).to have_selector 'ul.header-item #admin_users a', text: 'Administratoren'
+      end
+
     end
 
     shared_examples "user specific" do
       it "does not have a create button" do
         expect(page).not_to have_selector '.action_items .action_item a', text: 'Datensatz erstellen'
+      end
+
+      it "has no license filter" do
+        expect(page).not_to have_selector '.filter_form input#q_license'
+      end
+
+      it "has no description filter" do
+        expect(page).not_to have_selector '.filter_form input#q_description'
+      end
+
+      it "has no created at filter" do
+        expect(page).not_to have_selector '.filter_form input#q_created_at_gteq'
+      end
+
+      it "has no link to admin resource" do
+        expect(page).not_to have_selector 'ul.header-item #admin_users a', text: 'Administratoren'
       end
     end
 
@@ -84,8 +113,28 @@ describe "DataSets", type: :controller do
           expect(page).to have_selector '#index_table_data_sets thead th.col-id'
         end
 
-        it "has a create a button" do
-          expect(page).to have_selector '.action_items .action_item a', text: 'Datensatz erstellen'
+        it "has a link to detail view" do
+          expect(page).to have_selector 'a.view_link', text: 'Anzeigen'
+        end
+
+        it "has a link to edit view" do
+          expect(page).to have_selector 'a.edit_link', text: 'Bearbeiten'
+        end
+
+        it "has a delete link" do
+          expect(page).to have_selector 'a.delete_link', text: 'Löschen'
+        end
+
+        it "has a license filter" do
+          expect(page).to have_selector '.filter_form input#q_license'
+        end
+
+        it "has a description filter" do
+          expect(page).to have_selector '.filter_form input#q_description'
+        end
+
+        it "has a created at filter" do
+          expect(page).to have_selector '.filter_form input#q_created_at_gteq'
         end
 
       end
@@ -115,6 +164,18 @@ describe "DataSets", type: :controller do
 
         it "has no id column" do
           expect(page).not_to have_selector '#index_table_data_sets thead th.col-id'
+        end
+
+        it "has no link to detail view" do
+          expect(page).not_to have_selector 'a.view_link', text: 'Anzeigen'
+        end
+
+        it "has no link to edit view" do
+          expect(page).not_to have_selector 'a.edit_link', text: 'Bearbeiten'
+        end
+
+        it "has no delete link" do
+          expect(page).not_to have_selector 'a.delete_link', text: 'Löschen'
         end
 
       end
