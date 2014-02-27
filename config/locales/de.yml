@@ -2,6 +2,11 @@ de:
   active_admin:
     access_denied:
       message: "Sie haben nicht die Berechtigung für diese Seite."
+    devise:
+      sessions:
+        new:
+          sign_in_with: "Einloggen mit %{kind}"
+
   activerecord:
     models:
       candidate:
@@ -49,6 +54,13 @@ de:
         <<: *attribs
 
 
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} wurde erfolgreich gespeichert."
+      merge:
+        notice: "%{resource_name} wurde erfolgreich gemerged."
+
   formtastic:
     hints:
       candidate:
@@ -57,7 +69,6 @@ de:
     show:
       actions: Ort nicht dabei?
 
-
   shared:
     back: Zurück
     cancel: Abbrechen
@@ -65,9 +76,3 @@ de:
     next: Weiter
     skip: Überspringen
 
-  flash:
-    actions:
-      create:
-        notice: "%{resource_name} wurde erfolgreich gespeichert."
-      merge:
-        notice: "%{resource_name} wurde erfolgreich gemerged."

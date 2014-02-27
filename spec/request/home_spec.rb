@@ -1,13 +1,19 @@
 require 'spec_helper'
 
-describe "Home Page" do
+describe "Home Page", type: :controller do
+  login_admin
 
-  describe "GET /" do
+  describe "GET /dashboard" do
+
+    before :each do
+      visit '/'
+      click_link "Einloggen mit OpenStreetMap"
+    end
 
     context "empty database" do
 
       before :each do
-        visit '/'
+        visit '/dashboard'
       end
 
       it "renders successfull" do
@@ -15,21 +21,54 @@ describe "Home Page" do
       end
 
       it "displays title tag" do
-        expect(page).to have_title 'Poichecker Login'
+        expect(page).to have_title 'Übersicht | Poichecker'
       end
 
-      describe "content" do
+      it "displays title headline" do
+        expect(page).to have_selector 'h2', text: 'Übersicht'
+      end
 
-        it "displays message" do
-          expect(page).to have_selector '.flash', text: 'Bitte melden Sie sich als Administrator an.'
+      describe "welcome box" do
+
+        it "displays headline" do
+          expect(page).to have_selector '#welcome span', text: 'Willkommen bei Poichecker'
         end
 
-        it "displays a link" do
-          expect(page).to have_selector 'a', text: 'Sign in with OpenStreetMap'
+        it "has a field for email" do
+          expect(page).to have_selector '#welcome input#admin_user_email'
         end
 
       end
 
+
+    end
+
+    context "prepolated database" do
+
+      let :user do
+        AdminUser.find_by_osm_id(174)
+      end
+
+      let! :place do
+        FactoryGirl.create(:place, name: "Neptunbrunnen")
+      end
+
+      let! :comment do
+        FactoryGirl.create(:comment, resource: place, author: user)
+      end
+
+      before :each do
+        user.update_attribute(:email, 'admin@example.com')
+        visit '/dashboard'
+      end
+
+      it "has no welcome box" do
+        expect(page).not_to have_selector '#welcome'
+      end
+
+      it "has a comment box with comments" do
+        expect(page).to have_selector '#comments .active_admin_comment'
+      end
 
     end
   end

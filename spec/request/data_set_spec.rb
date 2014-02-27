@@ -8,7 +8,7 @@ describe "DataSets", type: :controller do
 
     before :each do
       visit '/'
-      click_link "Sign in with OpenStreetMap"
+      click_link "Einloggen mit OpenStreetMap"
     end
 
     shared_examples "an empty page" do

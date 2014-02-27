@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  active_admin:
+    devise:
+      sessions:
+        new:
+          sign_in_with: "Sign in with %{kind}"

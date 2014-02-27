@@ -1,4 +1,4 @@
-%li
+%li{ id: dom_id(comment), class: dom_class(comment) }
   = link_to comment.author.display_name, '/'
   über
   -#= link_to comment.resource.name, resource_path(:place, comment.resource)

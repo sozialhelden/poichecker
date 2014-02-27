@@ -4,9 +4,9 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    columns do
-      if current_admin_user.email.blank?
-        column do
+    if current_admin_user.email.blank?
+      columns do
+        column id: "welcome" do
           active_admin_form_for(current_admin_user, :as => :admin_user, :url => admin_user_path(current_admin_user)) do |f|
             f.inputs "Willkommen bei Poichecker" do
               f.input :email, hint: "Damit informieren wir Dich über neue Datenspenden, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen."
@@ -19,12 +19,12 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column id: "info" do
         panel "Info" do
           para "Hilf der freien Weltkarte OpenStreetMap: Kontrolliere Daten, die das Projekt gespendet bekommt. Das geht ganz leicht und macht sogar Spaß."
         end
       end
-      column do
+      column id: "checks" do
         panel "Deine letzten Checks" do
           ul do
             current_admin_user.matched_places.each do |place|
@@ -35,7 +35,7 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-      column do
+      column id: "comments" do
         panel "Neuste Kommentare" do
           ul do
             render partial: 'active_admin/comments/comment', collection: ActiveAdmin::Comment.all
