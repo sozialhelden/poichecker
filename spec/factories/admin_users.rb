@@ -18,6 +18,9 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  osm_username           :string(255)
+#  changeset_id           :integer
+#  role                   :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
