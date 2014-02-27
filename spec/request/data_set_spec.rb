@@ -56,7 +56,7 @@ describe "DataSets", type: :controller do
       end
 
       it "has a link to admin resource" do
-        expect(page).to have_selector 'ul.header-item #admin_users a', text: 'Administratoren'
+        expect(page).to have_selector 'ul.header-item #accounts a', text: 'Accounts'
       end
 
     end
@@ -85,8 +85,17 @@ describe "DataSets", type: :controller do
 
     context "as admin" do
 
+      let :role do
+        FactoryGirl.create(:admin_role)
+      end
+
+      let :user do
+        AdminUser.find_by_osm_id(174)
+      end
+
       before :each do
-        AdminUser.find_by_osm_id(174).update_attribute(:role, 'admin')
+        user.update_attribute(:role, role)
+        expect(user).to be_admin
       end
 
       context "with empty database" do

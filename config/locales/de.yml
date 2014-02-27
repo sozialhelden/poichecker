@@ -9,6 +9,9 @@ de:
 
   activerecord:
     models:
+      admin_user:
+        one: Benutzer
+        other: Benutzer
       candidate:
         one: Kandidat
         other: Kandidaten
@@ -65,6 +68,13 @@ de:
     hints:
       candidate:
         lat: "Platziere den Marker auf der Karte."
+      admin_user:
+        email: "Damit informieren wir Dich über neue Datenspenden, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen."
+    actions:
+      create: "%{model} speichern"
+      update: "%{model} aktualisieren"
+      reset: "Formular zurücksetzen"
+      cancel: "Abbrechen"
   places:
     show:
       actions: Ort nicht dabei?

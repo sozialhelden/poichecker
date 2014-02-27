@@ -20,7 +20,7 @@
 #  updated_at             :datetime
 #  osm_username           :string(255)
 #  changeset_id           :integer
-#  role                   :string(255)
+#  role_id                :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -35,9 +35,10 @@ FactoryGirl.define do
     password              "a_password"
     password_confirmation "a_password"
     osm_username          "a_osm_username"
+    association :role, factory: :user_role
   end
 
   factory :admin, :parent => :user do
-    role                  "admin"
+    association :role, factory: :admin_role
   end
 end

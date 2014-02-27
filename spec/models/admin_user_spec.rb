@@ -20,7 +20,7 @@
 #  updated_at             :datetime
 #  osm_username           :string(255)
 #  changeset_id           :integer
-#  role                   :string(255)
+#  role_id                :integer
 #
 
 require 'spec_helper'
@@ -38,6 +38,7 @@ describe AdminUser do
 
   describe "associations" do
     it { expect(subject).to have_many :matched_places }
+    it { expect(subject).to belong_to :role }
   end
 
   describe ".display_name" do
@@ -64,11 +65,6 @@ describe AdminUser do
     it "is not an admin by default" do
       expect(subject.admin?).to be_false
     end
-
-    it "makes for an admin" do
-      subject.admin!
-      expect(subject.admin?).to be_true
-    end
   end
 
   describe "abilities" do
@@ -87,8 +83,6 @@ describe AdminUser do
 
       it { expect(subject).to be_able_to(    :read,  ActiveAdmin::Comment) }
       it { expect(subject).to be_able_to(  :create, ActiveAdmin::Comment) }
-
-      it { expect(subject).not_to be_able_to(:read,  AdminUser) }
 
     end
 

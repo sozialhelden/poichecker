@@ -20,7 +20,7 @@
 #  updated_at             :datetime
 #  osm_username           :string(255)
 #  changeset_id           :integer
-#  role                   :string(255)
+#  role_id                :integer
 #
 
 class AdminUser < ActiveRecord::Base
@@ -33,6 +33,9 @@ class AdminUser < ActiveRecord::Base
  validates :osm_id, presence: true
 
  has_many :matched_places, class_name: Place, foreign_key: :matcher_id
+
+ belongs_to :role
+ before_create :set_default_role
 
   def self.find_for_osm_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
@@ -69,10 +72,12 @@ class AdminUser < ActiveRecord::Base
   end
 
   def admin?
-    role == 'admin'
+    role.try(:name) == 'admin'
   end
 
-  def admin!
-    update_attribute(:role, 'admin')
+  private
+
+  def set_default_role
+    self.role ||= Role.find_by_name('user')
   end
 end

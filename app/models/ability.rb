@@ -33,15 +33,15 @@ class Ability
 
     alias_action :create, :update, :destroy, :to => :write
 
-    case user.role
+    case user.role.try(:name)
     when "admin"
       can [:manage, :download], :all
       cannot :create, AdminUser
       can :upload_csv, Place
     else
       can    :read,  :all
-      cannot :read,  AdminUser
       cannot :write, :all
+      can    :manage,  AdminUser
       can    :create, ActiveAdmin::Comment
     end
   end
