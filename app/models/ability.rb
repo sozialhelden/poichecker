@@ -41,7 +41,8 @@ class Ability
     else
       can    :read,  :all
       cannot :write, :all
-      can    :manage,  AdminUser
+      cannot :manage, AdminUser
+      can    :update, AdminUser
       can    :create, ActiveAdmin::Comment
     end
   end

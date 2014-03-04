@@ -1,14 +1,16 @@
 # encoding: UTF-8
 ActiveAdmin.register AdminUser, as: 'Account' do
 
-  actions :edit, :update
+  actions :edit, :update, :index
+
+  menu if: -> { current_admin_user.admin? }
 
   permit_params do
     defaults = [:email]
 
     # Do not allow non admins to set role attribute
     if current_admin_user.admin?
-      defaults + [:role]
+      defaults + [:role_id]
     else
       defaults
     end
@@ -23,7 +25,6 @@ ActiveAdmin.register AdminUser, as: 'Account' do
       redirect_to edit_account_path(current_admin_user), :flash => flash
     end
 
-    alias_method :index, :redirect_to_edit
     alias_method :show,  :redirect_to_edit
   end
 
