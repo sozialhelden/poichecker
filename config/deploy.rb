@@ -25,7 +25,21 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-      execute "/etc/init.d/poichecker_#{fetch(:stage)} upgrade"
+      sudo "/etc/init.d/poichecker_#{fetch(:stage)} upgrade"
+    end
+  end
+
+  desc 'Stopp application'
+  task :stop do
+    on roles(:app), in: :sequence, wait: 5 do
+      sudo "/etc/init.d/poichecker_#{fetch(:stage)} stop"
+    end
+  end
+
+  desc 'Start application'
+  task :start do
+    on roles(:app), in: :sequence, wait: 5 do
+      sudo "/etc/init.d/poichecker_#{fetch(:stage)} start"
     end
   end
 
@@ -46,14 +60,14 @@ namespace :unicorn do
 
   task :reload do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "/etc/init.d/poichecker_#{fetch(:stage)} upgrade"
+      sudo "/etc/init.d/poichecker_#{fetch(:stage)} upgrade"
     end
   end
 
 
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute '/etc/init.d/poichecker_#{fetch(:stage)} restart'
+      sudo '/etc/init.d/poichecker_#{fetch(:stage)} restart'
     end
   end
 
