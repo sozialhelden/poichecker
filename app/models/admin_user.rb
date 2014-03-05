@@ -30,13 +30,13 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, :omniauthable,
          :recoverable, :rememberable, :trackable
 
- validates :email, uniqueness: { allow_nil: true, allow_blank: true }
- validates :osm_id, presence: true
+  validates :email, uniqueness: { allow_nil: true, allow_blank: true }
+  validates :osm_id, presence: true
 
- has_many :matched_places, class_name: Place, foreign_key: :matcher_id
+  has_many :matched_places, class_name: Place, foreign_key: :matcher_id
 
- belongs_to :role
- before_create :set_default_role
+  belongs_to :role
+  before_create :set_default_role
 
   def self.find_for_osm_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
