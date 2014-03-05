@@ -38,6 +38,9 @@ class AdminUser < ActiveRecord::Base
   belongs_to :role
   before_create :set_default_role
 
+  # By default, use the GEOS implementation for spatial columns.
+  self.rgeo_factory_generator = RGeo::Geos.factory_generator
+
   def self.find_for_osm_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
     if admin_user = AdminUser.where(:osm_id => data.id).first
@@ -48,7 +51,7 @@ class AdminUser < ActiveRecord::Base
     admin_user.update_attributes( oauth_token: access_token.credentials.token,
                                   oauth_secret: access_token.credentials.secret,
                                   osm_username: data.display_name,
-                                  location: RGeo::Cartesian.factory.point(data.lon, data.lat)
+                                  location: "POINT(#{data.lon} #{data.lat})"
                                 )
     admin_user
   end

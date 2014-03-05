@@ -37,7 +37,7 @@ FactoryGirl.define do
     password_confirmation "a_password"
     osm_username          "a_osm_username"
     association :role, factory: :user_role
-    location { RGeo::Cartesian.factory.point(13.39, 52.51) }
+    location              "POINT(13.39 52.51)"
   end
 
   factory :admin, :parent => :user do
