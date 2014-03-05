@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column id: "info" do
         panel "Info" do
-          para "Hilf der freien Weltkarte OpenStreetMap: Kontrolliere Daten, die das Projekt gespendet bekommt. Das geht ganz leicht und macht sogar Spaß."
+          render partial: 'info'
         end
       end
       column id: "checks" do
