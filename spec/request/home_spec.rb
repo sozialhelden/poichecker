@@ -36,7 +36,7 @@ describe "Home Page", type: :controller do
         end
 
         it "has a field for email" do
-          expect(page).to have_selector '#welcome input#admin_user_email'
+          expect(page).to have_selector '#welcome input#account_email'
         end
 
       end
