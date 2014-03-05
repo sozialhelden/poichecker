@@ -21,6 +21,7 @@
 #  osm_username           :string(255)
 #  changeset_id           :integer
 #  role_id                :integer
+#  location               :spatial          point, 0
 #
 
 require 'spec_helper'

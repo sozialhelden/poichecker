@@ -43,6 +43,8 @@ GEM
       activesupport (= 4.0.3)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-postgis-adapter (0.6.5)
+      rgeo-activerecord (~> 0.5.0)
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -285,6 +287,10 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rgeo (0.3.20)
+    rgeo-activerecord (0.5.0)
+      activerecord (>= 3.0.3)
+      arel (>= 2.0.6)
+      rgeo (>= 0.3.20)
     rosemary (0.3.12)
       activemodel (>= 3.0.20)
       builder (>= 2.1.2)
@@ -376,6 +382,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activerecord-postgis-adapter
   better_errors
   binding_of_caller
   cancan
@@ -415,6 +422,7 @@ DEPENDENCIES
   rails-i18n
   rb-fsevent
   rgeo
+  rgeo-activerecord
   rosemary
   rspec-rails
   sass-rails (~> 4.0.0)

@@ -34,6 +34,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     column :osm_id
     column :osm_username
     column :role
+    column :location
     column :current_sign_in_at
     default_actions
   end

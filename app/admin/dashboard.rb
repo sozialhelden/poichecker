@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
     if current_admin_user.email.blank?
       columns do
         column id: "welcome" do
-          active_admin_form_for(current_admin_user, :url => account_path(current_admin_user)) do |f|
+          active_admin_form_for(:account, :url => account_path(current_admin_user), :method => 'PUT') do |f|
             f.inputs "Willkommen bei Poichecker" do
               f.input :email, hint: true
             end

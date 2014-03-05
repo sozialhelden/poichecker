@@ -21,6 +21,7 @@
 #  osm_username           :string(255)
 #  changeset_id           :integer
 #  role_id                :integer
+#  location               :spatial          point, 0
 #
 
 class AdminUser < ActiveRecord::Base
@@ -46,7 +47,8 @@ class AdminUser < ActiveRecord::Base
     end
     admin_user.update_attributes( oauth_token: access_token.credentials.token,
                                   oauth_secret: access_token.credentials.secret,
-                                  osm_username: data.display_name
+                                  osm_username: data.display_name,
+                                  location: RGeo::Cartesian.factory.point(data.lon, data.lat)
                                 )
     admin_user
   end

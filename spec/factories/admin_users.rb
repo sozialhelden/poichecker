@@ -21,6 +21,7 @@
 #  osm_username           :string(255)
 #  changeset_id           :integer
 #  role_id                :integer
+#  location               :spatial          point, 0
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -36,6 +37,7 @@ FactoryGirl.define do
     password_confirmation "a_password"
     osm_username          "a_osm_username"
     association :role, factory: :user_role
+    location { RGeo::Cartesian.factory.point(13.39, 52.51) }
   end
 
   factory :admin, :parent => :user do

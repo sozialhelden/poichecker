@@ -30,6 +30,8 @@ group :default do
   # Geo Stuff
   gem 'geocoder', github: 'alexreisner/geocoder'
   gem 'rgeo'
+  gem 'rgeo-activerecord'
+  gem 'activerecord-postgis-adapter'
   gem 'country_select'
   gem 'nominatim'
   gem 'leaflet-rails'
