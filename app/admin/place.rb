@@ -2,11 +2,11 @@
 ActiveAdmin.register Place do
   decorate_with PlaceDecorator
 
-  config.sort_order = "id_asc"
+  config.sort_order = "distance_asc"
 
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair, :osm_key, :osm_value
 
-  belongs_to :data_set
+  belongs_to :data_set, optional: true
 
   actions :all, :except => [:destroy, :create]
   config.batch_actions = false
@@ -15,6 +15,8 @@ ActiveAdmin.register Place do
   scope :matched
   scope :unmatched, :default => true
 
+  filter :data_set
+  filter :dist
   filter :name
   filter :street
   filter :housenumber
@@ -25,7 +27,11 @@ ActiveAdmin.register Place do
     link_to 'Upload CSV', :action => 'upload_csv'
   end
 
-  collection_action :upload_csv, :title => "Upload Dataset" do
+  collection_action :next, title: false do
+    redirect_to place_path(collection.first)
+  end
+
+  collection_action :upload_csv, title: "Upload Dataset" do
     authorize! :upload_csv, Place
     render "/places/upload_csv"
   end
@@ -46,14 +52,21 @@ ActiveAdmin.register Place do
       params.require('place').permit(:data_set_id, :csv_file)
     end
 
+    def scoped_collection
+      end_of_association_chain.with_distance_to(current_admin_user.location)
+    end
+
   end
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
     column :name do |place|
-      link_to place.name, data_set_place_path(place.data_set_id, place)
+      link_to place.name, place_path(place, params)
     end
     column :address, sortable: :street
+    column :distance do |place|
+      number_to_human(place.distance_to(current_admin_user), units: :distance, precision: 2) unless place.lat.blank?
+    end
   end
 
   show do
@@ -72,6 +85,9 @@ ActiveAdmin.register Place do
           end
           t.column :name
           t.column :address, :address_with_contact_details
+          t.column :distance do |place|
+            number_to_human(place.distance, units: :distance, precision: 2)
+          end
         end
 
         h2 "Kandidaten"

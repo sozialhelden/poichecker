@@ -38,6 +38,7 @@ de:
         country: Land
         created_at: Erzeugt am
         data_set: Datensatz
+        distance: Entfernung
         housenumber: Hausnummer
         name: Name
         lat: Breitengrad
@@ -56,6 +57,11 @@ de:
       place:
         <<: *attribs
 
+
+  distance:
+    centi: "cm"
+    unit: "m"
+    thousand: "km"
 
   flash:
     actions:

@@ -38,7 +38,7 @@ module Geo
     end
 
     def distance_to(other_place)
-      factory.point(lon,lat).distance(factory.point(other_place.lon,other_place.lat)).abs
+      self.location.distance(other_place.location).abs
     end
 
     def meters_per_degrees_latitude

@@ -51,7 +51,7 @@ class AdminUser < ActiveRecord::Base
     admin_user.update_attributes( oauth_token: access_token.credentials.token,
                                   oauth_secret: access_token.credentials.secret,
                                   osm_username: data.display_name,
-                                  location: "POINT(#{data.lon} #{data.lat})"
+                                  location: "POINT(#{data.lon || 13.39098} #{data.lat || 52.51040})"
                                 )
     admin_user
   end

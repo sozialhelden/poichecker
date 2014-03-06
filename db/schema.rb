@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305105539) do
+ActiveRecord::Schema.define(version: 20140306115432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,7 +119,10 @@ ActiveRecord::Schema.define(version: 20140305105539) do
     t.string   "osm_type"
     t.integer  "matcher_id"
     t.spatial  "location",    limit: {:srid=>0, :type=>"point"}
+    t.integer  "dist",                                           default: 0
   end
+
+  add_index "places", ["location"], :name => "index_places_on_location", :spatial => true
 
   create_table "roles", force: true do |t|
     t.string   "name"

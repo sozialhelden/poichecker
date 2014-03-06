@@ -21,6 +21,7 @@
 #  updated_at  :datetime
 #  osm_type    :string(255)
 #  matcher_id  :integer
+#  location    :spatial          point, 0
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

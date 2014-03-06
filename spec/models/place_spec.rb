@@ -21,6 +21,7 @@
 #  updated_at  :datetime
 #  osm_type    :string(255)
 #  matcher_id  :integer
+#  location    :spatial          point, 0
 #
 
 require 'spec_helper'

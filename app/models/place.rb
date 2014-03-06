@@ -44,18 +44,21 @@ class Place < ActiveRecord::Base
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
   after_validation :geocode, :if => :address_changed?
-  before_safe :set_coordinates
+  before_save :set_location
 
-  ransacker :distance do
-    Arel::Nodes::SqlLiteral.new(
-       'distance')
-    # Beware: PostgreSQL specific SQL!
+  scope :with_coordinates,    -> { where.not(lat: nil).where.not(lon: nil) }
+  scope :matched,             -> { where.not(osm_id: nil) }
+  scope :unmatched,           -> { where(osm_id: nil) }
+  scope :with_distance_to,    -> (other_location) {
+    select('*').
+    from("( SELECT *, ST_Distance_Sphere(location, '#{other_location}') AS distance
+            FROM #{table_name}
+          ) #{table_name}")
+  }
+
+  ransacker :dist do |place|
+    place.table[:distance]
   end
-
-  scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
-  scope :matched,          -> { where.not(osm_id: nil) }
-  scope :unmatched,        -> { where(osm_id: nil) }
-  scope :distance,         -> (from) { order("ST_Distance_Sphere('#{from}', '#{from}') ASC") }
 
   def candidates
     Candidate.new(place_id: self.id)
@@ -95,7 +98,7 @@ class Place < ActiveRecord::Base
       place_hash = valid_params(row.to_hash)
       begin
         data_set.places.create!(place_hash)
-      rescue Exception => e
+      rescue
         raise place_hash.inspect
       end
     end
@@ -107,8 +110,8 @@ class Place < ActiveRecord::Base
 
   private
 
-  def set_coordinates
-    coordinates = "Point(#{lon} #{lat})"
+  def set_location
+    self.location = "Point(#{lon} #{lat})"
   end
 
   def self.valid_keys
