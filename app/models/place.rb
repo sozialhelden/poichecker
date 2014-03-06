@@ -22,6 +22,7 @@
 #  updated_at  :datetime
 #  osm_type    :string(255)
 #  matcher_id  :integer
+#  location    :spatial          point, 0
 #
 
 require 'csv/string_converter'
@@ -35,13 +36,26 @@ class Place < ActiveRecord::Base
 
   validates :name, :data_set_id, presence: true
 
+  # By default, use the GEOS implementation for spatial columns.
+  self.rgeo_factory_generator = RGeo::Geos.factory_generator
+
+  # But use a geographic implementation for the :location column.
+  set_rgeo_factory_for_column(:location, RGeo::Geographic.spherical_factory(:srid => 0))
+
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
   after_validation :geocode, :if => :address_changed?
+  before_safe :set_coordinates
 
+  ransacker :distance do
+    Arel::Nodes::SqlLiteral.new(
+       'distance')
+    # Beware: PostgreSQL specific SQL!
+  end
 
   scope :with_coordinates, -> { where.not(lat: nil).where.not(lon: nil) }
   scope :matched,          -> { where.not(osm_id: nil) }
   scope :unmatched,        -> { where(osm_id: nil) }
+  scope :distance,         -> (from) { order("ST_Distance_Sphere('#{from}', '#{from}') ASC") }
 
   def candidates
     Candidate.new(place_id: self.id)
@@ -92,6 +106,10 @@ class Place < ActiveRecord::Base
   end
 
   private
+
+  def set_coordinates
+    coordinates = "Point(#{lon} #{lat})"
+  end
 
   def self.valid_keys
     [

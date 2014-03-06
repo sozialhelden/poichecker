@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140305105539) do
     t.datetime "updated_at"
     t.string   "osm_type"
     t.integer  "matcher_id"
+    t.spatial  "location",    limit: {:srid=>0, :type=>"point"}
   end
 
   create_table "roles", force: true do |t|
