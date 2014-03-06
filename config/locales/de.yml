@@ -25,7 +25,10 @@ de:
         one: Ort
         other: Orte
     attributes:
+      account:
+        location: Umgebung
       admin_user:
+        address: "Adresse"
         encrypted_password: verschlüsseltes Password
         oauth_token: OAuth Token
         oauth_secret: OAuth Geheimnis

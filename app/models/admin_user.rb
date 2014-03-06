@@ -38,6 +38,8 @@ class AdminUser < ActiveRecord::Base
   belongs_to :role
   before_create :set_default_role
 
+  attr_accessor :address
+
   # By default, use the GEOS implementation for spatial columns.
   self.rgeo_factory_generator = RGeo::Geos.factory_generator
 

@@ -20,6 +20,17 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   filter :osm_id
   filter :osm_username
 
+  member_action :upate_location, method: :put do
+    if data = Geocoder.search(params[:admin_user][:address]).try(:first).try(:data)
+      current_admin_user.location = "POINT(#{data['lon']} #{data['lat']})"
+      current_admin_user.save!
+      redirect_to :back, notice: "Vielen Dank, deine Umgebung wurde angepasst."
+    else
+      redirect_to :back, alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
+    end
+
+  end
+
   controller do
     def redirect_to_edit
       redirect_to edit_account_path(current_admin_user), :flash => flash

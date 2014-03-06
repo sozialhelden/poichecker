@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 20140306115432) do
     t.datetime "updated_at"
     t.string   "osm_type"
     t.integer  "matcher_id"
-    t.spatial  "location",    limit: {:srid=>0, :type=>"point"}
     t.integer  "dist",                                           default: 0
+    t.spatial  "location",    limit: {:srid=>0, :type=>"point"}
   end
 
   add_index "places", ["location"], :name => "index_places_on_location", :spatial => true

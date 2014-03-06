@@ -65,7 +65,7 @@ ActiveAdmin.register Place do
     end
     column :address, sortable: :street
     column :distance do |place|
-      number_to_human(place.distance_to(current_admin_user), units: :distance, precision: 2) unless place.lat.blank?
+      number_to_human(place.distance_to(current_admin_user), units: :distance, precision: 2) unless place.location.blank?
     end
   end
 

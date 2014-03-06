@@ -19,6 +19,21 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
+      column do
+        active_admin_form_for(current_admin_user, :url => upate_location_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
+          f.inputs "Wo kennst du dich aus?" do
+            f.input :address,
+              hint: "Gib eine Adresse ein, an der Du dich gut auskennst.",
+              placeholder: "z.B. Unter den Linden 1, 10117 Berlin"
+          end
+          f.actions do
+            f.action :submit, label: "Umgebung anpassen."
+          end
+        end
+
+      end
+    end
+    columns do
       column id: "info" do
         panel "Info" do
           render partial: 'info'
