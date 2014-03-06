@@ -49,7 +49,7 @@ class Place < ActiveRecord::Base
   scope :with_coordinates,    -> { where.not(lat: nil).where.not(lon: nil) }
   scope :matched,             -> { where.not(osm_id: nil) }
   scope :unmatched,           -> { where(osm_id: nil) }
-  scope :with_distance_to,    -> (other_location) {
+  scope :with_distance_to,    ->(other_location) {
     select('*').
     from("( SELECT *, ST_Distance_Sphere(location, '#{other_location}') AS distance
             FROM #{table_name}
