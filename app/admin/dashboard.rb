@@ -34,8 +34,8 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         active_admin_form_for(current_admin_user, :url => upate_location_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
           f.inputs "Mein Standort" do
-            f.input :lat
-            f.input :lon
+            f.input :lat, input_html: { readonly: true }
+            f.input :lon, input_html: { readonly: true }
           end
           f.actions do
             f.action :submit, label: "Locate me", button_html: { class: "locate_me" }
