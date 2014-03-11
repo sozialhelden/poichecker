@@ -13,11 +13,7 @@ ActiveAdmin.register Candidate do
 
     current_place = Place.find(params[:place_id])
     OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id, current_place.id)
-    if next_place = current_place.next
-      redirect_to data_set_place_path(current_place.data_set_id, next_place), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
-    else
-      redirect_to data_set_path(current_place.data_set_id), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
-    end
+    redirect_to next_places_path(q: { dist_greater_than: current_place.distance_to(current_admin_user)}, order: :distance_asc), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
   end
 
   controller do

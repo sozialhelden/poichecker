@@ -24,7 +24,7 @@
 class Candidate < ActiveRecord::Base
   include Overpass
 
-  attr_accessor :data_set_id, :original_id, :country, :matcher_id
+  attr_accessor :data_set_id, :original_id, :country, :matcher_id, :location
 
   validates :lat, :lon, presence: true
 
@@ -36,7 +36,7 @@ class Candidate < ActiveRecord::Base
   def merge_attributes(other_attributes)
     attribs = self.attributes.dup
     other_attributes.each do |key,value|
-      attribs[key] ||= value
+      attribs[key] ||= value if self.respond_to?(key)
     end
     attribs.delete("id")
     attribs

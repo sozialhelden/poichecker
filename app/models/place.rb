@@ -56,6 +56,7 @@ class Place < ActiveRecord::Base
           ) #{table_name}")
   }
 
+  # helper method to sort and search by calculated distance
   ransacker :dist do |place|
     place.table[:distance]
   end

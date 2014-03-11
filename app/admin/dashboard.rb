@@ -20,17 +20,27 @@ ActiveAdmin.register_page "Dashboard" do
     end
     columns do
       column do
-        active_admin_form_for(current_admin_user, :url => upate_location_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
+        active_admin_form_for(current_admin_user, :url => upate_address_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
           f.inputs "Wo kennst du dich aus?" do
             f.input :address,
               hint: "Gib eine Adresse ein, an der Du dich gut auskennst.",
               placeholder: "z.B. Unter den Linden 1, 10117 Berlin"
           end
           f.actions do
-            f.action :submit, label: "Umgebung anpassen."
+            f.action :submit, label: "Umgebung speichern"
           end
         end
-
+      end
+      column do
+        active_admin_form_for(current_admin_user, :url => upate_location_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
+          f.inputs "Mein Standort" do
+            f.input :lat
+            f.input :lon
+          end
+          f.actions do
+            f.action :submit, label: "Locate me", button_html: { class: "locate_me" }
+          end
+        end
       end
     end
     columns do
@@ -58,7 +68,7 @@ ActiveAdmin.register_page "Dashboard" do
           link_to "All Kommentare", comments_path
         end
       end
-
     end
+    render partial: 'active_admin/locate_me'
   end # content
 end

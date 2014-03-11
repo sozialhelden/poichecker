@@ -58,6 +58,14 @@ class AdminUser < ActiveRecord::Base
     admin_user
   end
 
+  def lat
+    location.try(:y)
+  end
+
+  def lon
+    location.try(:x)
+  end
+
   def display_name
     (osm_username || email || osm_id.to_s) +
     " (#{matched_places.count})"

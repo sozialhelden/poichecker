@@ -16,7 +16,6 @@ ActiveAdmin.register Place do
   scope :unmatched, :default => true
 
   filter :data_set
-  filter :dist
   filter :name
   filter :street
   filter :housenumber
