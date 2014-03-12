@@ -9,7 +9,6 @@ class PlaceDecorator < ApplicationDecorator
   end
 
   def distance
-    logger.error([RGeo::Geos.supported?, model.location.class, model.location.to_s, current_admin_user.location.class, current_admin_user.location.to_s, model.distance_to(current_admin_user)/1000])
     number_to_human(model.distance_to(current_admin_user), units: :distance, precision: 2) unless model.location.blank?
   end
 
