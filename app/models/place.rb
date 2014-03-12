@@ -40,7 +40,7 @@ class Place < ActiveRecord::Base
   self.rgeo_factory_generator = RGeo::Geos.factory_generator
 
   # But use a geographic implementation for the :location column.
-  set_rgeo_factory_for_column(:location, RGeo::Geographic.spherical_factory(:srid => 0))
+  set_rgeo_factory_for_column(:location, RGeo::Geographic.spherical_factory(:srid => 4326))
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
   after_validation :geocode, :if => :address_changed?

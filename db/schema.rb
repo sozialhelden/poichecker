@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20140305134429) do
     t.integer  "osm_id"
     t.string   "oauth_token"
     t.string   "oauth_secret"
-    t.string   "email",                                                     default: "", null: false
-    t.string   "encrypted_password",                                        default: "", null: false
+    t.string   "email",                                                                           default: "", null: false
+    t.string   "encrypted_password",                                                              default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                             default: 0,  null: false
+    t.integer  "sign_in_count",                                                                   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140305134429) do
     t.string   "osm_username"
     t.integer  "changeset_id",           limit: 8
     t.integer  "role_id"
-    t.spatial  "location",               limit: {:srid=>0, :type=>"point"}
+    t.spatial  "location",               limit: {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
   add_index "admin_users", ["osm_id"], :name => "index_admin_users_on_osm_id", :unique => true
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20140305134429) do
     t.datetime "updated_at"
     t.string   "osm_type"
     t.integer  "matcher_id"
-    t.spatial  "location",    limit: {:srid=>0, :type=>"point"}
+    t.spatial  "location",    limit: {:srid=>4326, :type=>"point", :geographic=>true}
   end
 
   add_index "places", ["location"], :name => "index_places_on_location", :spatial => true
