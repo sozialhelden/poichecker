@@ -8,6 +8,11 @@ class PlaceDecorator < ApplicationDecorator
     end
   end
 
+  def distance
+    logger.error([model.location.to_s, current_admin_user.location.to_s, model.distance_to(current_admin_user)/1000])
+    number_to_human(model.distance_to(current_admin_user), units: :distance, precision: 2) unless model.location.blank?
+  end
+
   def matching_status
     if model.osm_id
       colum_header = fa_icon("check-square-o")
