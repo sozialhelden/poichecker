@@ -7,7 +7,7 @@ describe "Login Page" do
     context "empty database" do
 
       before :each do
-        visit '/admin_users/login'
+        visit '/admin/login'
       end
 
       it "renders successfull" do

@@ -7,14 +7,14 @@ describe "Home Page", type: :controller do
   describe "GET /dashboard" do
 
     before :each do
-      visit '/'
+      visit '/admin/login'
       click_link "Einloggen mit OpenStreetMap"
     end
 
     context "empty database" do
 
       before :each do
-        visit '/dashboard'
+        visit '/admin/dashboard'
       end
 
       it "renders successfull" do
@@ -60,7 +60,7 @@ describe "Home Page", type: :controller do
 
       before :each do
         user.update_attribute(:email, 'admin@example.com')
-        visit '/dashboard'
+        visit '/admin/dashboard'
       end
 
       it "has no welcome box" do

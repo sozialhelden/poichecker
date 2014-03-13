@@ -1,0 +1,41 @@
+%nav.navbar.navbar-inverse{role: "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Poichecker', root_path, class: 'navbar-brand'
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      -#%ul.nav.navbar-nav
+      -#  %li.active
+      -#    = link_to t('active_admin.dashboard'), admin_dashboard_path
+      -#  %li
+      -#    %a{href: "#"} Link
+      -#  %li.dropdown
+      -#    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+      -#      Dropdown
+      -#      %b.caret
+      -#    %ul.dropdown-menu
+      -#      %li
+      -#        %a{href: "#"} Action
+      -#      %li
+      -#        %a{href: "#"} Another action
+      -#      %li
+      -#        %a{href: "#"} Something else here
+      -#      %li.divider
+      -#      %li
+      -#        %a{href: "#"} Separated link
+      -#      %li.divider
+      -#      %li
+      -#        %a{href: "#"} One more separated link
+      -#%form.navbar-form.navbar-left{role: "search"}
+      -#  .form-group
+      -#    %input.form-control{placeholder: "Search", type: "text"}/
+      -#  %button.btn.btn-default{type: "submit"} Submit
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to t('active_admin.devise.login.title'), new_admin_user_session_path()

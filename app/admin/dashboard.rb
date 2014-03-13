@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
     if current_admin_user.email.blank?
       columns do
         column id: "welcome" do
-          active_admin_form_for(:account, :url => account_path(current_admin_user), :method => 'PUT') do |f|
+          active_admin_form_for(:account, :url => admin_account_path(current_admin_user), :method => 'PUT') do |f|
             f.inputs "Willkommen bei Poichecker" do
               f.input :email, hint: true
             end
@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
     columns do
       column do
-        active_admin_form_for(current_admin_user, :url => upate_address_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
+        active_admin_form_for(current_admin_user, :url => upate_address_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
           f.inputs "Wo kennst du dich aus?" do
             f.input :address,
               hint: "Gib eine Adresse ein, an der Du dich gut auskennst.",
@@ -32,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        active_admin_form_for(current_admin_user, :url => upate_location_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
+        active_admin_form_for(current_admin_user, :url => upate_location_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_location_query_form"}) do |f|
           f.inputs "Mein Standort" do
             f.input :lat, input_html: { readonly: true }
             f.input :lon, input_html: { readonly: true }
@@ -65,7 +65,7 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             render partial: 'active_admin/comments/comment', collection: ActiveAdmin::Comment.all
           end
-          link_to "All Kommentare", comments_path
+          link_to "All Kommentare", admin_comments_path
         end
       end
     end

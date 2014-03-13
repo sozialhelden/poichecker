@@ -4,10 +4,10 @@ require 'spec_helper'
 describe "DataSets", type: :controller do
   login_admin
 
-  describe "GET /data_sets" do
+  describe "GET /admin/data_sets" do
 
     before :each do
-      visit '/'
+      visit '/admin/login'
       click_link "Einloggen mit OpenStreetMap"
     end
 
@@ -101,7 +101,7 @@ describe "DataSets", type: :controller do
       context "with empty database" do
 
         before :each do
-          visit '/data_sets'
+          visit '/admin/data_sets'
         end
 
         it_behaves_like "an empty page"
@@ -112,7 +112,7 @@ describe "DataSets", type: :controller do
 
         before :each do
           FactoryGirl.create(:data_set)
-          visit '/data_sets'
+          visit '/admin/data_sets'
         end
 
         it_behaves_like "role independent"
@@ -154,7 +154,7 @@ describe "DataSets", type: :controller do
       context "with empty database" do
 
         before :each do
-          visit '/data_sets'
+          visit '/admin/data_sets'
         end
 
         it_behaves_like "an empty page"
@@ -165,7 +165,7 @@ describe "DataSets", type: :controller do
 
         before :each do
           FactoryGirl.create(:data_set)
-          visit '/data_sets'
+          visit '/admin/data_sets'
         end
 
         it_behaves_like "role independent"

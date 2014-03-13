@@ -43,6 +43,9 @@ group :default do
   # Use Iconic webfonts
   gem 'font-awesome-rails'
 
+  # CSS Framework
+  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+  gem 'less-rails'
 end
 
 group :asssets do

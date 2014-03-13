@@ -22,6 +22,17 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: 436ceba61ad40bbef649c9b87b75684b37bea409
+  branch: bootstrap3
+  specs:
+    twitter-bootstrap-rails (3.1.1)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -104,6 +115,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    commonjs (0.2.7)
     countries (0.9.3)
       currencies (~> 0.4.2)
     country_select (1.3.1)
@@ -207,6 +219,11 @@ GEM
     launchy (2.4.2)
       addressable (~> 2.3)
     leaflet-rails (0.7.2)
+    less (2.5.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.5.0)
+      actionpack (>= 3.1)
+      less (~> 2.5.0)
     libv8 (3.16.14.3)
     libxml-ruby (2.7.0)
     listen (2.7.0)
@@ -417,6 +434,7 @@ DEPENDENCIES
   json2-rails
   launchy
   leaflet-rails
+  less-rails
   nominatim
   omniauth-osm
   pg
@@ -432,6 +450,7 @@ DEPENDENCIES
   shoulda-matchers
   spine-rails
   therubyracer
+  twitter-bootstrap-rails!
   uglifier (>= 1.3.0)
   unicorn
   vcr

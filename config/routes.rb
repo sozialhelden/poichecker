@@ -7,7 +7,7 @@ Poichecker::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -17,6 +17,8 @@ Poichecker::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+
+  resources :data_sets, only: [ :index, :show ]
 
   # Example resource route with options:
   #   resources :products do
