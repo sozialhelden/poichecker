@@ -1,0 +1,24 @@
+.container
+  %h1 Data Sets
+
+  .panel.panel-default
+    // Default panel contents
+    .panel-heading
+      Panel heading
+
+    // Table
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Lizenz
+          %th Progress
+      %tbody
+        - @data_sets.each do |data_set|
+          %tr
+            %td= data_set.name
+            %td= data_set.license
+            %td
+              .progress
+                .progress-bar{ 'role' => "progressbar", 'aria-valuenow' => data_set.progress, 'aria-valuemin' =>"0", "aria-valuemax" => "100", "style" => "width: 60%"}
+                  = data_set.progress

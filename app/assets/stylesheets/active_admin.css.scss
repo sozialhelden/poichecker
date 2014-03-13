@@ -44,7 +44,7 @@ $merge-attention: #AAAA22;
   }
 }
 
-a.light-button, button.light-button{
+a.light-button, button.light-button input.light-button{
   @include light-button;
 }
 

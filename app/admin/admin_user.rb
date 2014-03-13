@@ -21,12 +21,17 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   filter :osm_username
 
   member_action :upate_address, method: :put do
-    if data = Geocoder.search(params[:admin_user][:address]).try(:first).try(:data)
-      current_admin_user.location = "POINT(#{data['lon']} #{data['lat']})"
-      current_admin_user.save!
-      redirect_to :back, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
+    if params[:admin_user][:use_location] == '1'
+      current_admin_user.location = "POINT(#{params[:admin_user][:lon]} #{params[:admin_user][:lat]})"
+      redirect_to admin_places_path, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
     else
-      redirect_to :back, alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
+      if data = Geocoder.search(params[:admin_user][:address]).try(:first).try(:data)
+        current_admin_user.location = "POINT(#{data['lon']} #{data['lat']})"
+        current_admin_user.save!
+        redirect_to :back, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
+      else
+        redirect_to :back, alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
+      end
     end
   end
 

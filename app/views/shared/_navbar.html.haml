@@ -10,9 +10,9 @@
       = link_to 'Poichecker', root_path, class: 'navbar-brand'
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      -#%ul.nav.navbar-nav
-      -#  %li.active
-      -#    = link_to t('active_admin.dashboard'), admin_dashboard_path
+      %ul.nav.navbar-nav
+        %li.active
+          = link_to t('activerecord.models.data_set.other'), data_sets_path
       -#  %li
       -#    %a{href: "#"} Link
       -#  %li.dropdown

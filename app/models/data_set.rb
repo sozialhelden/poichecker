@@ -20,4 +20,8 @@ class DataSet < ActiveRecord::Base
 
   has_many :places, dependent: :destroy
 
+  def progress
+    places.matched.count * 100 / places.count rescue 0
+  end
+
 end

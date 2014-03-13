@@ -4,7 +4,7 @@
   };
 
   $(document).ready(function(){
-    $('input.locate_me').click(function(e){
+    $('a.locate_me').click(function(e){
       e.preventDefault();
       if (navigator.geolocation) {
           var location_timeout = setTimeout("geolocFail()", 1000);
@@ -15,8 +15,9 @@
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
 
-            $('#admin_user_lat').val(lat)
-            $('#admin_user_lon').val(lng)
+            $('#admin_user_lat').val(lat);
+            $('#admin_user_lon').val(lng);
+            $('#admin_user_use_location').val(1);
             $(e.target).parents('form').submit();
           }, function(error) {
             clearTimeout(location_timeout);

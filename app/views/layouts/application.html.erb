@@ -19,7 +19,9 @@
     <![endif]-->
   </head>
   <body>
+    <%= render partial: 'shared/navbar' %>
     <%= yield %>
+    <%= render partial: 'shared/navfooter' %>
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
