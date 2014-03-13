@@ -27,7 +27,7 @@ ActiveAdmin.register Place do
   end
 
   collection_action :next, title: false do
-    redirect_to place_path(collection.first)
+    redirect_to admin_place_path(collection.first)
   end
 
   collection_action :upload_csv, title: "Upload Dataset" do
@@ -60,7 +60,7 @@ ActiveAdmin.register Place do
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
     selectable_column
     column :name do |place|
-      link_to place.name, place_path(place, params)
+      link_to place.name, admin_place_path(place, params)
     end
     column :address, sortable: :street
     column :distance
