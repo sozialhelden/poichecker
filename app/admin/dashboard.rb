@@ -54,7 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             current_admin_user.matched_places.each do |place|
               li do
-                link_to place.name, data_set_place_path(place.data_set_id, place)
+                link_to place.name, admin_data_set_place_path(place.data_set_id, place)
               end
             end
           end

@@ -13,7 +13,7 @@ ActiveAdmin.register Candidate do
 
     current_place = Place.find(params[:place_id])
     OsmUpdateJob.enqueue(params[:id], params[:osm_type], @candidate.to_osm_tags, current_admin_user.id, current_place.id)
-    redirect_to admin_next_places_path(q: { dist_greater_than: current_place.distance_to(current_admin_user)}, order: :distance_asc), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
+    redirect_to next_admin_places_path(q: { dist_greater_than: current_place.distance_to(current_admin_user)}, order: :distance_asc), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
   end
 
   controller do
@@ -71,7 +71,7 @@ ActiveAdmin.register Candidate do
 
       column do
         panel "Ergebnis" do
-          form_for candidate, url: merge_place_candidate_path(place.id,resource.id) do |form|
+          form_for candidate, url: merge_admin_place_candidate_path(place.id,resource.id) do |form|
             result = Candidate.new(resource.merge_attributes(place.attributes))
             form.hidden_field :osm_type, value: params[:osm_type]
             attributes_table_for result do

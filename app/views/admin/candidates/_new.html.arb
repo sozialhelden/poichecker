@@ -1,6 +1,6 @@
 columns do
   column do
-    render partial: '/places/form'
+    render partial: '/admin/places/form'
   end
   column do
     render partial: 'form'
