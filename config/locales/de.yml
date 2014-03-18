@@ -54,8 +54,11 @@ de:
         updated_at: Aktualisiert am
       data_set:
         created_at: Erzeugt am
+        description: Beschreibung
         license: Lizenz
+        name: Name
         places: Orte
+        progress: Fortschritt
         updated_at: Aktualisiert am
       place:
         <<: *attribs

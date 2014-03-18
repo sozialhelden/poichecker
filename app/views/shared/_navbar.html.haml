@@ -38,4 +38,7 @@
       -#  %button.btn.btn-default{type: "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to t('active_admin.devise.login.title'), new_admin_user_session_path()
+          - if signed_in?
+            = link_to t("active_admin.dashboard"), admin_dashboard_path
+          - else
+            = link_to t('active_admin.devise.login.title'), new_admin_user_session_path()
