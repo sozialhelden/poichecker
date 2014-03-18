@@ -18,7 +18,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Feb 2014 11:41:27 GMT
+      - Tue, 18 Mar 2014 14:40:00 GMT
       Server:
       - Apache/2.2.22 (Ubuntu)
       Vary:
@@ -32,7 +32,7 @@ http_interactions:
       string: !binary |-
         ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
         QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
-        IjIwMTQtMDItMDZUMTE6MzI6MDFaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
         IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
         cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
         dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
@@ -44,5 +44,995 @@ http_interactions:
         ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
         dW0iCiAgfQp9CgogIF0KfQo=
     http_version: 
-  recorded_at: Thu, 06 Feb 2014 11:41:27 GMT
+  recorded_at: Tue, 18 Mar 2014 14:40:01 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:01 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:01 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:01 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:01 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:02 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:02 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:03 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:03 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:04 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:04 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:04 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:04 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:04 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:04 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:05 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:05 GMT
+- request:
+    method: post
+    uri: http://overpass-api.de/api/interpreter
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <osm-script output="json">
+          <id-query ref="333537503" type="node"/>
+          <print/>
+        </osm-script>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Mar 2014 14:40:05 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ2ZXJzaW9uIjogMC42LAogICJnZW5lcmF0b3IiOiAiT3ZlcnBhc3Mg
+        QVBJIiwKICAib3NtM3MiOiB7CiAgICAidGltZXN0YW1wX29zbV9iYXNlIjog
+        IjIwMTQtMDMtMThUMTQ6MjI6MDJaIiwKICAgICJjb3B5cmlnaHQiOiAiVGhl
+        IGRhdGEgaW5jbHVkZWQgaW4gdGhpcyBkb2N1bWVudCBpcyBmcm9tIHd3dy5v
+        cGVuc3RyZWV0bWFwLm9yZy4gVGhlIGRhdGEgaXMgbWFkZSBhdmFpbGFibGUg
+        dW5kZXIgT0RiTC4iCiAgfSwKICAiZWxlbWVudHMiOiBbCgp7CiAgInR5cGUi
+        OiAibm9kZSIsCiAgImlkIjogMzMzNTM3NTAzLAogICJsYXQiOiA1Mi41MTc5
+        NDI3LAogICJsb24iOiAxMy4zOTc1MjIwLAogICJ0YWdzIjogewogICAgImFt
+        ZW5pdHkiOiAiY2FmZSIsCiAgICAibmFtZSI6ICJNdXNldW1zY2Fmw6kiLAog
+        ICAgIm9wZW5pbmdfaG91cnMiOiAiMTA6MDAtMTg6MDAiLAogICAgInBob25l
+        IjogIjAzMCAyMDY0Mjc0NCIsCiAgICAid2hlZWxjaGFpciI6ICJubyIsCiAg
+        ICAid2hlZWxjaGFpcjpkZXNjcmlwdGlvbiI6ICJUb2lsZXR0ZSBpbSBNdXNl
+        dW0iCiAgfQp9CgogIF0KfQo=
+    http_version: 
+  recorded_at: Tue, 18 Mar 2014 14:40:05 GMT
 recorded_with: VCR 2.8.0

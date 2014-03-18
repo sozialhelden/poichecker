@@ -27,7 +27,11 @@ ActiveAdmin.register Place do
   end
 
   collection_action :next, title: false do
-    redirect_to admin_place_path(collection.first)
+    if collection.first
+      redirect_to admin_place_path(collection.first)
+    else
+      redirect_to admin_places_path, notice: "Das war der letzte Ort."
+    end
   end
 
   collection_action :upload_csv, title: "Upload Dataset" do

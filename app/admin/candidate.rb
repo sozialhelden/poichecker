@@ -36,8 +36,8 @@ ActiveAdmin.register Candidate do
     private
 
     def resource
-      @candidate = Candidate.find(params[:id], params[:osm_type]) if params[:id]
-      @candidate ||= Candidate.new(@place.attributes)
+      @candidate = Candidate.find(params[:id], params[:osm_type] || 'node') if params[:id]
+      @candidate ||= Candidate.new(parent.attributes)
     end
 
     def parent
