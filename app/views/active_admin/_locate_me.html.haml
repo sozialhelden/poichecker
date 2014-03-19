@@ -1,16 +1,9 @@
 :javascript
-  function geolocFail() {
-    console.log("FAIL!!!");
-  };
-
   $(document).ready(function(){
     $('a.locate_me').click(function(e){
       e.preventDefault();
       if (navigator.geolocation) {
-          var location_timeout = setTimeout("geolocFail()", 1000);
-
           navigator.geolocation.getCurrentPosition(function(position) {
-            clearTimeout(location_timeout);
 
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -20,12 +13,11 @@
             $('#admin_user_use_location').val(1);
             $(e.target).parents('form').submit();
           }, function(error) {
-            clearTimeout(location_timeout);
-            geolocFail();
-          });
+            alert('Something went wrong while determining your current position.');
+          }, {timeout:5000});
       } else {
         // Fallback for no geolocation
-        geolocFail();
+        alert('Your browser does not support geolocation.');
       }
     })
   })
