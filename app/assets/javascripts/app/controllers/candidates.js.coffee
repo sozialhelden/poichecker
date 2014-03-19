@@ -7,7 +7,6 @@ $.fn.candidate = ->
   Candidate.find(elementID)
 
 class App.Candidates extends Spine.Controller
-  tag: "tbody"
 
   constructor: ->
     super

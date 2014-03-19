@@ -14,5 +14,6 @@ $ ->
       field_to_fill.val(value_to_fill_in).trigger('change')
       false
 
-  new App
-    el: $('#main_content')
+  if (el = $('#match_view')).length > 0
+    new App
+      el: el

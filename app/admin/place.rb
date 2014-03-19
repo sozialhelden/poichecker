@@ -78,7 +78,7 @@ ActiveAdmin.register Place do
       :i18n => active_admin_config.resource_class
     }
 
-    columns do
+    columns id: "match_view" do
       column span: 2 do
         table_for [resource], table_options do |t|
           t.column icon(:map_pin_fill) do |place|
