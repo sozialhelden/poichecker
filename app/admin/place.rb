@@ -36,7 +36,7 @@ ActiveAdmin.register Place do
 
   collection_action :upload_csv, title: "Upload Dataset" do
     authorize! :upload_csv, Place
-    render "/places/upload_csv"
+    render "/admin/places/upload_csv"
   end
 
   collection_action :import_csv, :method => :post do
