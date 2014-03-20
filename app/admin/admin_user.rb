@@ -56,7 +56,9 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     column :id
     column :email
     column :osm_id
-    column :osm_username
+    column :osm_username do |user|
+      link_to_if user.osm_username, user.osm_username, "http://www.openstreetmap.org/user/#{user.osm_username}"
+    end
     column :role
     column :location
     column :current_sign_in_at
