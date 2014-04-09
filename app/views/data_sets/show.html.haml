@@ -7,4 +7,4 @@
       =t('activerecord.models.place', count: @data_set.places.count)
   %p=@data_set.description || "Leider fehlt hier die Beschreibung der Datenspende."
 
-  %p= link_to 'Hilf jetzt mit!', admin_data_set_places_path(@data_set), class: "btn btn-primary btn-lg", role: "button"
+  %p= link_to 'Hilf jetzt mit!', admin_places_path, class: "btn btn-primary btn-lg", role: "button"
