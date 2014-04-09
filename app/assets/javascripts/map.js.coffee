@@ -26,9 +26,9 @@ $ ->
       lat
       lon
     ], 150,
-      color: "organge"
-      fillColor: "#FE7101"
-      fillOpacity: 0.4
+      color: '#BB2585'
+      fillColor: "#BB2585"
+      fillOpacity: 0.30
     ).addTo(map)
     markerIcon = L.icon(
       iconUrl: "http://api.tiles.mapbox.com/v3/marker/pin-l-star+a22.png"

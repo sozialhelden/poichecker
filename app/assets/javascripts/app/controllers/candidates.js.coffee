@@ -57,10 +57,10 @@ class App.Candidates extends Spine.Controller
       lat
       lon
     ], 150,
-      color: "#FE7101"
       weight: 2
-      fillColor: "#FE7101"
-      fillOpacity: 0.4
+      color: '#BB2585'
+      fillColor: "#BB2585"
+      fillOpacity: 0.30
     ).addTo(map)
 
     MarkerIcon = L.Icon.extend(options:
