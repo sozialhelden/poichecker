@@ -7,20 +7,42 @@
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 
+// Colors
+$link-color: #008472;
+$error-color: #AD973C;
+// $body-background-color: #FFF !default;
+// $primary-color: #5E6469 !default;
+// $secondary-color: #f0f0f0 !default;
+// $text-color: #323537 !default;
+// $section-header-text-color: $primary-color !default;
+// $current-menu-item-background: lighten($primary-color, 12%) !default;
+// $hover-menu-item-background: lighten($primary-color, 12%) !default;
+// $table-stripe-color: lighten($primary-color, 57%) !default;
+// $table-selected-color: #d9e4ec !default;
+// $blank-slate-primary-color: #AAA !default;
+// $breadcrumbs-color: #8a949e !default;
+// $breadcrumbs-separator-color: #aab2ba !default;
+// $required-field-marker-color: #aaa !default;
+// $form-label-color: $section-header-text-color !default;
+// $page-header-text-color: #cdcdcd !default;
+
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "font-awesome";
 @import "leaflet";
 
+@import "components/flash_messages";
+
 $wheelchair-yes: #97C34E;
 $wheelchair-limited: #F19D46;
 $wheelchair-no: #D6382F;
 $wheelchair-unknown: lighten(black, 70%);
 
-$merge-same: #22AA22;
-$merge-diff: #AA2222;
-$merge-attention: #AAAA22;
+$merge-same: #6DA42E;
+$merge-diff: #BB2585;
+$merge-attention: #F0EB83;
+
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -122,6 +144,6 @@ i.fa{
 
 .circle {
   font-size: 45px;
-  color: lighten(#FE7101, 35%);
-  text-shadow: #FE7101 0 0 1px;
+  color: lighten(#BB2585, 30%);
+  text-shadow: #BB2585 0 0 1px;
 }
