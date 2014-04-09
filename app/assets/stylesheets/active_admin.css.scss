@@ -38,9 +38,9 @@ $wheelchair-limited: #F19D46;
 $wheelchair-no: #D6382F;
 $wheelchair-unknown: lighten(black, 70%);
 
-$merge-same: #6DA42E;
+$merge-same: #72B7AA;
 $merge-diff: #BB2585;
-$merge-attention: #F0EB83;
+$merge-attention: #EBDB67;
 
 
 // Overriding any non-variable SASS must be done after the fact.
@@ -70,9 +70,9 @@ $merge-attention: #F0EB83;
 body.logged_in {
   .flashes{
     .flash {
-      @include gradient(#F7F2D2, #F7F2BA);
+      @include gradient(#F7F2D2, #F4EBAB);
       @include text-shadow(#fafafa);
-      border-bottom: 1px solid #F0EB83;
+      border-bottom: 1px solid #EBDB67;
       color: #AD973C;
       font-weight: bold;
       font-size: 1.1em;
@@ -81,9 +81,9 @@ body.logged_in {
       position: relative;
 
       &.flash_notice {
-        @include gradient(#DFE7C8, #CEDEAC);
-        border-bottom: 1px solid #ACCC79;
-        color: #6DA42E;
+        @include gradient(#C4E2DC, #A3D5CB);
+        border-bottom: 1px solid #72B7AA;
+        color: #008472;
       }
       &.flash_error {
         @include gradient(#F0E6EF, #F0CFE5);
@@ -152,32 +152,63 @@ span.icon {
 
   input {
     &.changed {
-      background-color: lighten($merge-same, 55%);
+      background-color: lighten($merge-same, 37%);
       border: 1px solid $merge-same;
+
+      &:focus {
+        border: 1px solid $merge-same;
+        @include shadow(0,0,4px,$merge-same);
+      }
     }
 
     &.same {
-      background-color: lighten($merge-same, 55%);
+      background-color: lighten($merge-same, 37%);
       border: 1px solid $merge-same;
+
+      &:focus {
+        border: 1px solid $merge-same;
+        @include shadow(0,0,4px,$merge-same);
+      }
 
       &.blank {
         background-color: white;
         border: 1px solid #c9d0d6;
+
+        &:focus {
+          border: 1px solid #99a2aa;
+          @include shadow(0,0,4px,#99a2aa);
+        }
+
       }
     }
 
     &.different {
-      background-color: lighten($merge-diff, 55%);
+      background-color: lighten($merge-diff, 53%);
       border: 1px dashed $merge-diff;
 
+      &:focus {
+        border: 1px dashed $merge-diff;
+        @include shadow(0,0,4px,$merge-diff);
+      }
+
       &.new {
-        background-color: lighten($merge-attention, 55%);
-        border: 1px dashed $merge-same;
+        background-color: lighten($merge-attention, 31%);
+        border: 1px dashed $merge-attention;
+
+        &:focus {
+          border: 1px dashed $merge-attention;
+          @include shadow(0,0,4px,$merge-attention);
+        }
       }
 
       &.old {
-        background-color: lighten($merge-same, 55%);
+        background-color: lighten($merge-same, 37%);
         border: 1px dashed $merge-same;
+
+        &:focus {
+          border: 1px dashed $merge-same;
+          @include shadow(0,0,4px,$merge-same);
+        }
 
       }
     }
