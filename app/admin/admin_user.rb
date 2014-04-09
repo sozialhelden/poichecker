@@ -20,28 +20,27 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   filter :osm_id
   filter :osm_username
 
-  member_action :upate_address, method: :put do
+  member_action :update_location, method: :put do
     if params[:admin_user][:use_location] == '1'
       current_admin_user.location = "POINT(#{params[:admin_user][:lon]} #{params[:admin_user][:lat]})"
+      current_admin_user.save!
       redirect_to admin_places_path, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
     else
+      if params[:admin_user][:address].blank?
+        redirect_to edit_location_admin_account_path(current_admin_user), alert: "Bitte geben Sie eine Adresse an."
+        return
+      end
       if data = Geocoder.search(params[:admin_user][:address]).try(:first).try(:data)
         current_admin_user.location = "POINT(#{data['lon']} #{data['lat']})"
         current_admin_user.save!
-        redirect_to :back, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
+        redirect_to admin_places_path, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
       else
-        redirect_to :back, alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
+        redirect_to edit_location_admin_account_path(current_admin_user), alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
       end
     end
   end
 
-  member_action :upate_location, method: :put do
-    current_admin_user.location = "POINT(#{params[:admin_user][:lon]} #{params[:admin_user][:lat]})"
-    if current_admin_user.save
-      redirect_to :back, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
-    else
-      redirect_to :back, alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
-    end
+  member_action :edit_location, method: :get do
   end
 
   controller do

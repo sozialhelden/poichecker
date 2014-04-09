@@ -19,24 +19,6 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
-        active_admin_form_for(current_admin_user, :url => upate_address_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
-          f.inputs "Wo kennst du dich aus?" do
-            f.input :address,
-              hint: "Gib eine Adresse ein, an der Du dich gut auskennst.",
-              placeholder: "z.B. Unter den Linden 1, 10117 Berlin"
-            f.input :lat, as: :hidden
-            f.input :lon, as: :hidden
-            f.input :use_location, as: :hidden, input_html: { value: 0 }
-            f.action :cancel, label: fa_icon('location-arrow') + ' Mein Standort', button_html: { class: "locate_me light-button" }, as: :link
-          end
-          f.actions do
-            f.action :submit, label: "Umgebung speichern"
-          end
-        end
-      end
-    end
-    columns do
       column id: "checks" do
         panel "Deine letzten Checks" do
           ul do
@@ -57,6 +39,5 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
     end
-    render partial: 'active_admin/locate_me'
   end # content
 end

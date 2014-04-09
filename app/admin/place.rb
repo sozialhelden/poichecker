@@ -22,6 +22,10 @@ ActiveAdmin.register Place do
   filter :city
   filter :postcode
 
+  action_item only: :index  do
+    link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
+  end
+
   action_item only: :index, if: -> { can?(:upload_csv, Place) }  do
     link_to 'Upload CSV', :action => 'upload_csv'
   end
@@ -49,7 +53,13 @@ ActiveAdmin.register Place do
 
   controller do
 
+    before_filter :ensure_location
+
     private
+
+    def ensure_location
+      redirect_to edit_location_admin_account_path(current_admin_user) unless current_admin_user.location
+    end
 
     def place_params
       params.require('place').permit(:data_set_id, :csv_file)
