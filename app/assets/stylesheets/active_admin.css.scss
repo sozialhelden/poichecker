@@ -32,8 +32,6 @@ $error-color: #AD973C;
 @import "font-awesome";
 @import "leaflet";
 
-@import "components/flash_messages";
-
 $wheelchair-yes: #97C34E;
 $wheelchair-limited: #F19D46;
 $wheelchair-no: #D6382F;
@@ -48,6 +46,47 @@ $merge-attention: #F0EB83;
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+body.logged_in {
+  .flashes{
+    .flash {
+      @include gradient(#F7F2D2, #F7F2BA);
+      @include text-shadow(#fafafa);
+      border-bottom: 1px solid #F0EB83;
+      color: #AD973C;
+      font-weight: bold;
+      font-size: 1.1em;
+      line-height: 1.0em;
+      padding: 13px 30px 11px;
+      position: relative;
+
+      &.flash_notice {
+        @include gradient(#DFE7C8, #CEDEAC);
+        border-bottom: 1px solid #ACCC79;
+        color: #6DA42E;
+      }
+      &.flash_error {
+        @include gradient(#F0E6EF, #F0CFE5);
+        border-bottom: 1px solid #DDBAD6;
+        color: #BB2585;
+      }
+    }
+  }
+}
+
+body.logged_out {
+  .flash {
+    @include no-shadow;
+    @include text-shadow(#fff);
+    background: none;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.0em;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+}
+
 .status_tag {
   &.yes {
     background: $wheelchair-yes;
