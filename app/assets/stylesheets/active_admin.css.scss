@@ -10,6 +10,7 @@
 // Colors
 $link-color: #008472;
 $error-color: #AD973C;
+$page-header-text-color: #5E6469;
 // $body-background-color: #FFF !default;
 // $primary-color: #5E6469 !default;
 // $secondary-color: #f0f0f0 !default;
@@ -46,6 +47,25 @@ $merge-attention: #F0EB83;
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+#header {
+  @include gradient(#D9D9D9, #BDBCBC);
+  border-bottom: 1px solid $primary-color;
+  @include text-shadow(rgba(#FFF, 0.5));
+
+  h1 img {
+    top: initial;
+  }
+  ul.tabs {
+    > li.current > a, > li:hover > a {
+      background: $current-menu-item-background;
+      color: #fff;
+      text-shadow: none;
+      -moz-text-shadow: none;
+      -webkit-text-shadow: none;
+    }
+  }
+}
 
 body.logged_in {
   .flashes{
