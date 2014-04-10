@@ -1,5 +1,82 @@
 .jumbotron
-  %h1= image_tag('logo_large.png', alt: 'Poichecker Logo')
-  %p Hilf der freien Weltkarte OpenStreetMap: Kontrolliere Daten, die das Projekt gespendet bekommt. Das geht ganz leicht und macht sogar Spaß.
-  %p
-    = link_to "Learn more", '#', class: "btn btn-primary btn-lg", role: "button"
+  .container
+    .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6
+      %h1= image_tag('logo_large.png', alt: 'Poichecker Logo', width: '100%')
+    .col-sm-12.col-md-12
+      %h2 „Points of Interest“ für die freie Weltkarte Openstreetmap
+
+    .col-sm-6.col-md-6
+      %h3 Dein Ortswissen ist gefragt
+      %p Hilf mit, die freie Weltkarte OpenStreetMap zu verbessern: Überprüfe gespendete Ortsdaten auf Korrektheit und Duplikate mit POIchecker. Jeder kann mithelfen!
+      %p
+        = link_to "POIs checken ", admin_places_path, class: "btn btn-primary", role: "button"
+        = link_to "Mehr erfahren ", "#more", class: "btn btn-default", role: "button"
+    .col-sm-6.col-md-6
+      = image_tag "map_screenshot.png", width: "100%"
+.container#more
+  %h3 Warum POIchecker?
+  %p OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe.
+
+  %p OpenStreetMap stellt Kartendaten für hunderte von Webseiten, Apps und andere Geräte zur Verfügung, u.a. für Wheelmap.org, eine Karte speziell für rollstuhlgerechte Orte.
+
+  %p Behörden und Firmen spenden der OpenStreetMap häufig solche POI-Informationen. Aber viele sind bereits in der Karte vorhanden.
+
+  %p POIchecker ist ein Editor, mit dem Du POIs schnell und einfach überprüfen (“checken”) kannst. Nur durch Deine Hilfe können die POI-Informationen übernommen werden und so die freie Weltkarte verbessern.
+
+  = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+
+  .row#even-more
+    .col-md-4
+      %h4 Für Wheelmap-Enthusiasten
+      %p Hilf’ Wheelmap zu mehr rollstuhlgerechten Orten!
+
+      %p Welche öffentlichen Orte (POIs, “Points of Interest”) sind rollstuhlgerecht? Antwort gibt Wheelmap.org, das auf der freien Weltkarte OpenStreetMap aufbaut. Jeder kann mitmachen und Orte markieren und eintragen. Je mehr wir über öffentliche Orte wissen, desto mehr Bewegungsfreiheit haben Menschen mit Mobilitätseinschränkungen.
+
+      %p Fast jede Woche bekommen wir von Wheelmap lange Listen rollstuhlgerechter Orte gespendet mit der Bitte, sie in Wheelmap / OpenStreetMap einzutragen; z.B. alle Filialen einer Bank oder die Bahnhöfe einer Region. Dazu fehlt uns aber die Zeit und Ortskenntnis. Und ein automatischer Import ist nicht im Sinne der OpenStreetMap-Community.
+      %p Damit Du uns ganz einfach dabei helfen kannst, haben wir POIchecker gebaut.
+      %p so geht's
+      %ol
+        %li Melde Dich mit deinem OpenStreetMap-Konto an (Registriere Dich zuerst kostenlos bei OpenStreetMap, falls Du noch kein Mitglied bist).
+        %li Prüfe auf POIchecker.de, welcher Ort dem gespendeten Ort entspricht.
+        %li Speichern, fertig! (Falls der Ort noch nicht da ist, kannst Du ihn anlegen.)
+
+      %p= link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+
+    .col-md-4
+      %h4 Für Unternehmen, Behörden und andere Datenspender
+      %p OpenStreetMap ist die größte freie Weltkarte und wird in hunderten Projekten eingesetzt. Wenn Sie in OpenStreetMap eingetragen sind, werden Sie auf allen Seiten gefunden, die OSM verwenden, z.B. auf openstreetmap.org, openstreetmap.de, mobilen Apps und auf Spezialseiten wie z.B. wheelmap.org.
+
+      %p Sie möchten, dass Ihre Ortsdaten in die freien Weltkarte OpenStreetMap kommen? Z.B. Filialen von Geschäften, Bahnhöfe oder Informationen über öffentliche Orte, die Sie selbst erhoben haben, z.B. ob sie rollstuhlgerecht sind? Dann spenden Sie Ihre Ortsdaten!
+
+      %p Welche Bedingungen gibt es für Datenspenden?
+      %ol
+        %li Sie können nur Daten spenden, die frei von Rechten Dritter sind (z.B. indem Sie sie selbst erhoben haben).
+        %li Die Daten müssen gemeinfrei sein, d.h. Sie verzichten auf alle Rechte. Es ist eine echte Datenspende.
+        %li Sie haben keinen Anspruch darauf, dass die Daten in Openstreetmap übernommen werden, denn POIchecker basiert auf dem Engagement von Freiwilligen, die Ihre Datenspende einzeln überprüfen.
+
+      %p Wie funktioniert eine Datenspende?
+      %ol
+        %li Stellen Sie Sicher, dass Sie die obigen Bedingungen für eine Datenspende erfüllen und damit einverstanden sind.
+        %li Füllen Sie das Kontaktformular aus
+        %li Wir von POIchecker prüfen Ihr Spendenangebot und melden uns bei Ihnen
+        %li Wenn die alles geklärt ist, mailen Sie Ihre Daten einfach an uns als Excel- oder CSV-Datei.
+        %li Wir stellen Ihre Datenspende bei POIchecker ein und Freiwillige werden sie einzeln prüfen und ggf. übertragen.
+        %li Die Übertragenen Daten werden auf Seiten sichtbar, die die OSM-Daten verwenden.
+
+      %p= link_to "Kontakt aufnehmen ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+
+    .col-md-4
+      %h4 Für OpenStreetMapper
+      %p Die OpenStreetMap ist super, aber Importe sind kompliziert und oft fragwürdig. Die Lösung: Mit dem POIchecker kann man POIs einzeln prüfen ohne automatische Massenimporte zu benötigen.
+
+      %p Der POIchecker ist ein spezialisierter OSM-Editor, der ortskundigen Mappern das Zuordnen von POIs supereinfach macht. Keine Importe, keine anonymen User – alle Bearbeitungen werden von echten OSM-Nutzern gemacht. Alle Bearbeitungen mit POIchecker können in OSM als solche nachvollzogen werden (created_by:poichecker http://wiki.openstreetmap.org/wiki/Key:created_by )
+      %p POIchecker ist wie JOSM oder Potlach, aber einfacher und reduziert auf das Prüfen von POIs.
+      %ul
+        %li Erforderliche Selbstauskunft des Datenspenders: Rechte vorhanden, gemeinfrei zu Verfügung gestellt und Angaben zur Datenqualität.
+        %li Keine Lizenzprobleme: Alle Spender erklären schriftlich, dass Sie die Rechte an den Daten haben und diese als gemeinfrei zu Verfügung stellen. Somit steht einer Übernahme in OSM nichts im Wege.
+        %li Klare Datenherkunft: Alle Spender erläutern, woher ihre Daten stammen und von welcher Genauigkeit auszugehen ist. Die OSM-Nutzer können dann dementsprechend mit den Daten umgehen.
+
+
+      %p
+        = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+        = link_to "Quellcode ", "https://github.com/sozialhelden/poichecker", class: ["btn", "btn-default"], role: "button"
