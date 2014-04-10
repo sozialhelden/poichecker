@@ -1,24 +1,25 @@
-%h1
-  =t('activerecord.models.data_set.other')
+.container
+  %h1
+    =t('activerecord.models.data_set.other')
 
-.panel.panel-default
+  .panel.panel-default
 
-  / Table
-  %table.table.table-striped
-    %thead
-      %tr
-        %th= DataSet.human_attribute_name(:name)
-        %th= DataSet.human_attribute_name(:license)
-        %th= DataSet.human_attribute_name(:progress)
-    %tbody
-      - @data_sets.each do |data_set|
+    / Table
+    %table.table.table-striped
+      %thead
         %tr
-          %td
-            = link_to data_set.name, data_set
-            %span.badge=data_set.places.count
+          %th= DataSet.human_attribute_name(:name)
+          %th= DataSet.human_attribute_name(:license)
+          %th= DataSet.human_attribute_name(:progress)
+      %tbody
+        - @data_sets.each do |data_set|
+          %tr
+            %td
+              = link_to data_set.name, data_set
+              %span.badge=data_set.places.count
 
-          %td= data_set.license
-          %td
-            .progress
-              .progress-bar{ 'role' => "progressbar", 'aria-valuenow' => 10, 'aria-valuemin' =>"0", "aria-valuemax" => "100", "style" => "width: #{[data_set.progress, 10].max }%"}
-                %span= number_to_percentage(data_set.progress, precision: 0)
+            %td= data_set.license
+            %td
+              .progress
+                .progress-bar{ 'role' => "progressbar", 'aria-valuenow' => 10, 'aria-valuemin' =>"0", "aria-valuemax" => "100", "style" => "width: #{[data_set.progress, 10].max }%"}
+                  %span= number_to_percentage(data_set.progress, precision: 0)
