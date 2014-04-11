@@ -11,10 +11,11 @@
       %p
         = link_to "POIs checken ", admin_places_path, class: "btn btn-primary", role: "button"
         = link_to "Mehr erfahren ", "#more", class: "btn btn-default", role: "button"
-      %p
-        %small{style: 'font-size: 60%'} *POIchecker wurde ermöglicht durch United Way Worldwide und die Förderung durch FedEx.
+
     .col-sm-6.col-md-6
       = image_tag "map_screenshot.png", width: "100%"
+    .col-sm-12.col-md-12
+      %small POIchecker wurde ermöglicht durch United Way Worldwide und die Förderung durch FedEx.
 .container#more
   %h3 Warum POIchecker?
   %p OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe.
