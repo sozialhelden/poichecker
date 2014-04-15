@@ -64,8 +64,8 @@ class App.Candidates extends Spine.Controller
     ).addTo(map)
 
     MarkerIcon = L.Icon.extend(options:
-      iconSize: [20, 50]
-      iconAnchor: [10, 25]
+      iconSize: [30, 70]
+      iconAnchor: [15, 35]
       popupAnchor: [-3, -26]
     )
 
@@ -75,8 +75,8 @@ class App.Candidates extends Spine.Controller
         candidate.lon
       ],
         icon: new MarkerIcon(
-          iconUrl: "http://api.tiles.mapbox.com/v3/marker/pin-s-#{_i + 1}.png"
-          iconRetinaUrl: "http://api.tiles.mapbox.com/v3/marker/pin-s-#{_i + 1}@2x.png"
+          iconUrl: "http://api.tiles.mapbox.com/v3/marker/pin-m-#{_i + 1}+008472.png"
+          iconRetinaUrl: "http://api.tiles.mapbox.com/v3/marker/pin-m-#{_i + 1}+008472@2x.png"
         )
       ).addTo(map)
 
