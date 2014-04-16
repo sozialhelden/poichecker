@@ -51,7 +51,7 @@ class Place < ActiveRecord::Base
   scope :unmatched,           -> { where(osm_id: nil) }
   scope :with_distance_to,    ->(other_location) {
     select('*').
-    from("( SELECT *, ST_Distance(location, ST_GeographyFromText('#{other_location}')) AS distance
+    from("( SELECT *, ST_Distance(#{table_name}.location, ST_GeographyFromText('#{other_location}')) AS distance
             FROM #{table_name}
           ) #{table_name}")
   }
