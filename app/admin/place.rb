@@ -11,16 +11,16 @@ ActiveAdmin.register Place do
   actions :all, :except => [:destroy, :create]
   config.batch_actions = false
 
-  scope :all
-  scope :matched
-  scope :unmatched, :default => true
+  scope :all,       :if => proc { current_admin_user.admin? }
+  scope :matched,   :if => proc { current_admin_user.admin? }
+  scope :unmatched, :if => proc { current_admin_user.admin? }, :default => true
 
-  filter :data_set
-  filter :name
-  filter :street
-  filter :housenumber
-  filter :city
-  filter :postcode
+  filter :data_set,     :if => proc { false }
+  filter :name,         :if => proc { false }
+  filter :street,       :if => proc { false }
+  filter :housenumber,  :if => proc { false }
+  filter :city,         :if => proc { false }
+  filter :postcode,     :if => proc { false }
 
   action_item only: :index  do
     link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
