@@ -66,7 +66,7 @@ ActiveAdmin.register Place do
     end
 
     def scoped_collection
-      end_of_association_chain.with_distance_to(current_admin_user.location)
+      end_of_association_chain.with_distance_to(current_admin_user.location).with_coordinates
     end
 
   end
