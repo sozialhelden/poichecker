@@ -36,6 +36,10 @@ describe "Place", type: :controller do
         expect(page).to have_selector '#index_table_places thead th.col-address'
       end
 
+    end
+
+    shared_examples "admin specific" do
+
       it "has a data_set filter" do
         expect(page).to have_selector '.filter_form select#q_data_set_id'
       end
@@ -44,9 +48,6 @@ describe "Place", type: :controller do
         expect(page).to have_selector '.filter_form input#q_name'
       end
 
-    end
-
-    shared_examples "admin specific" do
     end
 
     context "as admin" do

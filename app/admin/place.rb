@@ -15,12 +15,12 @@ ActiveAdmin.register Place do
   scope :matched,   :if => proc { current_admin_user.admin? }
   scope :unmatched, :if => proc { current_admin_user.admin? }, :default => true
 
-  filter :data_set,     :if => proc { false }
-  filter :name,         :if => proc { false }
-  filter :street,       :if => proc { false }
-  filter :housenumber,  :if => proc { false }
-  filter :city,         :if => proc { false }
-  filter :postcode,     :if => proc { false }
+  filter :data_set,     :if => proc { current_admin_user.admin? }
+  filter :name,         :if => proc { current_admin_user.admin? }
+  filter :street,       :if => proc { current_admin_user.admin? }
+  filter :housenumber,  :if => proc { current_admin_user.admin? }
+  filter :city,         :if => proc { current_admin_user.admin? }
+  filter :postcode,     :if => proc { current_admin_user.admin? }
 
   action_item only: :index  do
     link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
