@@ -31,8 +31,8 @@ ActiveAdmin.register Place do
   end
 
   collection_action :next, title: false do
-    if collection.first
-      redirect_to admin_place_path(collection.first)
+    if next_place = find_collection.first
+      redirect_to admin_place_path(next_place)
     else
       redirect_to admin_places_path, notice: "Das war der letzte Ort."
     end

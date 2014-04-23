@@ -46,7 +46,7 @@ class Place < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
   before_save :set_location
 
-  scope :with_coordinates,    -> { where.not(lat: nil).where.not(lon: nil) }
+  scope :with_coordinates,    -> { where.not(lat: nil).where.not(lat: '').where.not(lon: nil).where.not(lon: '') }
   scope :matched,             -> { where.not(osm_id: nil) }
   scope :unmatched,           -> { where(osm_id: nil) }
   scope :with_distance_to,    ->(other_location) {

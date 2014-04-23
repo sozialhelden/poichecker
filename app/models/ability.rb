@@ -39,7 +39,7 @@ class Ability
       cannot :create, AdminUser
       can :upload_csv, Place
     else
-      can    :read,  :all
+      can    [:read, :next],  :all
       cannot :write, :all
       cannot :manage, AdminUser
       can    :update, AdminUser
