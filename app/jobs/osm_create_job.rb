@@ -1,4 +1,4 @@
-class OsmCreateJob < Struct.new(:element_type, :tags, :user_id, :place_id)
+class OsmCreateJob < Struct.new(:tags, :user_id, :place_id)
 
   def self.enqueue(tags, user_id, place_id)
     # Do not enqeue job if not in production or test environment
@@ -15,6 +15,8 @@ class OsmCreateJob < Struct.new(:element_type, :tags, :user_id, :place_id)
 
 
   def perform
+    # create node on osm and save resulting node_id to the place_id
+    # current_place.update_attributes(osm_id: element_id, osm_type: :node, matcher_id: user_id)
   end
 
   def success(job)
