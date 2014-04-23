@@ -26,12 +26,13 @@ $ ->
       lat
       lon
     ], 150,
+      weight: 3
       color: '#BB2585'
       fillColor: "#BB2585"
       fillOpacity: 0.30
     ).addTo(map)
     markerIcon = L.icon(
-      iconUrl: "http://api.tiles.mapbox.com/v3/marker/pin-l-star+a22.png"
+      iconUrl: "http://api.tiles.mapbox.com/v3/marker/pin-l-star+008472.png"
       iconRetinaUrl: "http://api.tiles.mapbox.com/v3/marker/pin-l-star+a22@2x.png"
       iconSize: [
         36
@@ -43,8 +44,8 @@ $ ->
       ]
     )
     marker = L.marker([
-      lat
-      lon
+      90.0
+      0.0
     ],
       icon: markerIcon
       draggable: true

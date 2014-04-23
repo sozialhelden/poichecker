@@ -57,7 +57,7 @@ class App.Candidates extends Spine.Controller
       lat
       lon
     ], 150,
-      weight: 2
+      weight: 3
       color: '#BB2585'
       fillColor: "#BB2585"
       fillOpacity: 0.30
