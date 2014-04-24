@@ -4,20 +4,6 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    if current_admin_user.email.blank?
-      columns do
-        column id: "welcome" do
-          active_admin_form_for(:account, :url => admin_account_path(current_admin_user), :method => 'PUT') do |f|
-            f.inputs "Willkommen bei Poichecker" do
-              f.input :email, hint: true
-            end
-            f.actions do
-              f.action :submit
-            end
-          end
-        end
-      end
-    end
     columns do
       column id: "checks" do
         panel "Deine letzten Checks" do
