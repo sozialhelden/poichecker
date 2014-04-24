@@ -73,5 +73,6 @@ namespace :unicorn do
 
 end
 
-after 'deploy', 'unicorn:reload' # ZERO DOWNTIME DEPLOYMENT
+after 'deploy:publishing', 'deploy:restart'
+# after 'deploy', 'unicorn:reload' # ZERO DOWNTIME DEPLOYMENT
 
