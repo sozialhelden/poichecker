@@ -81,7 +81,7 @@ de:
       candidate:
         lat: "Platziere den Marker auf der Karte."
       admin_user:
-        email: "Damit informieren wir Dich über neue Datenspenden, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen."
+        email: "Deine E-Mail Adresse."
     actions:
       create: "%{model} speichern"
       update: "%{model} aktualisieren"
