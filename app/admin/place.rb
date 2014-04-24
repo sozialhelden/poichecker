@@ -22,16 +22,6 @@ ActiveAdmin.register Place do
   filter :city,         :if => proc { current_admin_user.admin? }
   filter :postcode,     :if => proc { current_admin_user.admin? }
 
-  action_item only: :index, if: -> { current_admin_user.email.blank? }  do
-    form_for(:account, :url => admin_account_path(current_admin_user), :method => 'PUT', html: {style: 'width:300px; float:right;'}) do |f|
-      content_tag :div, class: 'filter_form_field filter_string errors' do
-        f.text_field :email, placeholder: t('formtastic.hints.admin_user.email'), style: 'width: 120px; margin: 0 10px', class: 'error'
-        '&nbsp;'
-        f.submit(t('helpers.submit.submit', model: ''), class: :large)
-      end
-    end
-  end
-
   action_item only: :index  do
     link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
   end
@@ -82,6 +72,17 @@ ActiveAdmin.register Place do
   end
 
   index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
+
+    if current_admin_user.email.blank?
+      panel "E-Mail Adresse fehlt", id: 'mail_missing' do
+        span "Gib deine"
+        span do
+          link_to "E-Mail Adresse", edit_admin_account_path(current_admin_user)
+        end
+        span "an, und wir benachrichtigen Dich über neue POIs in Deiner Nähe."
+      end
+    end
+
     selectable_column
     column :name do |place|
       link_to place.name, admin_place_path(place, params)

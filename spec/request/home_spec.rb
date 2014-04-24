@@ -28,20 +28,6 @@ describe "Home Page", type: :controller do
       it "displays title headline" do
         expect(page).to have_selector 'h2', text: 'Übersicht'
       end
-
-      describe "welcome box" do
-
-        it "displays headline" do
-          expect(page).to have_selector '#welcome span', text: 'Willkommen bei Poichecker'
-        end
-
-        it "has a field for email" do
-          expect(page).to have_selector '#welcome input#account_email'
-        end
-
-      end
-
-
     end
 
     context "prepolated database" do

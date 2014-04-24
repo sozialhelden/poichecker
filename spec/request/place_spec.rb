@@ -85,6 +85,20 @@ describe "Place", type: :controller do
         it_behaves_like "role independent"
         it_behaves_like "admin specific"
 
+        context "with empty email address" do
+          before :each do
+            user.update_attribute(:email, ' ')
+            expect(user.email).to be_blank
+          end
+
+          it "displays headline" do
+            expect(page).to have_selector '#mail_missing h3', text: 'E-Mail Adresse fehlt'
+          end
+
+          it "has a link to edit account" do
+            expect(page).to have_link 'E-Mail Adresse', "/admin/accounts/#{user.id}/edit"
+          end
+        end
       end
     end
   end
