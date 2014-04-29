@@ -58,7 +58,7 @@ ActiveAdmin.register Place do
     private
 
     def ensure_location
-      redirect_to edit_location_admin_account_path(current_admin_user) unless current_admin_user.location
+      redirect_to edit_location_admin_account_path(current_admin_user), alert: 'Bitte lege Deinen Standort fest.' unless current_admin_user.location
     end
 
     def place_params

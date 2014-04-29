@@ -44,7 +44,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     end
   end
 
-  member_action :edit_location, method: :get do
+  member_action :edit_location, method: :get, title: 'Wo kennst du dich aus?' do
   end
 
   controller do
