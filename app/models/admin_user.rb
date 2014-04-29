@@ -93,6 +93,6 @@ class AdminUser < ActiveRecord::Base
   private
 
   def set_default_role
-    self.role ||= Role.find_by_name('user')
+    self.role ||= Role.find_by_name('user') if ActiveRecord::Base.connection.table_exists? 'roles'
   end
 end
