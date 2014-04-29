@@ -28,7 +28,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     if params[:admin_user][:use_location] == '1'
       current_admin_user.location = "POINT(#{params[:admin_user][:lon]} #{params[:admin_user][:lat]})"
       current_admin_user.save!
-      redirect_to admin_places_path, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
+      redirect_to edit_location_admin_account_path(current_admin_user), notice: "Vielen Dank, Dein Standort wurde aktualisiert."
     else
       if params[:admin_user][:address].blank?
         redirect_to edit_location_admin_account_path(current_admin_user), alert: "Bitte geben Sie eine Adresse an."
@@ -37,7 +37,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
       if data = Geocoder.search(params[:admin_user][:address]).try(:first).try(:data)
         current_admin_user.location = "POINT(#{data['lon']} #{data['lat']})"
         current_admin_user.save!
-        redirect_to admin_places_path, notice: "Vielen Dank, die Orte wurden deiner Umgebung angepasst."
+        redirect_to edit_location_admin_account_path(current_admin_user), notice: "Vielen Dank, Dein Standort wurde aktualisiert."
       else
         redirect_to edit_location_admin_account_path(current_admin_user), alert: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
       end

@@ -1,5 +1,5 @@
 columns do
-  column do
+  column id: "locate_me" do
     active_admin_form_for(current_admin_user, :url => update_location_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
       f.inputs "Wo kennst du dich aus?" do
         f.input :address,
@@ -8,11 +8,16 @@ columns do
         f.input :lat, as: :hidden
         f.input :lon, as: :hidden
         f.input :use_location, as: :hidden, input_html: { value: 0 }
-        f.action :cancel, label: fa_icon('location-arrow') + ' Mein Standort', button_html: { class: "locate_me light-button" }, as: :link
       end
       f.actions do
         f.action :submit, label: "Umgebung speichern"
+        f.action :cancel, label: fa_icon('location-arrow') + ' Mein Standort', button_html: { class: "locate_me light-button" }, as: :link
       end
+    end
+  end
+  column do
+    panel "Map" do
+      render partial: "map"
     end
   end
 end
