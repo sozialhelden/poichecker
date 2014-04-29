@@ -23,6 +23,6 @@ module Poichecker
     config.autoload_paths += Dir["#{config.root}/lib/**/*.rb"]
 
     # Needed for the ActiveAdmin's manifest assets.
-    config.assets.precompile += ['map.js']
+    config.assets.precompile += ['map.js', 'locate_me.js']
   end
 end
