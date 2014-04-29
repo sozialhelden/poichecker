@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-describe "Login Page" do
+describe "Login Page", type: :controller do
+  login_admin
 
-  describe "GET /admin_users/login" do
+  describe "GET /admin/login" do
 
     context "empty database" do
 
@@ -28,6 +29,28 @@ describe "Login Page" do
           expect(page).to have_selector 'a', text: 'Einloggen mit OpenStreetMap'
         end
 
+      end
+    end
+
+    context "not logged in" do
+      before :each do
+        visit '/admin/places'
+      end
+
+      it "should redirect to login page" do
+        expect(page.current_path).to eql "/admin/login"
+      end
+    end
+
+    context "after login" do
+
+      before :each do
+        visit '/admin/login'
+        click_link "Einloggen mit OpenStreetMap"
+      end
+
+      it "should redirect to places page" do
+        expect(page.current_path).to eql "/admin/places"
       end
     end
   end

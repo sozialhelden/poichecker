@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def current_ability
     @current_ability ||= ::Ability.new(current_admin_user)
   end
+
+  def after_sign_in_path_for(resource_or_scope)
+    admin_places_path # customize to your liking
+  end
 end
