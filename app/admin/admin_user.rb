@@ -20,6 +20,10 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   filter :osm_id
   filter :osm_username
 
+  action_item only: :edit  do
+    link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
+  end
+
   member_action :update_location, method: :put do
     if params[:admin_user][:use_location] == '1'
       current_admin_user.location = "POINT(#{params[:admin_user][:lon]} #{params[:admin_user][:lat]})"
@@ -68,8 +72,6 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     f.inputs I18n.t('activerecord.models.admin_user.one') do
       f.input :email, hint: I18n.t('formtastic.hints.admin_user.email')
       f.input :role if current_admin_user.admin?
-      f.input :lat, input_html: {readonly: true}
-      f.input :lon, input_html: {readonly: true}
     end
     f.actions do
       f.submit
