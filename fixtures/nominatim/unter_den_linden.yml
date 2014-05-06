@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://nominatim.openstreetmap.org/search?accept-language=de&addressdetails=1&format=json&q=Unter%20den%20Linden%201,%2010117%20Berlin
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Poichecker v1.0, (http://poichecker.de)
+      Email:
+      - christoph@sozialhelden.de
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 May 2014 12:48:45 GMT
+      Server:
+      - Apache/2.2.22 (Ubuntu)
+      Content-Location:
+      - search.php
+      Vary:
+      - negotiate,accept
+      Tcn:
+      - choice
+      X-Powered-By:
+      - PHP/5.3.10-1ubuntu3.11
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET
+      Access-Control-Max-Age:
+      - '8640000'
+      Access-Control-Allow-Origin:
+      - "*"
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: "[{\"place_id\":\"30848715\",\"licence\":\"Data \\u00a9 OpenStreetMap
+        contributors, ODbL 1.0. http:\\/\\/www.openstreetmap.org\\/copyright\",\"osm_type\":\"way\",\"osm_id\":\"15976890\",\"boundingbox\":[\"52.5170783996582\",\"52.5173187255859\",\"13.3975105285645\",\"13.3981599807739\"],\"lat\":\"52.5171979\",\"lon\":\"13.3978351960448\",\"display_name\":\"Kommandantenhaus,
+        1, Unter den Linden, Scheunenviertel, Mitte, Berlin, 10117, Deutschland, Europ\\u00e4ische
+        Union\",\"class\":\"amenity\",\"type\":\"public_building\",\"importance\":0.84606775332943,\"address\":{\"public_building\":\"Kommandantenhaus\",\"house_number\":\"1\",\"construction\":\"Unter
+        den Linden\",\"neighbourhood\":\"Scheunenviertel\",\"suburb\":\"Mitte\",\"city_district\":\"Mitte\",\"city\":\"Berlin\",\"state\":\"Berlin\",\"postcode\":\"10117\",\"country\":\"Deutschland\",\"country_code\":\"de\",\"continent\":\"Europ\\u00e4ische
+        Union\"}},{\"place_id\":\"19723587\",\"licence\":\"Data \\u00a9 OpenStreetMap
+        contributors, ODbL 1.0. http:\\/\\/www.openstreetmap.org\\/copyright\",\"osm_type\":\"node\",\"osm_id\":\"1812423108\",\"boundingbox\":[\"52.517276763916\",\"52.5172805786133\",\"13.3978242874146\",\"13.3978252410889\"],\"lat\":\"52.5172781\",\"lon\":\"13.3978248\",\"display_name\":\"Bertelsmann
+        Stiftung, 1, Unter den Linden, Scheunenviertel, Mitte, Berlin, 10117, Deutschland,
+        Europ\\u00e4ische Union\",\"class\":\"office\",\"type\":\"ngo\",\"importance\":0.631,\"address\":{\"address29\":\"Bertelsmann
+        Stiftung\",\"house_number\":\"1\",\"construction\":\"Unter den Linden\",\"neighbourhood\":\"Scheunenviertel\",\"suburb\":\"Mitte\",\"city_district\":\"Mitte\",\"city\":\"Berlin\",\"state\":\"Berlin\",\"postcode\":\"10117\",\"country\":\"Deutschland\",\"country_code\":\"de\",\"continent\":\"Europ\\u00e4ische
+        Union\"}}]"
+    http_version: 
+  recorded_at: Tue, 06 May 2014 12:48:46 GMT
+recorded_with: VCR 2.9.0

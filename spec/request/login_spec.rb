@@ -50,7 +50,7 @@ describe "Login Page", type: :controller do
       end
 
       it "should redirect to places page" do
-        expect(page.current_path).to eql "/admin/places"
+        expect(page.current_path).to eql "/admin/accounts/#{AdminUser.last.id}/edit_location"
       end
     end
   end

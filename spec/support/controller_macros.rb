@@ -26,4 +26,23 @@ module ControllerMacros
       OmniAuth.config.test_mode = false
     end
   end
+
+  def set_position
+    login_admin
+
+    before do
+      VCR.configure do |c|
+        c.cassette_library_dir = 'fixtures/nominatim'
+        c.hook_into :webmock # or :fakeweb
+      end
+      visit '/admin/login'
+      click_link "Einloggen mit OpenStreetMap"
+      visit "/admin/places"
+      # Should redirect user to edit locaton path
+      VCR.use_cassette('unter_den_linden') do
+        fill_in "Adresse", with: 'Unter den Linden 1, 10117 Berlin'
+        click_button "festlegen"
+      end
+    end
+  end
 end

@@ -2,14 +2,9 @@
 require 'spec_helper'
 
 describe "Place", type: :controller do
-  login_admin
+  set_position
 
   describe "GET /admin/places" do
-
-    before :each do
-      visit '/admin/login'
-      click_link "Einloggen mit OpenStreetMap"
-    end
 
     shared_examples "an empty page" do
 
