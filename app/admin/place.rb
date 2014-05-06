@@ -89,6 +89,9 @@ ActiveAdmin.register Place do
     end
     column :address, sortable: :street
     column :distance
+
+    render partial: 'hide_sidebar'
+
   end
 
   show do

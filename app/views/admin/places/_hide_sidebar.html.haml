@@ -1,0 +1,6 @@
+- unless current_admin_user.admin?
+  :javascript
+    $(document).ready(function(){
+      $('#sidebar').hide();
+    })
+
