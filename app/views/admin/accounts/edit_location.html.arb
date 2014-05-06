@@ -15,6 +15,11 @@ columns do
         f.input :use_location, as: :hidden, input_html: { value: 0 }
         f.action :submit, label: "festlegen", class: 'light-button'
       end
+      f.actions do
+        unless current_admin_user.location.nil?
+          f.action :cancel, as: :link, url: admin_places_path, label: "Sieht gut aus", button_html: { class: 'light-button' }, wrapper_html: { class: 'right' }
+        end
+      end
     end
   end
   column do
