@@ -6,4 +6,8 @@ module ApplicationHelper
   def next_path(current_user, current_place)
     next_admin_places_path(q: { dist_greater_than: current_place.distance_to(current_user), id_not_eq: current_place.id }, order: :distance_asc)
   end
+
+  def first_path
+    next_admin_places_path(q: { dist_greater_than: 0.0 }, order: :distance_asc)
+  end
 end

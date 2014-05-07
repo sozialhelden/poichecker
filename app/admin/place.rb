@@ -71,8 +71,7 @@ ActiveAdmin.register Place do
 
   end
 
-  index title: proc{ parent.name rescue 'Orte' }, :default => true, :download_links => false do
-
+  index title: proc{ I18n.t('places.index.headline', count: @places.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
       panel "E-Mail Adresse fehlt", id: 'mail_missing' do
         span "Gib deine"
@@ -83,18 +82,22 @@ ActiveAdmin.register Place do
       end
     end
 
+    h1 "Dein Ortswissen ist gefragt." do
+      span link_to("Jetzt ersten POI checken", first_path), class: "small"
+
+    end
     selectable_column
     column :name do |place|
       link_to place.name, admin_place_path(place, params)
     end
     column :address, sortable: :street
-    column :distance
+    column "Entfernung zu deinem Standort", :distance
 
     render partial: 'hide_sidebar'
 
   end
 
-  show do
+  show title: "Checke diesen POI" do
     table_options = {
       :id => "index_table_#{active_admin_config.resource_name.plural}",
       :sortable => false,
@@ -110,9 +113,6 @@ ActiveAdmin.register Place do
           end
           t.column :name
           t.column :address, :address_with_contact_details
-          t.column :distance do |place|
-            number_to_human(place.distance, units: :distance, precision: 2)
-          end
         end
 
         h2 "Kandidaten"
