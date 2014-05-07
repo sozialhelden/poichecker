@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'delayed_job'
+include ApplicationHelper
 ActiveAdmin.register Candidate do
 
   belongs_to :place
