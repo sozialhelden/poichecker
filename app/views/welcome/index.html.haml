@@ -7,29 +7,32 @@
 
     .col-sm-6.col-md-6
       %h3 Dein Ortswissen ist gefragt
-      %p Hilf mit, die freie Weltkarte OpenStreetMap zu verbessern: Überprüfe gespendete Ortsdaten auf Korrektheit und Duplikate mit POIchecker. Jeder kann mithelfen!
+      %p Wir haben POIs (Orte) aus zwei verschiedenen Quellen, die wir zusammenführen müssen. Checke welche die gleichen sind und welche neu. Jeder kann mithelfen!
       %p
         = link_to "POIs checken", admin_places_path, class: "btn btn-primary", role: "button"
-        = link_to "Mehr erfahren", "#more", class: "btn btn-default", role: "button"
 
+      %h3 Warum POIchecker?
+      %p
+        %small OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe.
+
+      %p
+        %small OpenStreetMap stellt Kartendaten für hunderte von Webseiten, Apps und andere Geräte zur Verfügung, u.a. für Wheelmap.org, eine Karte speziell für rollstuhlgerechte Orte.
+
+      %p
+        %small Behörden und Firmen spenden der OpenStreetMap häufig solche POI-Informationen. Aber viele sind bereits in der Karte vorhanden.
+
+      %p
+        %small
+          POIchecker ist ein Editor, mit dem Du POIs schnell und einfach überprüfen (“checken”) kannst. Nur durch Deine Hilfe können die POI-Informationen übernommen werden und so die freie Weltkarte verbessern.
+
+      = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
     .col-sm-6.col-md-6
       = image_tag "map_screenshot.jpg", width: "100%"
-    .col-sm-12.col-md-12
       %small POIchecker wurde ermöglicht durch United Way Worldwide und die Förderung durch FedEx.
 .container#more
-  %h3 Warum POIchecker?
-  %p OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe.
-
-  %p OpenStreetMap stellt Kartendaten für hunderte von Webseiten, Apps und andere Geräte zur Verfügung, u.a. für Wheelmap.org, eine Karte speziell für rollstuhlgerechte Orte.
-
-  %p Behörden und Firmen spenden der OpenStreetMap häufig solche POI-Informationen. Aber viele sind bereits in der Karte vorhanden.
-
-  %p POIchecker ist ein Editor, mit dem Du POIs schnell und einfach überprüfen (“checken”) kannst. Nur durch Deine Hilfe können die POI-Informationen übernommen werden und so die freie Weltkarte verbessern.
-
-  = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
 
   .row#even-more
-    .col-md-4
+    .col-sm-12.col-md-12
       %h4 Für Wheelmap-Enthusiasten
       %p Hilf’ Wheelmap zu mehr rollstuhlgerechten Orten!
 
@@ -45,7 +48,7 @@
 
       %p= link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
 
-    .col-md-4
+    .col-sm-12.col-md-12
       %h4 Für Unternehmen, Behörden und andere Datenspender
       %p OpenStreetMap ist die größte freie Weltkarte und wird in hunderten Projekten eingesetzt. Wenn Sie in OpenStreetMap eingetragen sind, werden Sie auf allen Seiten gefunden, die OSM verwenden, z.B. auf openstreetmap.org, openstreetmap.de, mobilen Apps und auf Spezialseiten wie z.B. wheelmap.org.
 
@@ -68,7 +71,7 @@
 
       %p= link_to "Kontakt aufnehmen ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
 
-    .col-md-4
+    .col-sm-12.col-md-12
       %h4 Für OpenStreetMapper
       %p Die OpenStreetMap ist super, aber Importe sind kompliziert und oft fragwürdig. Die Lösung: Mit dem POIchecker kann man POIs einzeln prüfen ohne automatische Massenimporte zu benötigen.
 
