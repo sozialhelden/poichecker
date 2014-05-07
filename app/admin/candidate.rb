@@ -20,6 +20,7 @@ ActiveAdmin.register Candidate do
   controller do
 
     def new
+      @page_title = "POI anlegen"
       @place = Place.find(params[:place_id])
       @candidate = Candidate.new(@place.attributes)
       new!
@@ -51,10 +52,10 @@ ActiveAdmin.register Candidate do
 
   form partial: 'admin/candidates/new'
 
-  show title: proc{ parent.name rescue 'Orte' } do
+  show title: :name do
     columns do
       column do
-        panel "Quelle: Datenspende" do
+        panel "Angaben von #{place.name}" do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for place do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
@@ -90,7 +91,7 @@ ActiveAdmin.register Candidate do
       end
 
       column do
-        panel "Quelle: OpenStreetMap" do
+        panel "Angaben von OpenStreetMap" do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for resource do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
