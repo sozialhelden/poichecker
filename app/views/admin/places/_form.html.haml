@@ -1,5 +1,5 @@
 = semantic_form_for [:admin, @place.data_set, @place], html: { disabled: true } do |f|
-  = f.inputs "Quelle: Datenspende" do
+  = f.inputs "Angaben von #{@place.data_set.name}" do
     = f.input :name, label: false, as: :text_with_apply
     = f.input :street, label: false, as: :text_with_apply
     = f.input :housenumber, label: false, as: :text_with_apply
