@@ -13,8 +13,8 @@ de:
         one: Benutzer
         other: Benutzer
       candidate:
-        one: Kandidat
-        other: Kandidaten
+        one: Poi
+        other: Pois
       comment:
         one: Kommentar
         other: Kommentare
@@ -22,8 +22,8 @@ de:
         one: Datensatz
         other: Datensätze
       place:
-        one: Ort
-        other: Orte
+        one: Poi
+        other: Pois
     attributes:
       account:
         location: Umgebung
@@ -57,8 +57,8 @@ de:
         description: Beschreibung
         license: Lizenz
         name: Name
-        places: Orte
-        progress: Fortschritt
+        places: Pois
+        progress: Bereits gecheckt
         updated_at: Aktualisiert am
       place:
         <<: *attribs
@@ -79,7 +79,7 @@ de:
   formtastic:
     hints:
       candidate:
-        lat: "Platziere den Marker auf der Karte."
+        lat: "Klicke auf die Karte, um einen Pin hinzuzufügen"
       admin_user:
         email: "Damit informieren wir Dich über neue POIs, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen!"
     actions:
@@ -88,6 +88,10 @@ de:
       reset: "Formular zurücksetzen"
       cancel: "Abbrechen"
   places:
+    index:
+      headline:
+        one: "%{count} POI muss noch gecheckt werden."
+        other: "%{count} POIs müssen noch gecheckt werden."
     show:
       actions: Ort nicht dabei?
 
