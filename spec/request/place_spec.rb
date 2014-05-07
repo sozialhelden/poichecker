@@ -13,7 +13,7 @@ describe "Place", type: :controller do
       end
 
       it "has no places." do
-        expect(page).to have_text 'Es gibt noch keine Orte.'
+        expect(page).to have_text 'Es gibt noch keine Pois.'
       end
     end
 

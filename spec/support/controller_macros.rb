@@ -40,8 +40,8 @@ module ControllerMacros
       visit "/admin/places"
       # Should redirect user to edit locaton path
       VCR.use_cassette('unter_den_linden') do
-        fill_in "Adresse", with: 'Unter den Linden 1, 10117 Berlin'
-        click_button "festlegen"
+        fill_in "Stadt", with: 'Unter den Linden 1, 10117 Berlin'
+        click_button "speichern"
       end
     end
   end
