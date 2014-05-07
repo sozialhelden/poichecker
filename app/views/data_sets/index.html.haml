@@ -16,7 +16,9 @@
           %tr
             %td
               = link_to data_set.name, data_set
-              %span.badge=data_set.places.count
+              %span.badge
+                =data_set.places.count
+                =t('activerecord.models.place', count: data_set.places.count)
 
             %td= data_set.license
             %td
