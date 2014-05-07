@@ -1,9 +1,22 @@
 <div id="login">
   <h2><%= title "#{active_admin_application.site_title} Login" %></h2>
   <div class="oauth_providers" style="margin-top: 40px;">
-    <p>Hilf der freien Weltkarte OpenStreetMap: Kontrolliere Daten, die das Projekt gespendet bekommt. Das geht ganz leicht und macht sogar Spaß!</p>
+    <h5>Um POIchecker zu nutzen, benötigst Du ein Konto bei OpenStreetMap.</h5>
     <br/>
-    <h3><%= link_to t('.sign_in_with', kind: 'OpenStreetMap'), admin_user_omniauth_authorize_path(:osm), class: 'light-button' %></h3>
+    <br/>
+    <h3>
+      <%= link_to t('.sign_in_with', kind: 'OpenStreetMap'), admin_user_omniauth_authorize_path(:osm), class: 'light-button' %>
+    </h3>
   </div>
-
 </div>
+<div>
+  Du hast Keins?
+  <%= link_to "Bei OpenStreetMap registrieren", "https://www.openstreetmap.org/user/new" %>
+</div>
+
+<%- content_for :footer do %>
+  <p>
+    <%= "Copyright #{Date.today.year} SOZIALHELDEN e.V." %>
+    <%= link_to "Impressum", "http://www.sozialhelden.de/kontakt/", target: '_blank' %>
+  </p>
+<% end %>
