@@ -103,15 +103,13 @@ describe Place do
       expect(subject.address_changed?).to be_true
     end
 
-    it "re-geocodes lat/lon after address changes" do
+    it "queues geocoding lat/lon after address changes" do
       VCR.use_cassette('leipziger_strasse') do
         subject.street      = 'Leipziger Strasse'
         subject.housenumber = '65'
         subject.city        = 'Berlin'
         subject.postcode    = '10117'
-        subject.save!
-        expect(subject.lat).to eql 52.5112595
-        expect(subject.lon).to eql 13.3933457
+        expect( -> { subject.save! }).to change(Delayed::Job, :count).by(1)
       end
     end
 
