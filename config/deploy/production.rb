@@ -1,3 +1,7 @@
+# Settings for delayed job
+set :delayed_job_server_role, :worker
+set :delayed_job_args, "-n 1 --queue=geocode"
+
 set :stage, :production
 set :deploy_to, '/var/apps/poichecker/production'
 
@@ -8,9 +12,10 @@ set :branch, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{176.9.63.171}
-role :web, %w{176.9.63.171}
-role :db,  %w{176.9.63.171}
+role :app,    %w{176.9.63.171}
+role :web,    %w{176.9.63.171}
+role :db,     %w{176.9.63.171}
+role :worker, %w{176.9.63.171}
 
 # Extended Server Syntax
 # ======================

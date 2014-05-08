@@ -112,7 +112,7 @@ class Place < ActiveRecord::Base
   private
 
   def geocode_later
-    Place.delay.geocode_later!(self.id)
+    Place.delay(:queue => 'geocode').geocode_later!(self.id)
   end
 
   def self.geocode_later!(place_id)

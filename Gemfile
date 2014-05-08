@@ -15,6 +15,7 @@ group :default do
 
   # Performance
   gem 'delayed_job_active_record'
+  gem 'daemons'
 
   # Active Admin related stuff
   gem 'activeadmin', github: 'gregbell/active_admin'
