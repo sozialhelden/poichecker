@@ -56,7 +56,7 @@ ActiveAdmin.register Candidate do
   show title: :name do
     columns do
       column do
-        panel "Angaben von #{place.name}" do
+        panel "Angaben von #{place.data_set.name}" do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for place do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
