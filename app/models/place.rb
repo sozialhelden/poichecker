@@ -98,8 +98,9 @@ class Place < ActiveRecord::Base
       place_hash = valid_params(row.to_hash)
       begin
         data_set.places.create!(place_hash)
-      rescue
-        raise place_hash.inspect
+      rescue Exception => e
+        logger.error e.message
+        raise e.message + place_hash.inspect
       end
     end
   end
