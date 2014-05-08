@@ -43,8 +43,7 @@ class Place < ActiveRecord::Base
   set_rgeo_factory_for_column(:location, RGeo::Geographic.spherical_factory(:srid => 4326))
 
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
-  after_validation :geocode, :if => :address_changed?
-  before_save :set_location
+  after_save :geocode_later, :if => :address_changed?
 
   scope :with_coordinates,    -> { where.not(lat: nil).where.not(lat: '').where.not(lon: nil).where.not(lon: '') }
   scope :matched,             -> { where.not(osm_id: nil) }
@@ -111,8 +110,15 @@ class Place < ActiveRecord::Base
 
   private
 
-  def set_location
-    self.location = "Point(#{lon} #{lat})"
+  def geocode_later
+    Place.delay.geocode_later!(self.id)
+  end
+
+  def self.geocode_later!(place_id)
+    place = Place.find(place_id)
+    place.geocode
+    place.update_attributes!(location: "Point(#{place.lon} #{place.lat})")
+    sleep 1
   end
 
   def self.valid_keys
