@@ -71,7 +71,7 @@ ActiveAdmin.register Place do
 
   end
 
-  index title: proc{ I18n.t('places.index.headline', count: @places.count) }, :default => true, :download_links => false do
+  index title: proc{ I18n.t('places.index.headline', count: Place.unmatched.with_coordinates.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
       panel "E-Mail Adresse fehlt", id: 'mail_missing' do
         span "Gib deine"
