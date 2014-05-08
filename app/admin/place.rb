@@ -130,8 +130,6 @@ ActiveAdmin.register Place do
           render partial: "actions", locals: { place: place }
         end
 
-        active_admin_comments
-
         render partial: "spine_app"
 
       end

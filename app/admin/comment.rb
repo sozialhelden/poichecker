@@ -1,6 +1,8 @@
 # encoding: UTF-8
 ActiveAdmin.register ActiveAdmin::Comment, as: 'Comment' do
 
+  menu if: -> { current_admin_user.admin? }
+
   filter :body
 
   index :download_links => false do
