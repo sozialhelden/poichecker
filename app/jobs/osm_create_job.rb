@@ -7,7 +7,7 @@ class OsmCreateJob < Struct.new(:tags, :user_id, :place_id)
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
-    new('node', tags, user_id, place_id).tap do |job|
+    new(tags, user_id, place_id).tap do |job|
       Delayed::Job.enqueue(job)
     end
   end
@@ -16,11 +16,23 @@ class OsmCreateJob < Struct.new(:tags, :user_id, :place_id)
 
   def perform
     # create node on osm and save resulting node_id to the place_id
-    # current_place.update_attributes(osm_id: element_id, osm_type: :node, matcher_id: user_id)
+    #current_place.update_attributes(osm_id: element_id, osm_type: :node, matcher_id: user_id)
   end
 
   def success(job)
     logger.debug("Hoooray, success!")
     # TODO: Update place with newly created osm id
+  end
+
+  def client
+    @client ||= user.try(:client)
+  end
+
+  def api
+    @api ||= Rosemary::Api.new(client)
+  end
+
+  def logger
+    Delayed::Worker.logger
   end
 end
