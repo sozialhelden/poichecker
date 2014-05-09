@@ -94,6 +94,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'airbrake'
+
 end
 
 group :development, :test do

@@ -63,6 +63,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    airbrake (3.1.16)
+      builder
+      multi_json
     annotate (2.6.1)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -400,6 +403,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activerecord-postgis-adapter
+  airbrake
   better_errors
   binding_of_caller
   cancan
