@@ -1,7 +1,13 @@
+%h3
+  Die CSV Datei muss in der ersten Zeile folgende Spalten enthalten:
+  %strong "Name", "Lat", "Lon", "Street", "Housenumber", "Postcode", "City", "Country", "Phone", "Website", "Wheelchair".
+  Wichtig ist, dass alle Werte mit "Hochkomma" gerahmt sind.
+  %strong Die Reihenfolge kann beliebig sein.
+
 = semantic_form_for Place.new, :url => import_csv_admin_places_path, :html => {:multipart => true} do |form|
-  = form.inputs do
+  = form.inputs  "Neuer Datensatz" do
     = form.input :data_set
-    = form.input :csv_file, as: :file, required: true, hint: "Die CSV Datei sollte in der ersten Zeile folgende Spalten in beliebiger Reihenfolge enthalten:<strong> \"Name\", \"Lat\", \"Lon\", \"Street\", \"Housenumber\", \"Postcode\", \"City\", \"Country\", \"Phone\", \"Wheelchair\"</strong>. Wichtig ist, dass alle Werte mit \"Hochkomma\" gerahmt sind.".html_safe
+    = form.input :csv_file, as: :file, required: true
 
   = form.actions do
     = form.submit 'Upload'
