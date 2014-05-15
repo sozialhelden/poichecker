@@ -2,10 +2,16 @@
   .container
     %h1= @data_set.name
     %h4
-      .label.label-primary=@data_set.license
+      .label.label-primary
+        =@data_set.license
+      &nbsp;
       .label.label-default
         =@data_set.places.count
         =t('activerecord.models.place', count: @data_set.places.count)
+      &nbsp;
+      .label.label-default
+        =l(@data_set.created_at.to_date, format: :default)
     %p=@data_set.description || "Leider fehlt hier die Beschreibung der Datenspende."
+
 
     %p= link_to 'POIs checken', admin_places_path, class: "btn btn-primary btn-lg", role: "button"
