@@ -81,6 +81,3 @@ namespace :deploy do
     invoke 'delayed_job:restart'
   end
 end
-
-require './config/boot'
-require 'airbrake/capistrano'
