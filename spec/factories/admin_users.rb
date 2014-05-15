@@ -21,7 +21,7 @@
 #  osm_username           :string(255)
 #  changeset_id           :integer
 #  role_id                :integer
-#  location               :spatial          point, 0
+#  location               :spatial          point, 4326
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
