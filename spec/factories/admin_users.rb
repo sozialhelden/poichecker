@@ -28,7 +28,7 @@
 
 FactoryGirl.define do
 
-  factory :user, class: AdminUser, aliases: [:author] do
+  factory :user, class: AdminUser, aliases: [:author, :admin_user] do
     osm_id
     oauth_token           "token"
     oauth_secret          "secret"

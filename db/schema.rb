@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305134429) do
+ActiveRecord::Schema.define(version: 20140515125803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 20140305134429) do
     t.string   "wheelchair"
     t.integer  "osm_id",      limit: 8
     t.string   "osm_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "changesets", id: false, force: true do |t|
+    t.integer  "osm_id",        limit: 8, null: false
+    t.integer  "admin_user_id",           null: false
+    t.integer  "data_set_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
