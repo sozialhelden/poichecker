@@ -9,7 +9,7 @@ set :repo_url, 'git@github.com:sozialhelden/poichecker.git'
  set :pty, true
 
 set :linked_files, %w{config/database.yml config/osm.yml config/geocoder.yml config/initializers/secret_token.rb config/initializers/airbrake.rb}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :rbenv_type, :system # :user or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.0'
