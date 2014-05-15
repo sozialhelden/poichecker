@@ -47,6 +47,7 @@ group :default do
   # CSS Framework
   gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
   gem 'less-rails'
+  gem 'airbrake'
 end
 
 group :asssets do
@@ -94,8 +95,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'airbrake'
-
 end
 
 group :development, :test do
