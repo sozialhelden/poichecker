@@ -34,6 +34,7 @@ class AdminUser < ActiveRecord::Base
   validates :osm_id, presence: true
 
   has_many :matched_places, class_name: Place, foreign_key: :matcher_id
+  has_many :changesets
 
   belongs_to :role
   before_create :set_default_role
