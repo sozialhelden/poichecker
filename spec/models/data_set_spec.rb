@@ -32,7 +32,7 @@ describe DataSet do
   end
 
   describe "associations" do
-    it { expect(data_set).to have_many(:places).dependent(:destroy) }
+    it { expect(data_set).to have_many(:places).dependent(:delete_all) }
   end
 
 end

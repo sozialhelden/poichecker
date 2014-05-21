@@ -18,7 +18,7 @@ class DataSet < ActiveRecord::Base
   validates :license, :name, presence: true
   validates :name, uniqueness: true
 
-  has_many :places, dependent: :destroy
+  has_many :places, dependent: :delete_all
 
   def progress
     places.matched.count * 100 / places.count rescue 0
