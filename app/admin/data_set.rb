@@ -6,6 +6,13 @@ ActiveAdmin.register DataSet do
 
   permit_params :name, :license, :description
 
+
+  action_item  if: -> { can?(:upload_csv, Place) }  do
+    link_to upload_csv_admin_places_path do
+      fa_icon('upload', text: 'Upload CSV')
+    end
+  end
+
   filter :name
   filter :license,      if: ->(data_set) { current_admin_user.admin? }
   filter :description,  if: ->(data_set) { current_admin_user.admin? }
