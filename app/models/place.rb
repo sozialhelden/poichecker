@@ -96,6 +96,14 @@ class Place < ActiveRecord::Base
   def self.import(csv_file, data_set)
     CSV.parse(csv_file, headers: true, encoding: 'UTF-8', header_converters: :string) do |row|
       place_hash = valid_params(row.to_hash)
+
+      # Split up type field into osm_key and osm_value
+      if t = place_hash.delete(:type)
+        osm_key, osm_value = t.split('=')
+        place_hash[:osm_key]    = osm_key if osm_key
+        place_hash[:osm_value]  = osm_value
+      end
+
       begin
         data_set.places.create!(place_hash)
       rescue Exception => e
@@ -126,6 +134,7 @@ class Place < ActiveRecord::Base
     [
       :osm_id,
       :name,
+      :type,
       :lat,
       :lon,
       :street,
