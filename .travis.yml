@@ -5,7 +5,7 @@ bundler_args: --without production doc
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
+  - 2.1.2
 
 env:
   - LC_ALL=de_DE.UTF-8
