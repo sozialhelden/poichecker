@@ -1,17 +1,13 @@
-class OsmUpdateJob < Struct.new(:element_id, :element_type, :tags, :user_id)
+class OsmUpdateJob < Struct.new(:element_id, :element_type, :user_id, :place_id, :tags)
 
-  def self.enqueue(element_id, element_type, tags, user_id, place_id)
-
+  def self.enqueue(element_id, element_type, user_id, place_id, tags)
     # Do not enqeue job if not in production or test environment
-    # return unless Rails.env.production? || Rails.env.test?
+    return unless Rails.env.production? || Rails.env.test?
 
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
-    current_place = Place.find(place_id)
-    current_place.update_attributes(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
-
-    new(element_id, element_type, tags, user_id).tap do |job|
+    new(element_id, element_type, user_id, place_id, tags).tap do |job|
       Delayed::Job.enqueue(job)
     end
   end
@@ -19,61 +15,48 @@ class OsmUpdateJob < Struct.new(:element_id, :element_type, :tags, :user_id)
 
 
   def perform
-
     raise ArgumentError.new("Client cannot be nil") if client.nil?
 
     begin
-      element_to_compare = api.find_element(element_type, element_id)
 
-      element = element_to_compare.dup
-      element.tags.merge!(tags)
-      # logger.debug "Updating #{element_type} #{element_id} from #{element_to_compare.tags.inspect} to #{element.tags.inspect}"
-
-      # logger.warn ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-      # logger.warn(element_to_compare.tags.inspect)
-      # logger.warn "++++++++++++++++++++++++++++++++++++++++"
-      # logger.warn(tags.inspect)
-      # logger.warn "========================================"
-      # logger.warn(element.tags.inspect)
-      # logger.warn "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-
-      # Use spaceship operator for comparision:
-      # as "element == element_to_compare" is false because of object_id
-      comparison_value = (element_to_compare <=> element)
-
-      # Ignore this job, as there are no changes to be saved
-      raise Rosemary::Conflict.new('NotChanged') if comparison_value == 0
-
-
-      changeset = api.find_or_create_open_changeset(user.changeset_id, "Modified via poichecker.de")
-      user.update_attribute(:changeset_id, changeset.id)
-
-      api.save(element, changeset)
+      osm_element   = update_element(element_type, element_id, tags)
+      osm_changeset = find_or_create_changeset(user, place.data_set_id)
+      api.save(osm_element, osm_changeset)
 
     rescue Rosemary::Conflict => conflict
+      # Catch exception and ignore it, so the job thinks it was successful.
       logger.info "IGNORE: #{element_type}:#{element_id} nothing has changed!"
-      # These changes have already been made, so dismiss this update!
-      # Airbrake.notify(conflict, :component => 'OsmUpdateJob#perform', :parameters => {:user => user.inspect, :element => element.inspect, :client => client})
     end
   end
 
-  def before(job)
-    logger.debug("Starting OsmUpdateJob: #{job.id} >>>>>>>>>>>>>>>>>>>>>>>>")
+  def find_or_create_changeset(user, data_set_id)
+    # Find an existing changeset for the user and data_set
+    changeset_id = Changeset.where(admin_user_id: user.id, data_set_id: data_set_id).first.try(:osm_id)
+
+    if osm_changeset = api.find_or_create_open_changeset(changeset_id, "Modified via poichecker.de")
+      osm_changeset.tags[:source] = "http://poichecker.de/data_sets/#{data_set_id}"
+      cs = Changeset.find_or_initialize_by(admin_user_id: user.id, data_set_id: data_set_id)
+      cs.update_attribute(:osm_id, osm_changeset.id)
+    end
+    osm_changeset
   end
 
-  def after(job)
-    logger.debug("Finished OsmUpdateJob: #{job.id} <<<<<<<<<<<<<<<<<<<<<<<<")
+  def update_element(element_type, element_id, tags)
+    element_from_osm = api.find_element(element_type, element_id)
+    element_copy = element_from_osm.dup
+    element_copy.tags.merge!(tags)
+
+    # Use spaceship operator for comparision:
+    # as "element_copy == element_from_osm" is false because of object_id
+    comparison_value = (element_from_osm <=> element_copy)
+
+    # Ignore this job, as there are no changes to be saved
+    raise Rosemary::Conflict.new('NotChanged') if comparison_value == 0
+    element_copy
   end
 
-  def success(job)
-    logger.debug("Hoooray, success!")
-  end
-
-  def error(job,exception)
-    logger.error(exception.message)
-  end
-
-  def failure(job)
+  def place
+    @place ||= Place.find(place_id)
   end
 
   def user
@@ -92,5 +75,25 @@ class OsmUpdateJob < Struct.new(:element_id, :element_type, :tags, :user_id)
     Delayed::Worker.logger
   end
 
+  def before(job)
+    logger.debug("Starting OsmUpdateJob: #{job.id} >>>>>>>>>>>>>>>>>>>>>>>>")
+  end
+
+  def after(job)
+    logger.debug("Finished OsmUpdateJob: #{job.id} <<<<<<<<<<<<<<<<<<<<<<<<")
+  end
+
+  def success(job)
+    logger.debug("Hoooray, success!")
+    current_place = place
+    current_place.update_attributes!(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
+  end
+
+  def error(job,exception)
+    logger.error(exception.message)
+  end
+
+  def failure(job)
+  end
 
 end
