@@ -21,7 +21,10 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   filter :osm_username
 
   action_item only: :edit  do
-    link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
+    link_to edit_location_admin_account_path(current_admin_user) do
+      fa_icon('dot-circle-o', text: 'Standort ändern')
+    end
+
   end
 
   member_action :update_location, method: :put do

@@ -23,11 +23,15 @@ ActiveAdmin.register Place do
   filter :postcode,     :if => proc { current_admin_user.admin? }
 
   action_item only: :index  do
-    link_to 'Standort ändern', edit_location_admin_account_path(current_admin_user)
+    link_to edit_location_admin_account_path(current_admin_user) do
+      fa_icon('dot-circle-o', text: 'Standort ändern')
+    end
   end
 
   action_item only: :index, if: -> { can?(:upload_csv, Place) }  do
-    link_to 'Upload CSV', :action => 'upload_csv'
+    link_to :action => 'upload_csv' do
+      fa_icon('upload', text: 'Upload CSV')
+    end
   end
 
   collection_action :next, title: false do
@@ -108,7 +112,7 @@ ActiveAdmin.register Place do
     columns id: "match_view" do
       column span: 2 do
         table_for [resource], table_options do |t|
-          t.column icon(:map_pin_fill) do |place|
+          t.column fa_icon("map-marker") do |place|
             span "●", class: :circle
           end
           t.column :name
@@ -118,7 +122,7 @@ ActiveAdmin.register Place do
         h2 "Kandidaten"
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
-          t.column icon(:map_pin_fill), :pos
+          t.column fa_icon("map-marker"), :pos
           t.column :name
           t.column :address, :address_with_contact_details
           t.column "Match?" do |c|

@@ -1,5 +1,8 @@
-= link_to "&laquo; #{t('shared.back')}".html_safe, admin_places_path, class: :left
+= link_to admin_places_path, class: :left do
+  = fa_icon('angle-double-left', text: t('shared.back'))
 
-= link_to "+ #{t('shared.create') }".html_safe, new_admin_place_candidate_path(place), class: 'light-button'
+= link_to new_admin_place_candidate_path(place), class: 'light-button' do
+  = fa_icon('plus', text: t('shared.create'))
 
-= link_to "#{t 'shared.skip'} &raquo;".html_safe, next_path(current_admin_user, place), class: :right
+= link_to next_path(current_admin_user, place), class: :right do
+  = fa_icon('angle-double-right', text: t('shared.skip'), class: 'pull-right')
