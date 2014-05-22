@@ -29,7 +29,7 @@ ActiveAdmin.register Place do
   end
 
   action_item only: :index, if: -> { can?(:upload_csv, Place) }  do
-    link_to :action => 'upload_csv' do
+    link_to upload_csv_admin_places_path do
       fa_icon('upload', text: 'Upload CSV')
     end
   end
