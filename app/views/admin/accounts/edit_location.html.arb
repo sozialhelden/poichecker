@@ -4,7 +4,7 @@ columns do
   column id: "locate_me" do
     active_admin_form_for(current_admin_user, :url => update_location_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
       f.inputs "Standort automatisch bestimmen" do
-        f.action :cancel, label: fa_icon('location-arrow') + ' Standort bestimmen', button_html: { class: "locate_me primary-button"}, as: :link
+        f.action :cancel, label: fa_icon('dot-circle-o') + ' Standort bestimmen', button_html: { class: "locate_me primary-button"}, as: :link
       end
       f.inputs "Oder an einer bestimmten Adresse" do
         f.input :address,
