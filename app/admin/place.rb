@@ -111,6 +111,9 @@ ActiveAdmin.register Place do
 
     columns id: "match_view" do
       column span: 2 do
+
+        h2 "Angaben von #{resource.data_set.name}"
+
         table_for [resource], table_options do |t|
           t.column fa_icon("map-marker") do |place|
             span "●", class: :circle
@@ -119,7 +122,7 @@ ActiveAdmin.register Place do
           t.column :address, :address_with_contact_details
         end
 
-        h2 "Kandidaten"
+        h2 "Angaben von OpenStreetMap"
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
           t.column fa_icon("map-marker"), :pos
