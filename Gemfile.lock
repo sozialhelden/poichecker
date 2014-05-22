@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/alexreisner/geocoder.git
-  revision: 66a0a11891aa4354155f4ee627bf5ddd33e4d413
-  specs:
-    geocoder (1.1.9)
-
-GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 3fb7f03335b1ec5743c305f2c37103e2bfface97
   specs:
@@ -168,6 +162,7 @@ GEM
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    geocoder (1.2.1)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -417,7 +412,7 @@ DEPENDENCIES
   eco
   factory_girl_rails
   font-awesome-rails
-  geocoder!
+  geocoder
   guard
   guard-annotate
   guard-bundler

@@ -29,7 +29,7 @@ group :default do
   gem 'devise-i18n'
 
   # Geo Stuff
-  gem 'geocoder', github: 'alexreisner/geocoder'
+  gem 'geocoder' #, github: 'alexreisner/geocoder'
   gem 'rgeo'
   gem 'rgeo-activerecord'
   gem 'activerecord-postgis-adapter'
