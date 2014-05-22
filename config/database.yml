@@ -17,8 +17,7 @@
 development:
   adapter: postgis
   encoding: unicode
-  postgis_extension: true
-  schema_search_path: public,postgis
+  postgis_extension: postgis # default is postgis
   pool: 5
   database: matchy_development
   username: matchy
@@ -48,8 +47,7 @@ development:
 test:
   adapter: postgis
   encoding: unicode
-  postgis_extension: true
-  schema_search_path: public,postgis
+  postgis_extension: postgis # default is postgis
   pool: 5
   database: matchy_test
   username: postgres
@@ -58,8 +56,7 @@ test:
 production:
   adapter: postgis
   encoding: unicode
-  postgis_extension: true
-  schema_search_path: public,postgis
+  postgis_extension: postgis # default is postgis
   pool: 5
   database: matchy_production
   username: matchy
