@@ -30,7 +30,9 @@ class App.Candidates extends Spine.Controller
         format: "jsonv2"
         addressdetails: 1
         limit: 9
+        bounded: 1
         dedupe: 1
+        debug: 1
         "accept-language": "de"
       )
       processData: true
