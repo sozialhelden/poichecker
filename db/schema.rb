@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 20140515125803) do
     t.string   "osm_type"
     t.integer  "matcher_id"
     t.spatial  "location",    limit: {:srid=>4326, :type=>"point", :geographic=>true}
+    t.string   "osm_value"
+    t.string   "osm_key"
   end
 
   add_index "places", ["location"], :name => "index_places_on_location", :spatial => true
