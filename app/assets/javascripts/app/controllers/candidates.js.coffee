@@ -32,7 +32,6 @@ class App.Candidates extends Spine.Controller
         limit: 9
         bounded: 1
         dedupe: 1
-        debug: 1
         "accept-language": "de"
       )
       processData: true
