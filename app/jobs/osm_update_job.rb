@@ -8,6 +8,8 @@ class OsmUpdateJob < OsmCommonJob
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
+    tags = extract_osm_key_value(tags)
+
     new(element_id, element_type, user_id, place_id, tags).tap do |job|
       Delayed::Job.enqueue(job)
     end
@@ -61,5 +63,11 @@ class OsmUpdateJob < OsmCommonJob
 
   def failure(job)
   end
+
+  def self.extract_osm_key_value(tags)
+    # Remove osm_key and osm_value tags, as we do not want to change osm types when updating.
+    tags.reject {|k,v| k == "osm_key" || k == "osm_value" }
+  end
+
 
 end
