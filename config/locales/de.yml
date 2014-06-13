@@ -1,4 +1,14 @@
 de:
+  accounts:
+    edit_location:
+      headline: 'Wo kennst du dich aus?'
+      sub_headline: "Alle POIs werden nach Entfernung zu diesem Ort sortiert."
+      automatically:
+        legend: "Standort automatisch bestimmen"
+        button: "Standort bestimmen"
+      manually:
+        legend: "Oder an einer bestimmten Adresse"
+
   active_admin:
     access_denied:
       message: "Sie haben nicht die Berechtigung für diese Seite."
@@ -28,7 +38,7 @@ de:
       account:
         location: Umgebung
       admin_user:
-        address: "Adresse"
+        address: "Stadt"
         encrypted_password: verschlüsseltes Password
         oauth_token: OAuth Token
         oauth_secret: OAuth Geheimnis
@@ -41,7 +51,7 @@ de:
         country: Land
         created_at: Erzeugt am
         data_set: Datensatz
-        distance: Entfernung
+        distance: "Entfernung zu deinem Standort"
         housenumber: Hausnummer
         name: Name
         lat: Breitengrad
@@ -71,29 +81,54 @@ de:
 
   flash:
     actions:
+      address_missing:
+        alert: "Bitte geben Sie eine Adresse an."
+        not_found: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
       create:
         notice: "%{resource_name} wurde erfolgreich gespeichert."
       merge:
         notice: "%{resource_name} wurde erfolgreich gemerged."
+      location_missing:
+        alert: 'Bitte lege Deinen Standort fest.'
+        notice: 'Vielen Dank, Dein Standort wurde aktualisiert'
 
   formtastic:
     hints:
+      admin_user:
+        address: "Du kannst auch eine exakte Adresse angeben."
+        email: "Damit informieren wir Dich über neue POIs, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen!"
       candidate:
         lat: "Klicke auf die Karte, um einen Pin hinzuzufügen"
-      admin_user:
-        email: "Damit informieren wir Dich über neue POIs, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen!"
     actions:
+      admin_user:
+        cancel: "Sieht gut aus"
       create: "%{model} speichern"
       update: "%{model} aktualisieren"
       reset: "Formular zurücksetzen"
       cancel: "Abbrechen"
+    placeholders:
+      admin_user:
+        address: 'z.B. Hamburg'
+
+  header:
+    action_items:
+      edit_location: 'Standort ändern'
   places:
     index:
+      email_nag:
+        headline: "E-Mail Adresse fehlt"
+      first:
+        link: "Jetzt ersten POI checken"
       headline:
         one: "%{count} POI muss noch gecheckt werden."
         other: "%{count} POIs müssen noch gecheckt werden."
     show:
       actions: Ort nicht dabei?
+      headline: "Checke diesen POI"
+      headline_source: "Angaben von %{source}"
+      link:
+        match: Der ist es
+
 
   shared:
     back: Zurück
@@ -102,3 +137,10 @@ de:
     next: Weiter
     skip: Überspringen
 
+  welcome:
+    index:
+      headline: "„Points of Interest“ für die freie Welt&shy;karte Open&shy;street&shy;map"
+      sub_headline_1:  Dein Ortswissen ist gefragt
+      sub_text_1:  "Wir haben POIs (Orte) aus zwei verschiedenen Quellen, die wir zusammenführen müssen. Checke welche die gleichen sind und welche neu. Jeder kann mithelfen!"
+      sub_headline_2: Warum POIchecker?
+      sub_text_2: "OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe."

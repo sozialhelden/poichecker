@@ -11,6 +11,6 @@
     = f.input :lat, input_html: { value: nil, readonly: true }, hint: true
     = f.input :lon, input_html: { value: nil, readonly: true }
   = f.actions do
-    = f.action :submit, label: "Speichern in OpenStreetMap"
+    = f.action :submit, label: I18n.t('formtastic.actions.candidate.create')
     = f.action :cancel
 

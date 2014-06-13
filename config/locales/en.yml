@@ -1,28 +1,150 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  accounts:
+    edit_location:
+      headline: 'Where is your home zone?'
+      sub_headline: "All POIs are ordered by the distance to this location."
+      automatically:
+        legend: "Determine my location automatically"
+        button: "Determine now"
+      manually:
+        legend: "Or at a certain address"
+
   active_admin:
+    access_denied:
+      message: "You are not allowed to visit this page."
     devise:
       sessions:
         new:
           sign_in_with: "Sign in with %{kind}"
+
+  activerecord:
+    models:
+      admin_user:
+        one: user
+        other: users
+      candidate:
+        one: POI
+        other: POIs
+      comment:
+        one: comment
+        other: comments
+      data_set:
+        one: data set
+        other: data sets
+      place:
+        one: POI
+        other: POIs
+    attributes:
+      account:
+        location: area
+      admin_user:
+        address: "City"
+        encrypted_password: encrypted password
+        oauth_token: OAuth Token
+        oauth_secret: OAuth Secret
+        osm_id: OpenStreetMap ID
+      candidate: &attribs
+        amenity: OpenStreetMap
+        address: Address
+        city: City
+        coordinates: Coordinates
+        country: Country
+        created_at: created at
+        data_set: Data set
+        distance: "Distance to your location"
+        housenumber: Housenumber
+        name: Name
+        lat: Latitude
+        lon: Longitude
+        postcode: postcode
+        street: Street
+        phone: Telefon
+        website: Website
+        wheelchair: wheelchar accessible
+        updated_at: updated at
+      data_set:
+        created_at: created at
+        description: Description
+        license: License
+        name: Name
+        places: POIs
+        progress: already checked
+        updated_at: updated at
+      place:
+        <<: *attribs
+
+
+  distance:
+    centi: "cm"
+    unit: "m"
+    thousand: "km"
+
+  flash:
+    actions:
+      address_missing:
+        alert: "Please provide a valid city or address."
+        not_found: "Apologies, but this address could not be found."
+      create:
+        notice: "%{resource_name} successfully saved."
+      merge:
+        notice: "%{resource_name} successfully merged."
+      location_missing:
+        alert: 'Please provide your location first.'
+        notice: 'Thx a lot, your location has been updated.'
+
+
+
+  formtastic:
+    hints:
+      admin_user:
+        address: "You can provide an exact address too."
+        email: "Damit informieren wir Dich über neue POIs, die Deine Hilfe brauchen. Wir behandeln Deine Adresse vertraulich, kein Spam, versprochen!"
+      candidate:
+        lat: "Click on the map to add a pin"
+    actions:
+      admin_user:
+        cancel: "Looks good"
+      candidate:
+        create: "Save to OpenStreetMap"
+      create: "Save %{model}"
+      update: "Update %{model}"
+      reset: "Reset form"
+      cancel: "Cancel"
+    placeholders:
+      admin_user:
+        address: 'e.g. New York'
+
+  header:
+    action_items:
+      edit_location: 'Change location'
+
+  places:
+    index:
+      email_nag:
+        headline: "E-Mail adress is missing"
+      first:
+        link: "Check first POI now"
+      headline:
+        one: "%{count} POI has to be checked."
+        other: "%{count} POIs have to be checked."
+    show:
+      actions: Place not here?
+      headline: "Check this POI"
+      headline_source: "Information from %{source}"
+      link:
+        match: That is the one
+
+  shared:
+    back: Back
+    cancel: Cancel
+    create: Create
+    next: Next
+    skip: Skip
+
+  welcome:
+    index:
+      headline: "„Points of Interest“ for the free world&shy;map Open&shy;street&shy;map"
+      sub_headline_1: "We need your local knowledge"
+      sub_text_1: "We have POIs (places) frowm two different sources, which need to be merged. Checke which of them are actually the same and which are missing. Everyone can help!"
+      sub_headline_2: Why POIchecker?
+      sub_text_2: "OpenStreetMap is a map of the world, created by people like you and it is free of charge. It does not only contain streets and ways, but also “Points of Interest” (POI), e.g. restaurants, cinemas oder train stations."

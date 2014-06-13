@@ -1,24 +1,23 @@
-h3 "Alle POIs werden nach Entfernung zu diesem Ort sortiert."
+h3 do
+  I18n.t('accounts.edit_location.sub_headline')
+end
 
 columns do
   column id: "locate_me" do
     active_admin_form_for(current_admin_user, :url => update_location_admin_account_path(current_admin_user), :method => 'PUT', html: { id: "user_address_query_form"}) do |f|
-      f.inputs "Standort automatisch bestimmen" do
-        f.action :cancel, label: fa_icon('dot-circle-o') + ' Standort bestimmen', button_html: { class: "locate_me primary-button"}, as: :link
+      f.inputs I18n.t('accounts.edit_location.automatically.legend') do
+        f.action :cancel, label: fa_icon('dot-circle-o', text: I18n.t('accounts.edit_location.automatically.button')), button_html: { class: "locate_me primary-button"}, as: :link
       end
-      f.inputs "Oder an einer bestimmten Adresse" do
-        f.input :address,
-          hint: "Du kannst auch eine exakte Adresse angeben.",
-          placeholder: "z.B. Hamburg",
-          label: "Stadt"
+      f.inputs I18n.t('accounts.edit_location.manually.legend') do
+        f.input :address, hint: I18n.t('formtastic.hints.admin_user.address')
         f.input :lat, as: :hidden
         f.input :lon, as: :hidden
         f.input :use_location, as: :hidden, input_html: { value: 0 }
-        f.action :submit, label: "speichern", class: 'light-button'
+        f.action :submit, label: I18n.t('helpers.links.save'), class: 'light-button'
       end
       f.actions do
         unless current_admin_user.location.nil?
-          f.action :cancel, as: :link, url: admin_places_path, label: "Sieht gut aus", button_html: { class: 'light-button' }, wrapper_html: { class: 'right' }
+          f.action :cancel, as: :link, url: admin_places_path, label: I18n.t('formtastic.actions.admin_user.cancel'), button_html: { class: 'light-button' }, wrapper_html: { class: 'right' }
         end
       end
     end

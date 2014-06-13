@@ -3,17 +3,17 @@
     .col-sm-offset-3.col-sm-6.col-md-offset-3.col-md-6
       %h1= image_tag('logo_large.png', alt: 'Poichecker Logo', width: '100%')
     .col-sm-12.col-md-12
-      %h2 „Points of Interest“ für die freie Welt&shy;karte Open&shy;street&shy;map
+      %h2=t('.headline').html_safe
 
     .col-sm-6.col-md-6
-      %h3 Dein Ortswissen ist gefragt
-      %p Wir haben POIs (Orte) aus zwei verschiedenen Quellen, die wir zusammenführen müssen. Checke welche die gleichen sind und welche neu. Jeder kann mithelfen!
+      %h3=t('.sub_headline_1')
+      %p=t('.sub_text_1')
       %p
         = link_to "POIs checken", admin_places_path, class: "btn btn-primary", role: "button"
 
-      %h3 Warum POIchecker?
+      %h3=t('.sub_headline_2')
       %p
-        %small OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir und frei verwendbar. Sie enthält nicht nur Straßen und Wege, sondern auch “Points of Interest” (POI), z.B. Restaurants, Kinos oder Bahnhöfe.
+        %small=t('.sub_text_2')
 
       %p
         %small OpenStreetMap stellt Kartendaten für hunderte von Webseiten, Apps und andere Geräte zur Verfügung, u.a. für Wheelmap.org, eine Karte speziell für rollstuhlgerechte Orte.

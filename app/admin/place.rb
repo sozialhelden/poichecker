@@ -24,7 +24,7 @@ ActiveAdmin.register Place do
 
   action_item only: :index  do
     link_to edit_location_admin_account_path(current_admin_user) do
-      fa_icon('dot-circle-o', text: 'Standort ändern')
+      fa_icon('dot-circle-o', text: I18n.t('header.action_items.edit_location'))
     end
   end
 
@@ -62,7 +62,7 @@ ActiveAdmin.register Place do
     private
 
     def ensure_location
-      redirect_to edit_location_admin_account_path(current_admin_user), alert: 'Bitte lege Deinen Standort fest.' unless current_admin_user.location
+      redirect_to edit_location_admin_account_path(current_admin_user), alert: I18n.t('flash.actions.location_missing.alert') unless current_admin_user.location
     end
 
     def place_params
@@ -77,7 +77,7 @@ ActiveAdmin.register Place do
 
   index title: proc{ I18n.t('places.index.headline', count: Place.unmatched.with_coordinates.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
-      panel "E-Mail Adresse fehlt", id: 'mail_missing' do
+      panel I18n.t('places.index.email_nag.headline'), id: 'mail_missing' do
         span "Gib deine"
         span do
           link_to "E-Mail Adresse", edit_admin_account_path(current_admin_user)
@@ -86,8 +86,8 @@ ActiveAdmin.register Place do
       end
     end
 
-    h1 "Dein Ortswissen ist gefragt." do
-      span link_to("Jetzt ersten POI checken", first_path), class: "small"
+    h1 I18n.t('welcome.index.sub_headline_1') do
+      span link_to(I18n.t('places.index.first.link'), first_path), class: "small"
 
     end
     selectable_column
@@ -95,13 +95,13 @@ ActiveAdmin.register Place do
       link_to place.name, admin_place_path(place, params)
     end
     column :address, sortable: :street
-    column "Entfernung zu deinem Standort", :distance
+    column :distance
 
     render partial: 'hide_sidebar'
 
   end
 
-  show title: "Checke diesen POI" do
+  show title: proc { I18n.t('places.show.headline')} do
     table_options = {
       :id => "index_table_#{active_admin_config.resource_name.plural}",
       :sortable => false,
@@ -112,7 +112,7 @@ ActiveAdmin.register Place do
     columns id: "match_view" do
       column span: 2 do
 
-        h2 "Angaben von #{resource.data_set.name}"
+        h2 I18n.t('places.show.headline_source', source: resource.data_set.name)
 
         table_for [resource], table_options do |t|
           t.column fa_icon("map-marker") do |place|
@@ -122,7 +122,7 @@ ActiveAdmin.register Place do
           t.column :address, :address_with_contact_details
         end
 
-        h2 "Angaben von OpenStreetMap"
+        h2 I18n.t('places.show.headline_source', source: "OpenStreetMap")
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
           t.column fa_icon("map-marker"), :pos

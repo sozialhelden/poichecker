@@ -21,7 +21,6 @@ ActiveAdmin.register Candidate do
   controller do
 
     def new
-      @page_title = "POI anlegen"
       @place = Place.find(params[:place_id])
       @candidate = Candidate.new(@place.attributes)
       new!
@@ -56,7 +55,7 @@ ActiveAdmin.register Candidate do
   show title: :name do
     columns do
       column do
-        panel "Angaben von #{place.data_set.name}" do
+        panel I18n.t('places.show.headline_source', source: place.data_set.name) do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for place do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
@@ -84,7 +83,7 @@ ActiveAdmin.register Candidate do
                 end
               end
               row :action do |p|
-                form.submit "Speichern in OpenStreetMap"
+                form.submit I18n.t('formtastic.actions.candidate.create')
               end
             end
           end
@@ -92,7 +91,7 @@ ActiveAdmin.register Candidate do
       end
 
       column do
-        panel "Angaben von OpenStreetMap" do
+        panel I18n.t('places.show.headline_source', source: 'OpenStreetMap') do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for resource do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
