@@ -57,7 +57,7 @@ $merge-attention: #EBDB67;
     top: initial;
   }
   ul.tabs {
-    > li.current > a, > li:hover > a {
+    > li.current > a, > li:hover > a, li.has_nested ul a {
       background: $current-menu-item-background;
       color: #fff;
       text-shadow: none;
