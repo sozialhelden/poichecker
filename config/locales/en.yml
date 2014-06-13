@@ -73,6 +73,11 @@ en:
       place:
         <<: *attribs
 
+  candidates:
+    new:
+      panel:
+        map: "Map"
+        new: "New Place"
 
   distance:
     centi: "cm"
@@ -137,6 +142,8 @@ en:
   shared:
     back: Back
     cancel: Cancel
+    call_to_action:
+      check: "Check POIs now!"
     create: Create
     next: Next
     skip: Skip
@@ -145,6 +152,6 @@ en:
     index:
       headline: "„Points of Interest“ for the free world&shy;map Open&shy;street&shy;map"
       sub_headline_1: "We need your local knowledge"
-      sub_text_1: "We have POIs (places) frowm two different sources, which need to be merged. Checke which of them are actually the same and which are missing. Everyone can help!"
+      sub_text_1: "We have POIs (places) from two different sources, which need to be merged. Check which of them are actually the same and which are missing. Everyone can help!"
       sub_headline_2: Why POIchecker?
       sub_text_2: "OpenStreetMap is a map of the world, created by people like you and it is free of charge. It does not only contain streets and ways, but also “Points of Interest” (POI), e.g. restaurants, cinemas oder train stations."

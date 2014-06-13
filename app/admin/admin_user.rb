@@ -48,27 +48,17 @@ ActiveAdmin.register AdminUser, as: 'Account' do
   end
 
   member_action :edit_location, method: :get do
-    @page_title = I18n.t('accounts.edit_location.headline', locale: I18n.locale)
+    @page_title = I18n.t('accounts.edit_location.headline')
   end
 
   controller do
 
-    before_filter :set_locale
 
     def redirect_to_edit
       redirect_to edit_admin_account_path(current_admin_user), :flash => flash
     end
 
     alias_method :show,  :redirect_to_edit
-
-    def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
-    end
-
-    def default_url_options(options={})
-      { :locale => I18n.locale }
-    end
-
 
   end
 

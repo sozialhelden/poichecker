@@ -14,4 +14,4 @@
     %p=@data_set.description || "Leider fehlt hier die Beschreibung der Datenspende."
 
 
-    %p= link_to 'POIs checken', admin_places_path, class: "btn btn-primary btn-lg", role: "button"
+    %p= link_to I18n.t('shared.call_to_action.check'), admin_places_path, class: "btn btn-primary btn-lg", role: "button"

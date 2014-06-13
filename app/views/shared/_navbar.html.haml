@@ -17,6 +17,6 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           - if signed_in?
-            = link_to "POIs checken", admin_places_path
+            = link_to I18n.t('shared.call_to_action.check'), admin_places_path
           - else
             = link_to t('active_admin.devise.login.title'), new_admin_user_session_path()

@@ -6,7 +6,7 @@ columns do
     render partial: 'form'
   end
   column do
-    panel "Karte" do
+    panel I18n.t('candidates.new.panel.map') do
       render partial: 'leaflet'
     end
   end

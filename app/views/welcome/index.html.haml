@@ -9,7 +9,7 @@
       %h3=t('.sub_headline_1')
       %p=t('.sub_text_1')
       %p
-        = link_to "POIs checken", admin_places_path, class: "btn btn-primary", role: "button"
+        = link_to I18n.t('shared.call_to_action.check'), admin_places_path, class: "btn btn-primary", role: "button"
 
       %h3=t('.sub_headline_2')
       %p
@@ -25,7 +25,7 @@
         %small
           POIchecker ist ein Editor, mit dem Du POIs schnell und einfach überprüfen (“checken”) kannst. Nur durch Deine Hilfe können die POI-Informationen übernommen werden und so die freie Weltkarte verbessern.
 
-      = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+      = link_to I18n.t('shared.call_to_action.check'), admin_places_path, class: ["btn", "btn-primary"], role: "button"
     .col-sm-6.col-md-6
       = image_tag "map_screenshot.jpg", width: "100%"
       %small POIchecker wurde ermöglicht durch United Way Worldwide und die Förderung durch FedEx.
@@ -46,7 +46,7 @@
         %li Prüfe auf POIchecker.de, welcher Ort dem gespendeten Ort entspricht.
         %li Speichern, fertig! (Falls der Ort noch nicht da ist, kannst Du ihn anlegen.)
 
-      %p= link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+      %p= link_to I18n.t('shared.call_to_action.check'), admin_places_path, class: ["btn", "btn-primary"], role: "button"
 
     .col-sm-12.col-md-12
       %h4 Für Unternehmen, Behörden und andere Datenspender
@@ -84,5 +84,5 @@
 
 
       %p
-        = link_to "POIs checken ", admin_places_path, class: ["btn", "btn-primary"], role: "button"
+        = link_to I18n.t('shared.call_to_action.check'), admin_places_path, class: ["btn", "btn-primary"], role: "button"
         = link_to "Quellcode ", "https://github.com/sozialhelden/poichecker", class: ["btn", "btn-default"], role: "button"

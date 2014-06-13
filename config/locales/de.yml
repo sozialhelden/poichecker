@@ -73,7 +73,11 @@ de:
       place:
         <<: *attribs
 
-
+  candidates:
+    new:
+      panel:
+        map: "Karte"
+        new: "Neuer Ort"
   distance:
     centi: "cm"
     unit: "m"
@@ -102,6 +106,8 @@ de:
     actions:
       admin_user:
         cancel: "Sieht gut aus"
+      candidate:
+        create: "In OpenStreetMap speichern"
       create: "%{model} speichern"
       update: "%{model} aktualisieren"
       reset: "Formular zurücksetzen"
