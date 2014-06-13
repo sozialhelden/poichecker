@@ -3,17 +3,18 @@
 
 de:
   helpers:
-    actions: "Actions"
+    actions: "Aktionen"
     links:
-      back: "Back"
-      cancel: "Cancel"
-      confirm: "Are you sure?"
-      destroy: "Delete"
-      new: "New"
-      edit: "Edit"
+      back: "Zurück"
+      cancel: "Abbrechen"
+      confirm: "Sicher?"
+      destroy: "Löschen"
+      new: "Neu"
+      edit: "Bearbeiten"
       save: "Speichern"
     titles:
-      edit: "Edit %{model}"
-      save: "Save %{model}"
-      new: "New %{model}"
-      delete: "Delete %{model}"
+      edit: "%{model} bearbeiten"
+      edit_location: 'Wo kennst du dich aus?'
+      save: "%{model} speichern"
+      new: "%{model} anlegen"
+      delete: "%{model} löschen"
