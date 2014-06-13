@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+de:
   helpers:
     actions: "Actions"
     links:
@@ -11,6 +11,7 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      save: "Speichern"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
