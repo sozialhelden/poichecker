@@ -41,7 +41,7 @@ module ControllerMacros
       # Should redirect user to edit locaton path
       VCR.use_cassette('unter_den_linden') do
         fill_in "Stadt", with: 'Unter den Linden 1, 10117 Berlin'
-        click_button "speichern"
+        click_button "Speichern"
       end
     end
   end
