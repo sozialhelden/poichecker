@@ -142,6 +142,8 @@ de:
     call_to_action:
       check: "POIs checken"
     create: Anlegen
+    current_language: Deutsch
+    language: Sprache
     next: Weiter
     skip: Überspringen
 

@@ -145,6 +145,8 @@ en:
     call_to_action:
       check: "Check POIs now!"
     create: Create
+    current_language: English
+    language: Language
     next: Next
     skip: Skip
 
