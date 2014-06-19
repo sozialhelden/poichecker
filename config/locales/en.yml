@@ -1,7 +1,7 @@
 en:
   accounts:
     edit_location:
-      headline: 'Where do you know well?'
+      headline: 'Where do you live?'
       sub_headline: "All POIs are ordered by the distance to this location."
       automatically:
         legend: "Determine my location automatically"
