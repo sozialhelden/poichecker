@@ -152,7 +152,7 @@ en:
 
   welcome:
     index:
-      headline: "\"Points of Interest\" for the free world&shy;map Open&shy;Street&shy;Map"
+      headline: "'Points of Interest' for the free world&shy;map Open&shy;Street&shy;Map"
       sub_headline_1: "We need your local knowledge"
       sub_text_1: "We have POIs (places) from two different sources, which need to be merged. Check which of them are actually the same and which are missing. Everyone can help!"
       sub_headline_2: Why POIchecker?
