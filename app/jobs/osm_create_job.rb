@@ -8,7 +8,8 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
-    tags = extract_osm_key_value(tags)
+    place = Place.find(place_id)
+    tags[place.osm_key] = place.osm_value if place.osm_key && place.osm_value
 
     new(nil, 'node', user_id, place_id, tags).tap do |job|
       Delayed::Job.enqueue(job)
@@ -35,17 +36,6 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     current_place.update_attributes!(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
   end
 
-  def self.extract_osm_key_value(tags)
-    # change osm_key, osm_value tags into a single one like this:
-    # "osm_key"   => "amenity"
-    # "osm_value" => "bank"
-    #
-    # "amenity" => "bank"
-
-    osm_key   = tags.delete("osm_key")
-    osm_value = tags.delete("osm_value")
-    tags[osm_key] = osm_value
-    tags
   end
 
 end
