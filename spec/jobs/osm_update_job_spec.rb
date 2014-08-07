@@ -111,8 +111,9 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).and_return(unedited_node)
     expect(api).to receive(:save) { |node, _| node.tags['addr:housenumber'].should eql 99 }
-    expect(Place).to receive(:find).with(place.id).and_return(place)
-    expect(place).to receive(:update_attributes!).with(osm_id: 1, osm_type: 'node', matcher_id: user.id )
+
+    expect(Place).to receive(:where).with(id: place.id).and_return(place)
+    expect(place).to receive(:update_all).with(osm_id: 1, osm_type: 'node', matcher_id: user.id )
 
     successes, failures = Delayed::Worker.new.work_off
   end

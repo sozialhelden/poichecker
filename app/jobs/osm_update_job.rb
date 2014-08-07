@@ -8,8 +8,6 @@ class OsmUpdateJob < OsmCommonJob
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
-    tags = extract_osm_key_value(tags)
-
     new(element_id, element_type, user_id, place_id, tags).tap do |job|
       Delayed::Job.enqueue(job)
     end
@@ -17,11 +15,10 @@ class OsmUpdateJob < OsmCommonJob
 
   def perform
     begin
-
       osm_element   = update_element(element_type, element_id, tags)
       osm_changeset = find_or_create_changeset(user, place.data_set_id)
       api.save(osm_element, osm_changeset)
-
+      Place.where(id: place_id).update_all({osm_id: element_id, osm_type: element_type, matcher_id: user_id})
     rescue Rosemary::Conflict => conflict
       # Catch exception and ignore it, so the job thinks it was successful.
       logger.info "IGNORE: #{element_type}:#{element_id} nothing has changed!"
@@ -53,8 +50,6 @@ class OsmUpdateJob < OsmCommonJob
 
   def success(job)
     logger.debug("Hoooray, success!")
-    current_place = place
-    current_place.update_attributes!(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
   end
 
   def error(job,exception)
@@ -63,11 +58,5 @@ class OsmUpdateJob < OsmCommonJob
 
   def failure(job)
   end
-
-  def self.extract_osm_key_value(tags)
-    # Remove osm_key and osm_value tags, as we do not want to change osm types when updating.
-    tags.reject {|k,v| k == "osm_key" || k == "osm_value" }
-  end
-
 
 end
