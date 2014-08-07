@@ -4,10 +4,10 @@ class OsmCommonJob < Struct.new(:element_id, :element_type, :user_id, :place_id,
     # Find an existing changeset for the user and data_set
     changeset_id = Changeset.where(admin_user_id: user.id, data_set_id: data_set_id).first.try(:osm_id)
 
-    if osm_changeset = api.find_or_create_open_changeset(changeset_id, "Modified via poichecker.de")
-      osm_changeset.tags[:source] = "http://poichecker.de/data_sets/#{data_set_id}"
+    if osm_changeset = api.find_or_create_open_changeset(changeset_id, "Modified via poichecker.de", source: "http://poichecker.de/data_sets/#{data_set_id}")
       cs = Changeset.find_or_initialize_by(admin_user_id: user.id, data_set_id: data_set_id)
-      cs.update_attribute(:osm_id, osm_changeset.id)
+      cs.osm_id = osm_changeset.id
+      cs.save!
     end
     osm_changeset
   end

@@ -24,11 +24,11 @@ describe OsmCreateJob do
   it "should create a Node" do
     api = double(:find_or_create_open_changeset => changeset)
 
-    Rosemary::Api.should_receive(:new).and_return(api)
-    api.should_receive(:create) do |node, _|
-      node.lat.should eql 52.4
-      node.lon.should eql 13.0
-      node.tags['addr:housenumber'].should eq 99
+    expect(Rosemary::Api).to receive(:new).and_return(api)
+    expect(api).to receive(:create) do |node, _|
+      expect(node.lat).to eql 52.4
+      expect(node.lon).to eql 13.0
+      expect(node.tags['addr:housenumber']).to eq 99
     end
     job = subject
     successes, failures = Delayed::Worker.new.work_off
@@ -39,7 +39,9 @@ describe OsmCreateJob do
   it "tries to find a changeset for the user" do
     Rosemary::Api.should_receive(:new).and_return(api = double())
 
-    api.should_receive(:find_or_create_open_changeset).with(user.changeset_id, anything()).and_return(changeset)
+    existing_changeset = Changeset.create(osm_id: 42, admin_user_id: user.id, data_set_id: place.data_set.id)
+
+    api.should_receive(:find_or_create_open_changeset).with(existing_changeset.osm_id, "Modified via poichecker.de", source: "http://poichecker.de/data_sets/#{place.data_set_id}").and_return(changeset)
     api.should_receive(:create).with(anything(), changeset)
 
     job = subject
