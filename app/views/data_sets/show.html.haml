@@ -10,7 +10,7 @@
         =t('activerecord.models.place', count: @data_set.places.count)
       &nbsp;
       .label.label-default
-        =l(@data_set.created_at.to_date, format: :default)
+        =I18n.l(@data_set.created_at.to_date, format: :default)
     %p=@data_set.description || "Leider fehlt hier die Beschreibung der Datenspende."
 
 
