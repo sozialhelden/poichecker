@@ -22,7 +22,9 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     osm_element.lon = tags.delete('lon')
     osm_element.add_tags(tags)
     osm_changeset   = find_or_create_changeset(user, place.data_set_id)
-    element_id      = api.create(osm_element, osm_changeset)
+    new_element_id  = api.create(osm_element, osm_changeset)
+    place.update_attributes!(osm_id: new_element_id, osm_type: element_type, matcher_id: user_id)
+    logger.debug("Newly created element with id: #{new_element_id}")
   end
 
   def before(job)
@@ -32,10 +34,6 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
 
   def success(job)
     logger.debug("Hoooray, success!")
-    current_place = place
-    current_place.update_attributes!(osm_id: element_id, osm_type: element_type, matcher_id: user_id)
-  end
-
   end
 
 end
