@@ -23,8 +23,7 @@ describe Changeset do
     it { expect(subject).to validate_presence_of :data_set_id }
 
 
-    it { expect(subject).to validate_uniqueness_of :admin_user_id }
-    it { expect(subject).to validate_uniqueness_of :data_set_id }
+    it { expect(subject).to validate_uniqueness_of(:admin_user_id).scoped_to(:data_set_id) }
   end
 
   describe "associations" do
