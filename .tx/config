@@ -1,0 +1,20 @@
+[main]
+host = https://www.transifex.com
+
+[poichecker.default]
+file_filter = config/locales/<lang>.yml
+source_file = config/locales/en.yml
+source_lang = en
+type = YAML
+
+[poichecker.bootstrap]
+file_filter = config/locales/<lang>.bootstrap.yml
+source_file = config/locales/en.bootstrap.yml
+source_lang = en
+type = YAML
+
+[poichecker.kaminari]
+file_filter = config/locales/<lang>.kaminari.yml
+source_file = config/locales/en.kaminari.yml
+source_lang = en
+type = YAML
