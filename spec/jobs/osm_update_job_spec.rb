@@ -120,10 +120,12 @@ describe OsmUpdateJob do
   it "tries to reuse the users changeset" do
     api = double()
 
+    existing_changeset = Changeset.create(osm_id: 42, admin_user_id: user.id, data_set_id: place.data_set.id)
+
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).and_return(unedited_node)
 
-    expect(api).to receive(:find_or_create_open_changeset).with(user.changeset_id, anything()).and_return(changeset)
+    expect(api).to receive(:find_or_create_open_changeset).with(existing_changeset.osm_id, "Modified via poichecker.de", source: "http://poichecker.de/data_sets/#{place.data_set_id}").and_return(changeset)
 
     expect(api).to receive(:save) do |node, another_changeset|
       node.tags['addr:housenumber'].should eql 99
