@@ -2,6 +2,8 @@
 ActiveAdmin.register DataSet do
   decorate_with DataSetDecorator
 
+   menu false
+
   config.batch_actions = false
 
   permit_params :name, :license, :description

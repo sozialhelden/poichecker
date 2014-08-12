@@ -182,7 +182,19 @@ ActiveAdmin.setup do |config|
   #
     config.namespace :admin do |admin|
       admin.build_menu :utility_navigation do |menu|
-        menu.add :label => "Languages" do |lang|
+        menu.add  :label => proc { I18n.t('activerecord.models.data_set.other') },
+                  :url => proc { admin_data_sets_path(:locale => I18n.locale) },
+                  :id => 'admin_data_sets',
+                  :priority => 0,
+                  :if => proc { current_active_admin_user.admin? }
+
+        menu.add  :label => proc { I18n.t('activerecord.models.data_set.other') },
+                  :url => proc { data_sets_path(:locale => I18n.locale) },
+                  :id => 'public_data_sets',
+                  :priority => 0,
+                  :if => proc { !current_active_admin_user.admin? }
+
+        menu.add :id => 'languages', :label => proc{ I18n.t('shared.language')} do |lang|
           lang.add :label => "English",:url => proc { url_for(:locale => 'en') }, id: 'i18n-en', :priority => 1
           lang.add :label => "Deutsch",:url => proc {  url_for(:locale => 'de') }, id: 'i18n-de', :priority => 2
         end
