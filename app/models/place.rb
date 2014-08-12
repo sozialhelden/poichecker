@@ -70,15 +70,6 @@ class Place < ActiveRecord::Base
     changes.keys.any?{ |key| address_keys.include? key }
   end
 
-  def next
-    self.class.where(data_set_id: self.data_set_id).
-    where("#{Place.table_name}.id > ?", self.id).
-    where(osm_id: nil).
-    order(id: :asc).
-    limit(1).with_coordinates.
-    try(:first)
-  end
-
   def full_address
     [street_info.join(' '),city_info.join(' '), country].reject{|s| s.blank?}.compact.join(', ')
   end
