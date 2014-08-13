@@ -1,6 +1,6 @@
 # Settings for delayed job
 set :delayed_job_server_role, :worker
-set :delayed_job_args, "-n 1 -p staging --queues=geocode,osm"
+set :delayed_job_args, "-n 1 -p poichecker_staging --queues=geocode,osm"
 
 set :stage, :staging
 set :deploy_to, '/var/apps/poichecker/staging'
