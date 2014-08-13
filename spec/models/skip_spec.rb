@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: skips
+#
+#  id            :integer          not null, primary key
+#  admin_user_id :integer          not null
+#  place_id      :integer          not null
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'spec_helper'
 
 describe Skip do

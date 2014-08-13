@@ -18,6 +18,8 @@
 #  osm_type    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  osm_key     :string(255)
+#  osm_value   :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

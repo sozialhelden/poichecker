@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20140812141740) do
 
   create_table "changesets", force: true do |t|
     t.integer  "osm_id",        limit: 8, null: false
-    t.integer  "admin_user_id"
-    t.integer  "data_set_id"
+    t.integer  "admin_user_id",           null: false
+    t.integer  "data_set_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,6 +2,7 @@
 #
 # Table name: changesets
 #
+#  id            :integer          not null, primary key
 #  osm_id        :integer          not null
 #  admin_user_id :integer          not null
 #  data_set_id   :integer          not null
