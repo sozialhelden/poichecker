@@ -12,7 +12,7 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     tags[place.osm_key] = place.osm_value if place.osm_key && place.osm_value
 
     new(nil, 'node', user_id, place_id, tags).tap do |job|
-      Delayed::Job.enqueue(job)
+      Delayed::Job.enqueue(job, :queue => 'osm')
     end
   end
 

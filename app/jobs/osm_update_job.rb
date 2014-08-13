@@ -9,7 +9,7 @@ class OsmUpdateJob < OsmCommonJob
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
     new(element_id, element_type, user_id, place_id, tags).tap do |job|
-      Delayed::Job.enqueue(job)
+      Delayed::Job.enqueue(job, :queue => 'osm')
     end
   end
 
