@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528132019) do
+ActiveRecord::Schema.define(version: 20140812141740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,9 @@ ActiveRecord::Schema.define(version: 20140528132019) do
     t.datetime "updated_at"
   end
 
+  add_index "changesets", ["admin_user_id"], :name => "index_changesets_on_admin_user_id"
+  add_index "changesets", ["data_set_id"], :name => "index_changesets_on_data_set_id"
+
   create_table "data_sets", force: true do |t|
     t.string   "name"
     t.string   "license"
@@ -140,5 +143,15 @@ ActiveRecord::Schema.define(version: 20140528132019) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "skips", force: true do |t|
+    t.integer  "admin_user_id", null: false
+    t.integer  "place_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "skips", ["admin_user_id"], :name => "index_skips_on_admin_user_id"
+  add_index "skips", ["place_id"], :name => "index_skips_on_place_id"
 
 end

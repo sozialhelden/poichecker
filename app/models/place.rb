@@ -110,6 +110,10 @@ class Place < ActiveRecord::Base
     %w{street housenumber city postcode country}
   end
 
+  def skipped_by?(user)
+    Skip.where(admin_user: user, place: self).count > 0
+  end
+
   private
 
   def geocode_later

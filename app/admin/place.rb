@@ -35,6 +35,9 @@ ActiveAdmin.register Place do
   end
 
   collection_action :next, title: false do
+
+    # add all skipped place ids for current user to actual search query
+    params[:q][:id_not_in] = current_admin_user.skips.pluck(:place_id)
     if next_place = find_collection.first
       redirect_to admin_place_path(next_place)
     else
@@ -59,10 +62,18 @@ ActiveAdmin.register Place do
 
     before_filter :ensure_location
 
+    before_filter :save_skipped_id, only: :next
+
     private
 
     def ensure_location
       redirect_to edit_location_admin_account_path(current_admin_user), alert: I18n.t('flash.actions.location_missing.alert') unless current_admin_user.location
+    end
+
+    def save_skipped_id
+      if place_id_to_skip = params[:q].delete(:id_not_eq)
+        Skip.create!(admin_user: current_admin_user, place_id: place_id_to_skip)
+      end
     end
 
     def place_params
@@ -92,7 +103,7 @@ ActiveAdmin.register Place do
     end
     selectable_column
     column :name do |place|
-      link_to place.name, admin_place_path(place, params)
+      link_to place.name, admin_place_path(place, params), class: place.skipped_by?(current_admin_user) ? 'skipped' : nil
     end
     column :address, sortable: :street
     column :distance

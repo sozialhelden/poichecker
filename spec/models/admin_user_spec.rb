@@ -40,6 +40,7 @@ describe AdminUser do
   describe "associations" do
     it { expect(subject).to have_many :matched_places }
     it { expect(subject).to have_many :changesets }
+    it { expect(subject).to have_many :skips }
     it { expect(subject).to belong_to :role }
   end
 

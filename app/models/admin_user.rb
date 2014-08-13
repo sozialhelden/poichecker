@@ -35,6 +35,7 @@ class AdminUser < ActiveRecord::Base
 
   has_many :matched_places, class_name: Place, foreign_key: :matcher_id
   has_many :changesets
+  has_many :skips
 
   belongs_to :role
   before_create :set_default_role
