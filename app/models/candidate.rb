@@ -19,14 +19,12 @@
 #  osm_type    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
-#  osm_key     :string(255)
-#  osm_value   :string(255)
 #
 
 class Candidate < ActiveRecord::Base
   include Overpass
 
-  attr_accessor :data_set_id, :original_id, :country, :matcher_id, :location
+  attr_accessor :data_set_id, :original_id, :country, :matcher_id, :location, :osm_key, :osm_value
 
   validates :lat, :lon, presence: true
 
