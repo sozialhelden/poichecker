@@ -44,16 +44,16 @@ class OsmUpdateJob < OsmCommonJob
     raise ArgumentError.new("Client cannot be nil") if client.nil?
   end
 
-  def after(job)
-    logger.debug("Finished OsmUpdateJob: #{job.id} <<<<<<<<<<<<<<<<<<<<<<<<")
-  end
-
   def success(job)
     logger.debug("Hoooray, success!")
   end
 
   def error(job,exception)
     logger.error(exception.message)
+  end
+
+  def after(job)
+    logger.debug("Finished OsmUpdateJob: #{job.id} <<<<<<<<<<<<<<<<<<<<<<<<")
   end
 
   def failure(job)
