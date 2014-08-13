@@ -72,7 +72,7 @@ ActiveAdmin.register Place do
 
     def save_skipped_id
       if place_id_to_skip = params[:q].delete(:id_not_eq)
-        Skip.create!(admin_user: current_admin_user, place_id: place_id_to_skip)
+        Skip.find_or_create_by(admin_user: current_admin_user, place_id: place_id_to_skip)
       end
     end
 
