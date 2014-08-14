@@ -29,10 +29,13 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::NotFound.new('NOT FOUND'))
 
+    # API save will never be called
     expect(api).not_to receive(:save)
     successes, failures = Delayed::Worker.new.work_off
-    expect(successes).to eql 0
-    expect(failures).to  eql 1
+    # Job is successfull anyways, as there is no way of curing
+    # this not found problem.
+    expect(successes).to eql 1
+    expect(failures).to  eql 0
   end
 
   it "should fail the job if api is not reachable" do
