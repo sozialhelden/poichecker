@@ -32,4 +32,18 @@ class OsmCommonJob < Struct.new(:element_id, :element_type, :user_id, :place_id,
     Delayed::Worker.logger
   end
 
+  def before(job)
+    logger.debug("Starting job: #{job.id} >>>>>")
+    raise ArgumentError.new("Client cannot be nil") if client.nil?
+  end
+
+  def error(job,exception)
+    logger.error("#{exception.class} #{exception.message}")
+    logger.error caller.join("\n")
+  end
+
+  def after(job)
+    logger.debug("Finished job: #{job.id} <<<<<<")
+  end
+
 end

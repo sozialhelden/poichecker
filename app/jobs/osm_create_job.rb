@@ -24,13 +24,10 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     logger.debug("Newly created element with id: #{new_element_id}")
   end
 
-  def before(job)
-    logger.debug("Starting OsmCreateJob: #{job.id} >>>>>>>>>>>>>>>>>>>>>>>>")
-    raise ArgumentError.new("Client cannot be nil") if client.nil?
+  def success(job)
   end
 
-  def success(job)
-    logger.debug("Hoooray, success!")
+  def failure(job)
   end
 
 end

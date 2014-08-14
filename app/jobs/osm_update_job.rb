@@ -23,8 +23,6 @@ class OsmUpdateJob < OsmCommonJob
       # Catch exception and ignore this error.
       # This usually if we try to update elements with live ids on api06.dev server
       logger.warn "#{e.class} #{e.message}"
-      #rescue Exception => e
-      #logger.error "#{e.class} #{e.message}"
     end
   end
 
@@ -45,21 +43,7 @@ class OsmUpdateJob < OsmCommonJob
     element_copy
   end
 
-  def before(job)
-    logger.debug("Starting OsmUpdateJob: #{job.id} >>>>>>>>>>>>>>>>>>>>>>>>")
-    raise ArgumentError.new("Client cannot be nil") if client.nil?
-  end
-
   def success(job)
-    logger.debug("Hoooray, success!")
-  end
-
-  def error(job,exception)
-    logger.error(exception.message)
-  end
-
-  def after(job)
-    logger.debug("Finished OsmUpdateJob: #{job.id} <<<<<<<<<<<<<<<<<<<<<<<<")
   end
 
   def failure(job)
