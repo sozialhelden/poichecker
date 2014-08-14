@@ -1,10 +1,6 @@
 class OsmUpdateJob < OsmCommonJob
 
   def self.enqueue(element_id, element_type, user_id, place_id, tags)
-    # Do not enqeue job if not in production or test environment
-    # return if Rails.env.development?
-    return unless Rails.env.production? || Rails.env.test?
-
     # Remove wheelchair tag if value is "unknown"
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
