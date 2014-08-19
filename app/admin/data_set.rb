@@ -27,7 +27,7 @@ ActiveAdmin.register DataSet do
     column :license
     column :orte
     column 'Gespendet am', :created_at
-    default_actions if current_admin_user.admin?
+    actions if current_admin_user.admin?
 
   end
 end

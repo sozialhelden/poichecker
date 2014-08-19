@@ -19,6 +19,7 @@ group :default do
 
   # Active Admin related stuff
   gem 'activeadmin', github: 'gregbell/active_admin'
+  gem 'devise'
   gem 'draper', '>= 1.3.0'
   gem 'omniauth-osm'
   gem 'cancan'

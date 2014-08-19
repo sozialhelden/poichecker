@@ -72,7 +72,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
     column :role
     column :location
     column :current_sign_in_at
-    default_actions
+    actions
   end
 
   form do |f|

@@ -9,6 +9,6 @@ ActiveAdmin.register ActiveAdmin::Comment, as: 'Comment' do
     column :resource
     column :author
     column :body
-    default_actions if: -> { true } #current_admin_user.admin? }
+    actions if: -> { true } #current_admin_user.admin? }
   end
 end
