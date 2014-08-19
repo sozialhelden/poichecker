@@ -46,7 +46,7 @@ group :default do
   gem 'font-awesome-rails'
 
   # CSS Framework
-  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+  gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
   gem 'less-rails'
   gem 'airbrake'
 end
