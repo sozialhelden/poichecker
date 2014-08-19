@@ -1,6 +1,7 @@
 language: ruby
+cache: bundler
 
-bundler_args: --without production doc
+bundler_args: --without production doc deployment
 
 rvm:
   - 1.9.3
