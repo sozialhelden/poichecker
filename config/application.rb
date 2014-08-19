@@ -25,8 +25,14 @@ module Poichecker
 
     config.autoload_paths += Dir["#{config.root}/lib/**/*.rb"]
 
+    # Add the fonts path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    # Precompile additional fonts
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+
     # Needed for the ActiveAdmin's manifest assets.
-    config.assets.precompile += ['map.js', 'locate_me.js']
+    config.assets.precompile += ['map.js', 'locate_me.js', 'search.js']
 
   end
 end
