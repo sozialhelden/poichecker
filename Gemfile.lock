@@ -213,7 +213,7 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
-    leaflet-rails (0.7.2)
+    leaflet-rails (0.7.3)
     less (2.5.0)
       commonjs (~> 0.2.7)
     less-rails (2.5.0)
