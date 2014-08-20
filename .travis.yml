@@ -24,6 +24,10 @@ before_script:
   - psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d matchy_test
   - RAILS_ENV=test bundle exec rake db:test:prepare
 
+branches:
+  only:
+    - master
+
 notifications:
   email:
     - info@christophbuente.de
