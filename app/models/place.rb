@@ -87,7 +87,7 @@ class Place < ActiveRecord::Base
   end
 
   def self.import(csv_file, data_set)
-    CSV.parse(csv_file, headers: true) do |row|
+    CSV.parse(csv_file, headers: true, encoding: 'UTF-8', header_converters: :string) do |row|
       place_hash = valid_params(row.to_hash)
 
       # Split up type field into osm_key and osm_value
