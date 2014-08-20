@@ -55,7 +55,7 @@ ActiveAdmin.register AdminUser, as: 'Account' do
 
 
     def redirect_to_edit
-      redirect_to edit_admin_account_path(current_admin_user), :flash => flash
+      redirect_to edit_admin_account_path(current_admin_user)
     end
 
     alias_method :show,  :redirect_to_edit
