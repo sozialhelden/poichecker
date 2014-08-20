@@ -92,10 +92,10 @@ class Place < ActiveRecord::Base
       place_hash = valid_params(row.to_hash)
 
       # Split up type field into osm_key and osm_value
-      if t = place_hash.delete(:type)
+      if t = place_hash.delete("type")
         osm_key, osm_value = t.split('=')
-        place_hash[:osm_key]    = osm_key if osm_key
-        place_hash[:osm_value]  = osm_value
+        place_hash["osm_key"]    = osm_key if osm_key
+        place_hash["osm_value"]  = osm_value
       end
 
       begin
