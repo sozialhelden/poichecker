@@ -39,7 +39,7 @@ class OsmCommonJob < Struct.new(:element_id, :element_type, :user_id, :place_id,
 
   def error(job,exception)
     logger.error("#{exception.class} #{exception.message}")
-    logger.error caller.join("\n")
+    logger.error exception.backtrace.join("\n")
   end
 
   def after(job)
