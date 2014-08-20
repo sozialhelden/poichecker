@@ -31,7 +31,7 @@ describe OsmUpdateJob do
 
     # API save will never be called
     expect(api).not_to receive(:save)
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     # Job is successfull anyways, as there is no way of curing
     # this not found problem.
     expect(successes).to eql 1
@@ -44,7 +44,7 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_raise(Rosemary::Unavailable.new('Unavailable'))
     expect(api).not_to receive(:save)
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 0
     expect(failures).to  eql 1
 
@@ -57,7 +57,7 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_return(unedited_node)
     expect(api).not_to receive(:save)
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
 
@@ -76,7 +76,7 @@ describe OsmUpdateJob do
 
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_return(unedited_node)
     expect(api).to receive(:save) { |node, _| node.lat.should eql 52.0; node.lon.should eql 13.0 }
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
   end
@@ -89,7 +89,7 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).with(candidate.osm_type, candidate.osm_id).and_return(unedited_node)
     expect(api).not_to receive(:save)
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
 
     expect(successes).to eql 1
     expect(failures).to  eql 0
@@ -103,7 +103,7 @@ describe OsmUpdateJob do
     expect(Rosemary::Api).to receive(:new).and_return(api)
     expect(api).to receive(:find_element).and_return(unedited_node)
     expect(api).to receive(:save) { |node, _| node.tags['addr:housenumber'].should eql 99 }
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
   end
@@ -118,7 +118,7 @@ describe OsmUpdateJob do
     expect(Place).to receive(:where).with(id: place.id).and_return(place)
     expect(place).to receive(:update_all).with(osm_id: 1, osm_type: 'node', matcher_id: user.id )
 
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
   end
 
   it "tries to reuse the users changeset" do
@@ -136,7 +136,7 @@ describe OsmUpdateJob do
       another_changeset.should == changeset
     end
     job = subject
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
 
@@ -150,7 +150,7 @@ describe OsmUpdateJob do
     expect(api).to receive(:save)
 
     job = subject
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
 

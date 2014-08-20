@@ -31,7 +31,7 @@ describe OsmCreateJob do
       expect(node.tags['addr:housenumber']).to eq 99
     end
     job = subject
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     successes.should eql 1
     failures.should eql 0
   end
@@ -45,7 +45,7 @@ describe OsmCreateJob do
     api.should_receive(:create).with(anything(), changeset)
 
     job = subject
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     successes.should eql 1
     failures.should eql 0
   end
@@ -57,7 +57,7 @@ describe OsmCreateJob do
     api.should_receive(:create).with(anything(), changeset)
 
     job = subject
-    successes, failures = Delayed::Worker.new.work_off
+    successes, failures = Delayed::Worker.new(queues: [:osm]).work_off
     expect(successes).to eql 1
     expect(failures).to  eql 0
 
