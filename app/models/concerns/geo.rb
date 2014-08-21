@@ -18,7 +18,7 @@ module Geo
       # return bbox unless bbox.nil?
       center = factory.point(lon, lat)
       bbox.add(center)
-      widen_by_meters
+      widen_by_meters(1000)
       bbox
     end
 
