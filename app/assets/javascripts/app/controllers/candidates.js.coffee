@@ -22,7 +22,7 @@ class App.Candidates extends Spine.Controller
     @lon        = $('#app').data('lon')
     @bbox       = $('#app').data('bbox')
     @name       = $('#app').data('name')
-    @place       = $('#app').data('place')
+    @place      = $('#app').data('place')
     @params = {
       url: "http://nominatim.openstreetmap.org/search?" + $.param(
         q: "#{@name}, #{@place}"
