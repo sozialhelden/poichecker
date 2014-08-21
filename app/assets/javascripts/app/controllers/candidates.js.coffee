@@ -23,9 +23,10 @@ class App.Candidates extends Spine.Controller
     @bbox       = $('#app').data('bbox')
     @name       = $('#app').data('name')
     @place      = $('#app').data('place')
+    @phrase     = $('#app').data('phrase')
     @params = {
       url: "http://nominatim.openstreetmap.org/search?" + $.param(
-        q: "#{@name}, #{@place}"
+        q: "#{@phrase}"
         viewbox: @bbox
         format: "jsonv2"
         addressdetails: 1
