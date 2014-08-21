@@ -19,6 +19,9 @@ class OsmUpdateJob < OsmCommonJob
       # We cannot resolve the conflict from here, so we ignore the job and
       # let another person try to update the osm element later.
       logger.warn "#{e.class} #{e.message}"
+
+      # Update place's osm_id anyways so it is taken from the unmatched list.
+      Place.where(id: place_id).update_all({osm_id: element_id, osm_type: element_type, matcher_id: user_id})
     rescue Rosemary::NotFound => e
       # Catch exception and ignore this error.
       # This usually if we try to update elements with live ids on api06.dev server
