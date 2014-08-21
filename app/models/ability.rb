@@ -44,6 +44,7 @@ class Ability
       cannot :manage, AdminUser
       can    :update, AdminUser
       can    :create, ActiveAdmin::Comment
+      cannot :read, Mapping
     end
   end
 end
