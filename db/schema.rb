@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812141740) do
+ActiveRecord::Schema.define(version: 20140821105932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,6 @@ ActiveRecord::Schema.define(version: 20140812141740) do
     t.string   "osm_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "osm_key"
-    t.string   "osm_value"
   end
 
   create_table "changesets", force: true do |t|
@@ -111,6 +109,17 @@ ActiveRecord::Schema.define(version: 20140812141740) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "mappings", force: true do |t|
+    t.string   "locale",         null: false
+    t.string   "localized_name", null: false
+    t.string   "osm_key"
+    t.string   "osm_value"
+    t.boolean  "plural"
+    t.string   "operator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "places", force: true do |t|
     t.integer  "data_set_id"
