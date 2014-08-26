@@ -1,8 +1,13 @@
+#= require i18n
+#= require i18n/translations
 #= require active_admin/base
 #= require leaflet
 #= require app
 
 $ ->
+  I18n.defaultLocale = 'de'
+  I18n.locale        = 'de'
+
   $('.attributes_table.candidate input').each (index, field) ->
     $(field).on 'change', false, ->
       $(this).removeClass('different').removeClass('new').removeClass('blank').addClass('changed')
