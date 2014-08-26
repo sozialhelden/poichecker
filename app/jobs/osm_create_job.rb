@@ -9,7 +9,10 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
     tags[place.osm_key] = place.osm_value if place.osm_key && place.osm_value
 
     new(nil, 'node', user_id, place_id, tags).tap do |job|
-      Delayed::Job.enqueue(job, :queue => 'osm')
+
+      # TODO: Do not enqueue Create Jobs for now.
+      Skip.find_or_create_by(admin_user_id: user_id, place_id: place_id)
+      # Delayed::Job.enqueue(job, :queue => 'osm')
     end
   end
 

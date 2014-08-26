@@ -148,7 +148,7 @@ ActiveAdmin.register Place do
           end
         end
 
-        panel I18n.t('places.show.actions'), id: :actions do
+        panel I18n.t('places.show.actions'), id: :actions, style: 'padding-bottom: 10px' do
           render partial: "actions", locals: { place: place }
         end
 
