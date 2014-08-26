@@ -62,6 +62,16 @@ class Place < ActiveRecord::Base
     place.table[:distance]
   end
 
+  def osm_special_phrase
+    Mapping.find_by(
+      osm_key: osm_key,
+      osm_value: osm_value,
+      plural: true,
+      operator: '-',
+      locale: 'en'
+    ).try(:localized_name)
+  end
+
   def candidates
     Candidate.new(place_id: self.id)
   end

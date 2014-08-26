@@ -133,7 +133,11 @@ ActiveAdmin.register Place do
           t.column :address, :address_with_contact_details
         end
 
-        h2 I18n.t('places.show.headline_source', source: "OpenStreetMap")
+        if mapping = resource.osm_special_phrase
+          h2 "#{mapping} in OpenStreetMap"
+        else
+          h2 I18n.t('places.show.headline_source', source: "OpenStreetMap")
+        end
 
         table_for [], table_options.merge(id: "index_table_candidates") do |t|
           t.column fa_icon("map-marker"), :pos

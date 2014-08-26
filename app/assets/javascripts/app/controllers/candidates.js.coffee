@@ -24,6 +24,7 @@ class App.Candidates extends Spine.Controller
     @name       = $('#app').data('name')
     @place      = $('#app').data('place')
     @phrase     = $('#app').data('phrase')
+    @locale     = $('#app').data('locale')
     @params = {
       url: "http://nominatim.openstreetmap.org/search?" + $.param(
         q: "#{@phrase || (@name + ', ' + @place)}"
@@ -33,7 +34,7 @@ class App.Candidates extends Spine.Controller
         limit: 9
         bounded: 1
         dedupe: 1
-        "accept-language": "de"
+        "accept-language": @locale
       )
       processData: true
 
