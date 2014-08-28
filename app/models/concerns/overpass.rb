@@ -59,7 +59,7 @@ module Overpass
 
     def search(name, bottom, left, top, right, key=nil, value=nil, osm_types=['node', 'way', 'relation'])
       query = Candidate.to_search_query(name, bottom, left, top, right, key, value, osm_types)
-      logger.debug(pp query)
+      logger.info(pp query)
       elements = HTTParty.post('http://overpass-api.de/api/interpreter', { :body => query }).parsed_response['elements']
       element_ids = elements.map{|e| e["id"]}
 
