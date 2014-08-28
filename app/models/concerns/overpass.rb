@@ -151,10 +151,11 @@ module Overpass
         end
 
         builder.comment!("print results")
+        builder.print mode: :body, order: :quadtile
 
-        builder.print mode: :body
-        builder.recurse type: 'way-node'
-        builder.print mode: :skeleton, order: :quadtile, limit: 9
+        builder.comment!("find node members for all ways")
+        builder.recurse type: 'down'
+        builder.print mode: :skeleton, order: :quadtile
       end
       xml
     end
