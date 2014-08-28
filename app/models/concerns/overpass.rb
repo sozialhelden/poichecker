@@ -55,6 +55,29 @@ module Overpass
       end
     end
 
+    def search(name, bottom, left, top, right, key=nil, value=nil)
+      query = Candidate.to_search_query(name, bottom, left, top, right, key, value)
+      logger.debug(pp query)
+      elements = HTTParty.post('http://overpass-api.de/api/interpreter', { :body => query }).parsed_response['elements']
+      element_ids = elements.map{|e| e["id"]}
+
+      reject_member_nodes(elements).map do |element|
+
+        # shift id and type attribute as they a reserver keywords in rails
+        osm_type = element.delete("type")
+        element['osm_type'] ||= osm_type
+        element['osm_id']   ||= element['id']
+
+        if osm_type ==  'way'
+          # collect the members for way and calculate centroid
+          members = member_nodes(element, elements)
+          element["lon"],element["lat"]  = centroid(members)
+        end
+
+        from_osm(element)
+      end
+    end
+
     def centroid(members)
       factory = RGeo::Cartesian.factory
       bbox    = RGeo::Cartesian::BoundingBox.new(factory)
@@ -67,6 +90,24 @@ module Overpass
 
     def parse_for_members(result)
       result.select{|el| el['type'] == 'node'}
+    end
+
+    def reject_member_nodes(elements)
+      elements.reject do |element|
+        member_node_ids(elements).include? element['id']
+      end
+    end
+
+    def member_node_ids(elements)
+      elements.map{|e| e["nodes"]}.flatten.compact
+    end
+
+    def member_nodes(element, elements)
+      member_ids = element['nodes']
+      elements.select do |e|
+        member_ids.include?(e['id'].to_i) && e['type'] == 'node'
+      end
+
     end
 
     def parse_for_element(result, osm_type)
@@ -87,6 +128,47 @@ module Overpass
         builder.print
       end
       xml
+    end
+
+    def to_search_query(name, bottom, left, top, right, key=nil, value=nil, osm_types=['node', 'way', 'relation'])
+      builder = Builder::XmlMarkup.new(indent: 2)
+      builder.instruct!
+      xml = builder.tag!("osm-script", output: :json, timeout: 25) do
+        builder.comment!("gather results")
+        builder.union do
+          osm_types.each do |osm_type|
+            builder.query type: "#{osm_type}" do
+              builder.comment!("query part for name")
+              builder.tag!("has-kv", k: :name, regv: to_name_regexp(name) )
+              unless key.blank?
+                builder.comment!("query part for type")
+                builder.tag!("has-kv", k: key, regv: to_value_regexp(value) )
+              end
+              builder.comment!("query part for bbox")
+              builder.tag!("bbox-query", w: left, s: bottom, e: right, n: top)
+            end
+          end
+        end
+
+        builder.comment!("print results")
+
+        builder.print mode: :body
+        builder.recurse type: 'way-node'
+        builder.print mode: :skeleton, order: :quadtile, limit: 9
+      end
+      xml
+    end
+
+    def to_name_regexp(name)
+      name.downcase.gsub(/[\-_]/, ' ').split.map do |word|
+        first_letter = word.first
+        "[#{first_letter.upcase}#{first_letter.downcase}]" + word[1..-1]
+      end.join('|')
+    end
+
+    def to_value_regexp(value)
+      value = value.blank? ? '.' : value
+      value.is_a?(Array) ? value.join('|') : value
     end
 
     def from_osm(attribs_hash = {})
