@@ -1,8 +1,10 @@
 require 'builder'
 require 'httparty'
+require 'pp'
 
 module Overpass
   extend ActiveSupport::Concern
+  include Geo
 
   included do
     def to_osm_attributes
