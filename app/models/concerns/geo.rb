@@ -41,12 +41,18 @@ module Geo
       self.location.distance(other_place.location).abs
     end
 
+    # reference latitude in radians
+    def rlat
+      # lat * PI / 180
+      self.lat * 0.01745329251994
+    end
+
     def meters_per_degrees_latitude
-      111132.92 - (559.82 * Math.cos(2 * self.lat)) + (1.175 * Math.cos(4 * self.lat))
+      111132.92 - (559.82 * Math.cos(2 * rlat)) + (1.175 * Math.cos(4 * rlat))
     end
 
     def meters_per_degrees_longitude
-      111412.84 * Math.cos(self.lat) - 93.5 * Math.cos(3 * self.lat)
+      111412.84 * Math.cos(rlat) - 93.5 * Math.cos(3 * rlat)
     end
 
     def degrees_per_meter_latitude(meters = 1)
