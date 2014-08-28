@@ -75,7 +75,7 @@ class Candidate < ActiveRecord::Base
     end
   end
 
-  def attributes()
+  def attributes
     self.class.valid_keys.inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
       value = send(key)
       a[key.to_s] = value
