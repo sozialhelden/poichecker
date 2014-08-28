@@ -21,7 +21,10 @@ ActiveAdmin.register Candidate do
   collection_action :suggest, method: :get do
     bbox = parent.to_bbox(1000)
     # bottom, left, top, right
-    render json: Candidate.search(parent.name, bbox.min_y, bbox.min_x, bbox.max_y, bbox.max_x, parent.osm_key).to_json
+    candidates = Candidate.search(parent.name, bbox.min_y, bbox.min_x, bbox.max_y, bbox.max_x, parent.osm_key, parent.osm_value, ['node', 'way'])
+    p = parent
+    candidates.sort! { |x, y| x.distance_to(p) <=> y.distance_to(p) }
+    render json: candidates[0...9].to_json
   end
 
   controller do
