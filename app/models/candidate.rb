@@ -90,4 +90,8 @@ class Candidate < ActiveRecord::Base
   def build(attribs)
     self.class.new(attribs)
   end
+
+  def location
+    @location ||= RGeo::Cartesian::Factory.new.parse_wkt("Point(#{self.lon || 0.0 } #{self.lat || 0.0})")
+  end
 end
