@@ -1,12 +1,22 @@
 class App.Candidate extends Spine.Model
-  @configure 'Candidate', 'osm_type', 'osm_id', 'parent_id', 'lat', 'lon', 'license', 'address'
+  @configure 'Candidate', 'id', 'osm_id', 'osm_type', 'parent_id', 'lat', 'lon', 'name', 'street', 'housenumber', 'city', 'postcode'
   @extend Spine.Model.Ajax
 
   full_street: ->
-    [(@address.road || @address.footway || @address.pedestrian || @address.bridleway), @address.house_number].join(' ')
+    arr = []
+    arr.push(@street) if !!@street
+    arr.push(@housenumber) if !!@housenumber
+    arr.join(' ')
 
   full_city: ->
-    [@address.postcode, (@address.city || @address.county)].join(' ')
+    arr = []
+    arr.push(@postcode) if !!@postcode
+    arr.push(@city) if !!@city
+    arr.join(' ')
 
-  name: ->
-    @address[@type]
+  address: ->
+    arr = []
+    arr.push(@full_street()) if !!@full_street()
+    arr.push(@full_city()) if !!@full_city()
+    arr.join(', ')
+

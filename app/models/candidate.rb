@@ -83,6 +83,10 @@ class Candidate < ActiveRecord::Base
     end
   end
 
+  def as_json(options={})
+    super(:methods =>[:osm_id, :osm_type])
+  end
+
   def build(attribs)
     self.class.new(attribs)
   end

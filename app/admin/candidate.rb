@@ -18,6 +18,12 @@ ActiveAdmin.register Candidate do
     redirect_to next_path(current_admin_user, current_place), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
   end
 
+  collection_action :suggest, method: :get do
+    bbox = parent.to_bbox(1000)
+    # bottom, left, top, right
+    render json: Candidate.search(parent.name, bbox.min_y, bbox.min_x, bbox.max_y, bbox.max_x, parent.osm_key).to_json
+  end
+
   controller do
 
     def new

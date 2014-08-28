@@ -26,16 +26,7 @@ class App.Candidates extends Spine.Controller
     @phrase     = $('#app').data('phrase')
     @locale     = $('#app').data('locale')
     @params = {
-      url: "http://nominatim.openstreetmap.org/search?" + $.param(
-        q: "#{@phrase || (@name + ', ' + @place)}"
-        viewbox: @bbox
-        format: "jsonv2"
-        addressdetails: 1
-        limit: 9
-        bounded: 1
-        dedupe: 1
-        "accept-language": @locale
-      )
+      url: "http://poichecker.dev/admin/places/#{@parent_id}/candidates/suggest"
       processData: true
 
     }
