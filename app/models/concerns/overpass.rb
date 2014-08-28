@@ -160,7 +160,9 @@ module Overpass
     end
 
     def to_name_regexp(name)
-      name.downcase.gsub(/[\-_]/, ' ').split.map do |word|
+      name.downcase.gsub(/[\-_&\'\"]/, ' ').split.reject do |word|
+        word.size < 3
+      end.map do |word|
         first_letter = word.first
         "[#{first_letter.upcase}#{first_letter.downcase}]" + word[1..-1]
       end.join('|')
