@@ -14,11 +14,11 @@ module Geo
       @bbox ||= RGeo::Cartesian::BoundingBox.new(factory)
     end
 
-    def to_bbox
+    def to_bbox(diameter=1000)
       # return bbox unless bbox.nil?
       center = factory.point(lon, lat)
       bbox.add(center)
-      widen_by_meters(1000)
+      widen_by_meters(diameter)
       bbox
     end
 
