@@ -26,7 +26,7 @@ class App.Candidates extends Spine.Controller
     @phrase     = $('#app').data('phrase')
     @locale     = $('#app').data('locale')
     @params = {
-      url: "http://poichecker.dev/admin/places/#{@parent_id}/candidates/suggest"
+      url: "/admin/places/#{@parent_id}/candidates/suggest"
       processData: true
 
     }
