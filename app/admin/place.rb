@@ -106,6 +106,9 @@ ActiveAdmin.register Place do
       link_to place.name, admin_place_path(place, params), class: place.skipped_by?(current_admin_user) ? 'skipped' : nil
     end
     column :address, sortable: :street
+    if current_admin_user.admin?
+      column :skips_count
+    end
     column :distance
 
     render partial: 'hide_sidebar'

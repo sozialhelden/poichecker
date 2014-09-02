@@ -56,6 +56,7 @@ describe Place do
   describe "associations" do
     it { expect(subject).to belong_to :data_set }
     it { expect(subject).to belong_to :matcher }
+    it { expect(subject).to have_many :skips }
   end
 
   describe "address methods" do

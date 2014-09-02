@@ -35,6 +35,7 @@ class Place < ActiveRecord::Base
   belongs_to :data_set
   belongs_to :matcher, class_name: AdminUser
   has_many :comments, as: :resource, dependent: :destroy, class_name: 'ActiveAdmin::Comment'
+  has_many :skips
 
   validates :name, :data_set_id, presence: true
 

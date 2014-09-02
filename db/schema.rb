@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821105932) do
+ActiveRecord::Schema.define(version: 20140902121726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20140821105932) do
     t.spatial  "location",    limit: {:srid=>4326, :type=>"point", :geographic=>true}
     t.string   "osm_value"
     t.string   "osm_key"
+    t.integer  "skips_count",                                                          default: 0
   end
 
   add_index "places", ["location"], :name => "index_places_on_location", :spatial => true
