@@ -12,7 +12,7 @@ class OsmCreateJob < OsmCommonJob # (:element_id, :element_type, :user_id, :plac
 
       # TODO: Do not enqueue Create Jobs for now.
       Skip.find_or_create_by(admin_user_id: user_id, place_id: place_id)
-      # Delayed::Job.enqueue(job, :queue => 'osm')
+      Delayed::Job.enqueue(job, :queue => 'osm')
     end
   end
 

@@ -21,7 +21,7 @@ describe OsmCreateJob do
     expect(user.id).not_to be_nil
   end
 
-  xit "should create a Node" do
+  it "should create a Node" do
     api = double(:find_or_create_open_changeset => changeset)
 
     expect(Rosemary::Api).to receive(:new).and_return(api)
@@ -36,7 +36,7 @@ describe OsmCreateJob do
     failures.should eql 0
   end
 
-  xit "tries to find a changeset for the user" do
+  it "tries to find a changeset for the user" do
     Rosemary::Api.should_receive(:new).and_return(api = double())
 
     existing_changeset = Changeset.create(osm_id: 42, admin_user_id: user.id, data_set_id: place.data_set.id)
@@ -50,7 +50,7 @@ describe OsmCreateJob do
     failures.should eql 0
   end
 
-  xit "updates the users' changeset id" do
+  it "updates the users' changeset id" do
     api = double(:find_or_create_open_changeset => changeset)
 
     expect(Rosemary::Api).to receive(:new).and_return(api)

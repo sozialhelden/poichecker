@@ -36,10 +36,14 @@ ActiveAdmin.register Candidate do
     end
 
     def create
-      @candidate = Candidate.new(permitted_params["candidate"])
-      current_place = Place.find(params[:place_id])
-      OsmCreateJob.enqueue(current_admin_user.id, current_place.id, @candidate.attributes) if @candidate.valid? # success
-      create! { next_path(current_admin_user, current_place) }
+      if current_admin_user.admin?
+        @candidate = Candidate.new(permitted_params["candidate"])
+        current_place = Place.find(params[:place_id])
+        OsmCreateJob.enqueue(current_admin_user.id, current_place.id, @candidate.attributes) if @candidate.valid? # success
+        create! { next_path(current_admin_user, current_place) }
+      else
+        redirect_to next_path(current_admin_user, current_place)
+      end
     end
 
     private

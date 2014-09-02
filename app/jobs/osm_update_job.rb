@@ -5,6 +5,7 @@ class OsmUpdateJob < OsmCommonJob
     tags.delete("wheelchair") if tags["wheelchair"] == 'unknown'
 
     new(element_id, element_type, user_id, place_id, tags).tap do |job|
+      Skip.find_or_create_by(admin_user_id: user_id, place_id: place_id)
       Delayed::Job.enqueue(job, :queue => 'osm')
     end
   end
