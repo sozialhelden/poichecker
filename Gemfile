@@ -49,7 +49,10 @@ group :default do
   # CSS Framework
   gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
   gem 'less-rails'
+
+  # Performance and error tracking
   gem 'airbrake'
+  gem 'newrelic_rpm'
 end
 
 group :asssets do
