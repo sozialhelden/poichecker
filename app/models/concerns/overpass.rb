@@ -202,7 +202,9 @@ module Overpass
         city: attribs_hash["tags"]["addr:city"],
         website: attribs_hash["tags"]["website"],
         phone: attribs_hash["tags"]["phone"],
-        wheelchair: attribs_hash["tags"]["wheelchair"]
+        wheelchair: attribs_hash["tags"]["wheelchair"],
+        osm_type: attribs_hash["osm_type"],
+        osm_id: attribs_hash["osm_id"]
       )
     end
 
