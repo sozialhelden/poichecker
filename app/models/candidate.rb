@@ -24,7 +24,7 @@
 class Candidate < ActiveRecord::Base
   include Overpass
 
-  attr_accessor :data_set_id, :original_id, :country, :matcher_id, :location, :osm_key, :osm_value
+  attr_accessor :location
 
   validates :lat, :lon, presence: true
 

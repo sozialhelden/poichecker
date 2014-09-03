@@ -31,7 +31,8 @@ ActiveAdmin.register Candidate do
 
     def new
       @place = Place.find(params[:place_id])
-      @candidate = Candidate.new(@place.attributes)
+      params["candidate"] = @place.attributes
+      @candidate = Candidate.new(permitted_params["candidate"])
       new!
     end
 
@@ -50,7 +51,11 @@ ActiveAdmin.register Candidate do
 
     def resource
       @candidate = Candidate.find(params[:id], params[:osm_type] || 'node') if params[:id]
-      @candidate ||= Candidate.new(parent.attributes)
+      if @candidate.nil?
+        params["candidate"] = parent.attributes
+        @candidate = Candidate.new(permitted_params["candidate"])
+      end
+      @candidate
     end
 
     def parent
