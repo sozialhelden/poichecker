@@ -154,10 +154,10 @@ module Overpass
             builder.query type: "#{osm_type}" do
               builder.comment!("query part for name")
               builder.tag!("has-kv", k: :name, regv: to_name_regexp(name) )
-              unless key.blank?
-                builder.comment!("query part for type")
-                builder.tag!("has-kv", k: key, regv: to_value_regexp(value) )
-              end
+              # unless key.blank?
+              #   builder.comment!("query part for type")
+              #   builder.tag!("has-kv", k: key, regv: to_value_regexp(value) )
+              # end
               builder.comment!("query part for bbox")
               builder.tag!("bbox-query", w: left, s: bottom, e: right, n: top)
             end
