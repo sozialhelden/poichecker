@@ -178,8 +178,12 @@ module Overpass
     end
 
     def to_name_regexp(name)
-      name.downcase.gsub(/[\-_&,:+;`´\'\"]/, ' ').split.reject do |word|
-        word.size < 3
+      name.downcase.gsub(/[\-\.\(\)_&,:+;`´\'\"]/, ' ').  # remove special characters
+      gsub(/\s+/, ' ').                                   # remove double white spaces
+      strip.                                              # remove leading/trailing whitespace
+      split.uniq.                                         # split and dedupe
+      reject do |word|
+        word.size < 3                                     # We do not want short words
       end.map do |word|
         first_letter = word.first
         "[#{first_letter.upcase}#{first_letter.downcase}]" + word[1..-1]
