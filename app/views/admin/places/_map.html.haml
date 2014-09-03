@@ -1,2 +1,3 @@
 #map.spinner{ style: 'text-align: center;height:550px;', 'data-lat' => @place.lat, 'data-lon' => @place.lon }
   = fa_icon 'refresh spin', class: 'muted', style: 'font-size: 24em;opacity: 0.3'
+=link_to 'Check in OSM', "http://openstreetmap.org/#map=19/#{@place.lat}/#{@place.lon}", target: '_blank'
