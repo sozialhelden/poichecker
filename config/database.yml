@@ -16,11 +16,13 @@
 #
 development:
   adapter: postgis
+  schema_search_path: "public,postgis"
   encoding: unicode
-  postgis_extension: postgis # default is postgis
+  postgis_extension: "postgis" # default is postgis
   pool: 5
-  database: matchy_development
-  username: matchy
+  timeout: 5000
+  database: poichecker_development
+  username: postgres
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -49,7 +51,7 @@ test:
   encoding: unicode
   postgis_extension: postgis # default is postgis
   pool: 5
-  database: matchy_test
+  database: poichecker_test
   username: postgres
   password:
 
@@ -58,6 +60,6 @@ production:
   encoding: unicode
   postgis_extension: postgis # default is postgis
   pool: 5
-  database: matchy_production
-  username: matchy
+  database: poichecker_production
+  username: postgres
   password:

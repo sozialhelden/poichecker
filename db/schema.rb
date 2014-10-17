@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 20140902121726) do
     t.integer  "data_set_id"
     t.integer  "original_id"
     t.integer  "osm_id",      limit: 8
+    t.string   "osm_key"
+    t.string   "osm_value"
     t.string   "name"
     t.float    "lat"
     t.float    "lon"
@@ -141,8 +143,6 @@ ActiveRecord::Schema.define(version: 20140902121726) do
     t.string   "osm_type"
     t.integer  "matcher_id"
     t.spatial  "location",    limit: {:srid=>4326, :type=>"point", :geographic=>true}
-    t.string   "osm_value"
-    t.string   "osm_key"
     t.integer  "skips_count",                                                          default: 0
   end
 
