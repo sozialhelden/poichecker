@@ -3,6 +3,7 @@ set :repo_url, 'git@github.com:sozialhelden/poichecker.git'
 
 # set :deploy_to, '/var/apps/matchy/staging'
 # set :scm, :git
+set :deploytag_time_format, "%Y.%m.%d-%H.%M.%S"
 
  set :format, :pretty
  set :log_level, :debug

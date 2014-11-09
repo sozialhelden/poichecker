@@ -97,9 +97,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capistrano',       '>= 3.1.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
+  gem 'capistrano-rails',                   require: false
+  gem 'capistrano-rbenv',                   require: false
+  gem 'capistrano-bundler',                 require: false
+  gem 'capistrano-deploytags', '~> 1.0.0',  require: false
 end
 
 group :development, :test do
