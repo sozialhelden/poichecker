@@ -156,9 +156,8 @@ module Overpass
             builder.query type: "#{osm_type}" do
               builder.comment!("query for name")
               builder.tag!("has-kv", k: :name, regv: to_name_regexp(name) )
-              # unless key.blank?
-              #   builder.comment!("query part for type")
-              #   builder.tag!("has-kv", k: key, regv: to_value_regexp(value) )
+              builder.comment!("ignore public transport")
+              builder.tag!("has-kv", k: 'public_transport', modv: "not" )
               # end
               builder.comment!("query for bbox")
               builder.tag!("bbox-query", w: left, s: bottom, e: right, n: top)
