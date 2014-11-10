@@ -156,8 +156,11 @@ module Overpass
             builder.query type: "#{osm_type}" do
               builder.comment!("query for name")
               builder.tag!("has-kv", k: :name, regv: to_name_regexp(name) )
-              builder.comment!("ignore public transport")
-              builder.tag!("has-kv", k: 'public_transport', modv: "not" )
+              builder.comment!("ignore public transport, railway and station")
+              builder.tag!("has-kv", k: 'public_transport', modv: "not", regv: ".*" )
+              builder.tag!("has-kv", k: 'railway', modv: "not", regv: ".*" )
+              builder.tag!("has-kv", k: 'station', modv: "not", regv: ".*" )
+
               # end
               builder.comment!("query for bbox")
               builder.tag!("bbox-query", w: left, s: bottom, e: right, n: top)
