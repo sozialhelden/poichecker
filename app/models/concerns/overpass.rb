@@ -160,6 +160,7 @@ module Overpass
               builder.tag!("has-kv", k: 'public_transport', modv: "not", regv: ".*" )
               builder.tag!("has-kv", k: 'railway', modv: "not", regv: ".*" )
               builder.tag!("has-kv", k: 'station', modv: "not", regv: ".*" )
+              builder.tag!("has-kv", k: 'highway', modv: "not", regv: "bus_stop" )
 
               # end
               builder.comment!("query for bbox")
