@@ -104,6 +104,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'rb-fsevent'
   gem 'guard'
   gem 'guard-rspec'
