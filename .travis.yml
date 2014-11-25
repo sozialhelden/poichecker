@@ -10,9 +10,6 @@ rvm:
   - 2.0.0
   - 2.1.2
 
-env:
-  - LC_ALL=de_DE.UTF-8
-
 services:
   - postgresql
 
@@ -22,7 +19,7 @@ before_script:
   - psql -c 'create database matchy_test;' -U postgres
   - psql -c 'CREATE EXTENSION postgis;' -U postgres -d matchy_test
   - psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d matchy_test
-  - RAILS_ENV=test bundle exec rake db:test:prepare
+  - psql -U postgres -q -d matchy_test -f db/structure.sql"
 
 branches:
   only:

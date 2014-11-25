@@ -34,5 +34,7 @@ module Poichecker
     # Needed for the ActiveAdmin's manifest assets.
     config.assets.precompile += ['map.js', 'locate_me.js', 'search.js']
 
+    # Use sql structure instead of schema.rb
+    config.active_record.schema_format = :sql
   end
 end
