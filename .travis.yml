@@ -6,7 +6,7 @@ bundler_args: "--without development production doc --deployment --jobs=3 --retr
 rvm:
 - 1.9.3
 - 2.0.0
-- 2.1.2
+- 2.1.4
 services:
 - postgresql
 before_script:
