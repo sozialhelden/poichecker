@@ -12,10 +12,10 @@ services:
 before_script:
 - sudo locale-gen de_DE
 - sudo update-locale LANG=de_DE
-- psql -c 'create database matchy_test;' -U postgres
-- psql -c 'CREATE EXTENSION postgis;' -U postgres -d matchy_test
-- psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d matchy_test
-- psql -U postgres -q -d matchy_test -f db/structure.sql
+- psql -c 'create database poichecker_test;' -U postgres
+- psql -c 'CREATE EXTENSION postgis;' -U postgres -d poichecker_test
+- psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d poichecker_test
+- psql -U postgres -q -d poichecker_test -f db/structure.sql
 branches:
   only:
   - master
