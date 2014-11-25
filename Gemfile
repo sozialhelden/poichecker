@@ -50,9 +50,6 @@ group :default do
   gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
   gem 'less-rails'
 
-  # Performance and error tracking
-  gem 'airbrake'
-  gem 'newrelic_rpm'
 end
 
 group :asssets do
@@ -90,6 +87,11 @@ end
 group :production, :staging, :vagrant do
   # Use unicorn as the app server
   gem 'unicorn'
+
+  # Performance and error tracking
+  gem 'airbrake'
+  gem 'newrelic_rpm'
+
 end
 
 # Use Capistrano for deployment
@@ -109,10 +111,10 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-annotate'
-  gem 'guard-pow',     require: false
-  gem 'guard-bundler', require: false
-  gem 'guard-migrate', require: false
+  gem 'guard-annotate', require: false
+  gem 'guard-pow',      require: false
+  gem 'guard-bundler',  require: false
+  gem 'guard-migrate',  require: false
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
