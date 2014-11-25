@@ -1,30 +1,26 @@
 language: ruby
 cache:
-  - bundler
-  - apt
-
-bundler_args: --without development production doc --deployment --jobs=3 --retry=5
-
+- bundler
+- apt
+bundler_args: "--without development production doc --deployment --jobs=3 --retry=5"
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.2
-
+- 1.9.3
+- 2.0.0
+- 2.1.2
 services:
-  - postgresql
-
+- postgresql
 before_script:
-  - sudo locale-gen de_DE
-  - sudo update-locale LANG=de_DE
-  - psql -c 'create database matchy_test;' -U postgres
-  - psql -c 'CREATE EXTENSION postgis;' -U postgres -d matchy_test
-  - psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d matchy_test
-  - psql -U postgres -q -d matchy_test -f db/structure.sql"
-
+- sudo locale-gen de_DE
+- sudo update-locale LANG=de_DE
+- psql -c 'create database matchy_test;' -U postgres
+- psql -c 'CREATE EXTENSION postgis;' -U postgres -d matchy_test
+- psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d matchy_test
+- psql -U postgres -q -d matchy_test -f db/structure.sql"
 branches:
   only:
-    - master
-
+  - master
 notifications:
   email:
-    - info@christophbuente.de
+  - info@christophbuente.de
+  slack:
+    secure: nvJvdjPBV3Zlh7AVSlZcH94/fVxFwAwI/vGzMlZnsgfs7Z2pweqn0PF5wU4UA5IhLvfaNaxUaiQLX5Qdyn5LhY+Jsj/Bwxu2LBtrMxyKYGw2revhl5sQoaKTIPOik5wN61qRfTCx942N12Q7gZi0gslu5FdHAUK0xWhy7YJHDwI=
