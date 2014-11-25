@@ -82,3 +82,6 @@ namespace :deploy do
     invoke 'delayed_job:restart'
   end
 end
+
+
+after 'deploy:cleanup', 'airbrake:deploy'
