@@ -50,6 +50,9 @@ group :default do
   gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
   gem 'less-rails'
 
+  gem 'airbrake'
+
+
 end
 
 group :asssets do
@@ -89,7 +92,6 @@ group :production, :staging, :vagrant do
   gem 'unicorn'
 
   # Performance and error tracking
-  gem 'airbrake'
   gem 'newrelic_rpm'
 
 end
