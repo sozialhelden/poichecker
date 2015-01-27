@@ -50,7 +50,7 @@ ActiveAdmin.register Candidate do
     private
 
     def resource
-      @candidate = Candidate.find(params[:id], params[:osm_type] || 'node') if params[:id]
+      @candidate ||= Candidate.find(params[:id], params[:osm_type] || 'node') if params[:id]
       if @candidate.nil?
         params["candidate"] = parent.attributes
         @candidate = Candidate.new(permitted_params["candidate"])
