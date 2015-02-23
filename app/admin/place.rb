@@ -13,7 +13,13 @@ ActiveAdmin.register Place do
 
   scope :all,       :if => proc { current_admin_user.admin? }
   scope :matched,   :if => proc { current_admin_user.admin? }
-  scope :unmatched, :if => proc { current_admin_user.admin? }, :default => true
+  # custom scope not defined on the model
+  scope :skipped,   :if => proc { current_admin_user.admin? } do |places|
+    places.skipped(current_admin_user)
+  end
+  scope :unmatched, :default => true, :if => proc { current_admin_user.admin? } do |places|
+    places.unmatched.unskipped(current_admin_user)
+  end
 
   filter :data_set,     :if => proc { current_admin_user.admin? }
   filter :name,         :if => proc { current_admin_user.admin? }

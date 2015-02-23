@@ -50,6 +50,7 @@ class Place < ActiveRecord::Base
 
   scope :with_coordinates,    -> { where.not(lat: nil).where.not(lat: '').where.not(lon: nil).where.not(lon: '') }
   scope :matched,             -> { where.not(osm_id: nil) }
+  scope :skipped,       ->(user) { joins(:skips).where(skips: { admin_user_id: user.id}) }
   scope :unmatched,           -> { where(osm_id: nil) }
   scope :with_distance_to,    ->(other_location) {
     select('*').
@@ -57,6 +58,11 @@ class Place < ActiveRecord::Base
             FROM #{table_name}
           ) #{table_name}")
   }
+
+  def self.unskipped(user)
+    skipped_places = Skip.where(admin_user_id: user.id).pluck(:place_id)
+    where.not(id: skipped_places)
+  end
 
   # helper method to sort and search by calculated distance
   ransacker :dist do |place|
