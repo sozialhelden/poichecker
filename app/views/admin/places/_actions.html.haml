@@ -1,4 +1,4 @@
-= link_to admin_places_path, class: :left do
+= link_to admin_places_path(params.permit(:scope)), class: :left do
   = fa_icon('angle-double-left', text: t('shared.back'))
 
 - if current_admin_user.admin?

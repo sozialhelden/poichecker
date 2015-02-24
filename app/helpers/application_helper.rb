@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def next_path(current_user, current_place)
-    next_admin_places_path(q: { dist_greater_than: current_place.distance_to(current_user), id_not_eq: current_place.id }, order: :distance_asc)
+    next_admin_places_path(q: { dist_greater_than: current_place.distance_to(current_user), id_not_eq: current_place.id }, order: :distance_asc, scope: (params[:scope] || :unmatched))
   end
 
   def first_path

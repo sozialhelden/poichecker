@@ -48,18 +48,23 @@ class Place < ActiveRecord::Base
   geocoded_by :full_address, :latitude  => :lat, :longitude => :lon # ActiveRecord
   after_save :geocode_later, :if => :address_changed?
 
-  scope :with_coordinates,    -> { where.not(lat: nil).where.not(lat: '').where.not(lon: nil).where.not(lon: '') }
-  scope :matched,             -> { where.not(osm_id: nil) }
-  scope :skipped,       ->(user) { joins(:skips).where(skips: { admin_user_id: user.id}) }
-  scope :unmatched,           -> { where(osm_id: nil) }
-  scope :with_distance_to,    ->(other_location) {
+  scope :with_coordinates, -> { where.not(lat: nil).where.not(lat: '').where.not(lon: nil).where.not(lon: '') }
+  scope :with_osm_id,      -> { where.not(osm_id: nil) }
+  scope :without_osm_id,   -> { where(osm_id: nil) }
+
+  def self.with_distance_to(other_location)
     select('*').
     from("( SELECT *, ST_Distance(#{table_name}.location, ST_GeographyFromText('#{other_location}')) AS distance
             FROM #{table_name}
           ) #{table_name}")
-  }
+  end
 
-  def self.unskipped(user)
+  def self.skipped_by(user)
+    skipped_places = Skip.where(admin_user_id: user.id).pluck(:place_id)
+    where(id: skipped_places)
+  end
+
+  def self.unskipped_by(user)
     skipped_places = Skip.where(admin_user_id: user.id).pluck(:place_id)
     where.not(id: skipped_places)
   end

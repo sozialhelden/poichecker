@@ -4,7 +4,9 @@ ActiveAdmin.register Place do
 
   config.sort_order = "distance_asc"
 
-  permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon, :street, :housenumber, :postcode, :city, :country, :website, :phone, :wheelchair, :osm_key, :osm_value
+  permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon,
+                :street, :housenumber, :postcode, :city, :country, :website,
+                :phone, :wheelchair, :osm_key, :osm_value, :q, :locale
 
   belongs_to :data_set, optional: true
 
@@ -12,13 +14,15 @@ ActiveAdmin.register Place do
   config.batch_actions = false
 
   scope :all,       :if => proc { current_admin_user.admin? }
-  scope :matched,   :if => proc { current_admin_user.admin? }
   # custom scope not defined on the model
   scope :skipped,   :if => proc { current_admin_user.admin? } do |places|
-    places.skipped(current_admin_user)
+    places.skipped_by(current_admin_user)
+  end
+  scope :matched,   :if => proc { current_admin_user.admin? } do |places|
+    places.with_osm_id
   end
   scope :unmatched, :default => true, :if => proc { current_admin_user.admin? } do |places|
-    places.unmatched.unskipped(current_admin_user)
+    places.without_osm_id.unskipped_by(current_admin_user)
   end
 
   filter :data_set,     :if => proc { current_admin_user.admin? }
@@ -43,9 +47,8 @@ ActiveAdmin.register Place do
   collection_action :next, title: false do
 
     # add all skipped place ids for current user to actual search query
-    params[:q][:id_not_in] = current_admin_user.skips.pluck(:place_id)
     if next_place = find_collection.first
-      redirect_to admin_place_path(next_place)
+      redirect_to admin_place_path(next_place, params.permit(:order, :scope))
     else
       redirect_to admin_places_path, notice: "Das war der letzte Ort."
     end
@@ -77,7 +80,7 @@ ActiveAdmin.register Place do
     end
 
     def save_skipped_id
-      if place_id_to_skip = params[:q].delete(:id_not_eq)
+      if place_id_to_skip = (params[:q][:id_not_eq] rescue nil)
         Skip.find_or_create_by(admin_user: current_admin_user, place_id: place_id_to_skip)
       end
     end
@@ -92,7 +95,7 @@ ActiveAdmin.register Place do
 
   end
 
-  index title: proc{ I18n.t('places.index.headline', count: Place.unmatched.with_coordinates.count) }, :default => true, :download_links => false do
+  index title: proc{ I18n.t('places.index.headline', count: Place.without_osm_id.with_coordinates.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
       panel I18n.t('places.index.email_nag.headline'), id: 'mail_missing' do
         span "Gib deine"
@@ -109,7 +112,7 @@ ActiveAdmin.register Place do
     end
     selectable_column
     column :name do |place|
-      link_to place.name, admin_place_path(place, params), class: place.skipped_by?(current_admin_user) ? 'skipped' : nil
+      link_to place.name, admin_place_path(place, params)
     end
     column :address, sortable: :street
     if current_admin_user.admin?

@@ -33,16 +33,6 @@ class PlaceDecorator < ApplicationDecorator
 
   end
 
-
-#  def matching_status
-#    arbre model: model do status_tag(fa_icon "check-square-o", class: 'matched') end
-#    if model.osm_id
-#      arbre { status_tag(fa_icon "check-square-o", class: 'matched') }
-#    else
-#      arbre { status_tag(fa_icon "square-o", class: 'unmatched') }
-#    end
-#  end
-
   def address
     model.address_with_contact_details
   end
