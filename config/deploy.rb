@@ -85,3 +85,4 @@ end
 
 
 after 'deploy:cleanup', 'airbrake:deploy'
+after 'deploy:updated', 'newrelic:notice_deployment'
