@@ -58,6 +58,7 @@ en:
         lon: Longitude
         postcode: postcode
         street: Street
+        osm_id: 'OSM ID'
         phone: Telefon
         website: Website
         wheelchair: wheelchar accessible
@@ -89,6 +90,8 @@ en:
       address_missing:
         alert: "Please provide a valid city or address."
         not_found: "Apologies, but this address could not be found."
+      candidate:
+        not_found: "%{resource_name} could not be found in OSM."
       create:
         notice: "%{resource_name} successfully saved."
       merge:
@@ -134,6 +137,8 @@ en:
         other: "%{count} POIs have to be checked."
     show:
       actions: Place not here?
+      button:
+        manual_match: "Match manually"
       headline: "Check this POI"
       headline_source: "Information from %{source}"
       link:

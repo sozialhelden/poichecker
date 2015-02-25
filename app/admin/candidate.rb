@@ -27,6 +27,11 @@ ActiveAdmin.register Candidate do
     render json: candidates[0...9].to_json
   end
 
+  collection_action :override, method: :post do
+    hash = params.require(:place).permit(:place_id, :osm_id, :osm_type)
+    redirect_to admin_place_candidate_path(hash[:place_id], hash[:osm_id], osm_type: hash[:osm_type])
+  end
+
   controller do
 
     def new
@@ -52,8 +57,8 @@ ActiveAdmin.register Candidate do
     def resource
       @candidate ||= Candidate.find(params[:id], params[:osm_type] || 'node') if params[:id]
       if @candidate.nil?
-        params["candidate"] = parent.attributes
-        @candidate = Candidate.new(permitted_params["candidate"])
+        flash.now[:error] = I18n.t('flash.actions.candidate.not_found', resource_name: Candidate.model_name.human)
+        @candidate = Candidate.new(id: params[:id], osm_type: params[:osm_type] )
       end
       @candidate
     end
@@ -115,7 +120,7 @@ ActiveAdmin.register Candidate do
               %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
                 row attrib, class: "single right-source" do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+2A2(#{resource.lon},#{resource.lat})/#{resource.lon},#{resource.lat},17/480x320.png64", style: "width:100%"
-                  render partial: "right_form_field", locals: { form: form, attrib: attrib, value: p.send(attrib) }
+                  render partial: "right_form_field", locals: { form: form, attrib: attrib, value: p.try(attrib) }
                 end
               end
             end

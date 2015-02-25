@@ -58,6 +58,7 @@ de:
         lon: Längengrad
         postcode: PLZ
         street: Strasse
+        osm_id: 'OSM ID'
         phone: Telefon
         website: Webseite
         wheelchair: Rollstuhlgerecht
@@ -88,6 +89,8 @@ de:
       address_missing:
         alert: "Bitte geben Sie eine Adresse an."
         not_found: "Entschuldigung, diese Adresse konnte nicht gefunden werden."
+      candidate:
+        not_found: "%{resource_name} konnte in der OSM nicht gefunden werden."
       create:
         notice: "%{resource_name} wurde erfolgreich gespeichert."
       merge:
@@ -130,6 +133,8 @@ de:
         other: "%{count} POIs müssen noch gecheckt werden."
     show:
       actions: Ort nicht dabei?
+      button:
+        manual_match: "Manuell matchen"
       headline: "Checke diesen POI"
       headline_source: "Angaben von %{source}"
       link:

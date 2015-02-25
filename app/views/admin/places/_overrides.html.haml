@@ -1,0 +1,8 @@
+= semantic_form_for Place.new(osm_type: :node), url: override_admin_place_candidates_path(place.id) do |form|
+  = form.inputs  "Du kennst den OSM Ort genau?" do
+    = form.input :place_id, as: :hidden, value: place.id
+    = form.input :osm_id, label: "OSM ID", required: true
+    = form.input :osm_type, as: :radio, required: true, collection: [['Node', :node],['Way', :way]]
+
+  = form.actions do
+    = form.submit I18n.t('places.show.button.manual_match')

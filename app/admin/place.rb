@@ -164,6 +164,10 @@ ActiveAdmin.register Place do
           render partial: "actions", locals: { place: place }
         end
 
+        if current_admin_user.admin?
+          render partial: "overrides", locals: { place: place }
+        end
+
         render partial: "spine_app"
 
       end
