@@ -54,10 +54,10 @@ en:
         name: Name
         lat: Latitude
         lon: Longitude
-        postcode: postcode
+        postcode: Postcode
         street: Street
         osm_id: 'OSM ID'
-        phone: Telefon
+        phone: Telephone
         website: Website
         wheelchair: wheelchar accessible
         updated_at: updated at
