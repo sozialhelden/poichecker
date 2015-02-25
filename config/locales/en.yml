@@ -8,7 +8,6 @@ en:
         button: "Determine now"
       manually:
         legend: "Or at a certain address"
-
   active_admin:
     access_denied:
       message: "You are not allowed to visit this page."
@@ -16,7 +15,6 @@ en:
       sessions:
         new:
           sign_in_with: "Sign in with %{kind}"
-
   activerecord:
     models:
       admin_user:
@@ -73,18 +71,15 @@ en:
         updated_at: updated at
       place:
         <<: *attribs
-
   candidates:
     new:
       panel:
         map: "Map"
         new: "New Place"
-
   distance:
     centi: "cm"
     unit: "m"
     thousand: "km"
-
   flash:
     actions:
       address_missing:
@@ -99,9 +94,6 @@ en:
       location_missing:
         alert: 'Please provide your location first.'
         notice: 'Thx a lot, your location has been updated.'
-
-
-
   formtastic:
     hints:
       admin_user:
@@ -121,11 +113,9 @@ en:
     placeholders:
       admin_user:
         address: 'e.g. New York'
-
   header:
     action_items:
       edit_location: 'Change location'
-
   places:
     index:
       email_nag:
@@ -143,7 +133,6 @@ en:
       headline_source: "Information from %{source}"
       link:
         match: That is the one
-
   shared:
     back: Back
     cancel: Cancel
@@ -154,7 +143,6 @@ en:
     language: Language
     next: Next
     skip: Skip
-
   welcome:
     index:
       headline: "'Points of Interest' for the free world&shy;map Open&shy;Street&shy;Map"
