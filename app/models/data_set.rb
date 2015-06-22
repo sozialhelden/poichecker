@@ -21,7 +21,7 @@ class DataSet < ActiveRecord::Base
   has_many :places, dependent: :delete_all
 
   def progress
-    places.matched.count * 100 / places.count rescue 0
+    places.with_coordinates.with_osm_id.count * 100 / places.with_coordinates.count rescue 0
   end
 
 end

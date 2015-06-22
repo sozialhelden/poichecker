@@ -17,11 +17,11 @@
             %td
               = link_to data_set.name, data_set
               %span.badge
-                =data_set.places.count
-                =t('activerecord.models.place', count: data_set.places.count)
+                =data_set.places.with_coordinates.count
+                =t('activerecord.models.place', count: data_set.places.with_coordinates.count)
 
             %td= data_set.license
             %td
               .progress
-                .progress-bar{ 'role' => "progressbar", 'aria-valuenow' => 10, 'aria-valuemin' =>"0", "aria-valuemax" => "100", "style" => "width: #{[data_set.progress, 10].max }%"}
+                .progress-bar{ 'role' => "progressbar", 'aria-valuenow' => data_set.progress, 'aria-valuemin' =>"0", "aria-valuemax" => "100", "style" => "width: #{[data_set.progress, 10].max }%"}
                   %span= number_to_percentage(data_set.progress, precision: 0)
