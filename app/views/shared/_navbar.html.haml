@@ -2,14 +2,14 @@
   .container
     / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", type: "button", "aria-expanded" =>false }
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       = link_to 'Poichecker', root_path, class: 'navbar-brand'
 
-    .collapse.navbar-collapse
+    .collapse.navbar-collapse#navbar-collapse
       %ul.nav.navbar-nav
         %li.active
           = link_to t('activerecord.models.data_set.other'), data_sets_path
