@@ -381,7 +381,8 @@ CREATE TABLE skips (
     admin_user_id integer NOT NULL,
     place_id integer NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    matched boolean DEFAULT false NOT NULL
 );
 
 
@@ -683,4 +684,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140812141740');
 INSERT INTO schema_migrations (version) VALUES ('20140821105932');
 
 INSERT INTO schema_migrations (version) VALUES ('20140902121726');
+
+INSERT INTO schema_migrations (version) VALUES ('20150622142101');
 
