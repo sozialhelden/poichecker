@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :default do
   # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-  gem 'rails', '4.1.9'
+  gem 'rails', '4.1.11'
 
   # Use postgresql as the database for Active Record
   gem 'pg'
