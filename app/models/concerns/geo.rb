@@ -38,6 +38,8 @@ module Geo
     end
 
     def distance_to(other_place)
+      return 0 if other_place.nil?
+      return 0 if self.location.nil?
       self.location.distance(other_place.location).abs
     end
 
