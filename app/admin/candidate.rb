@@ -14,7 +14,7 @@ ActiveAdmin.register Candidate do
 
     current_place = Place.find(params[:place_id])
     OsmUpdateJob.enqueue(params[:id], params[:candidate][:osm_type], current_admin_user.id, current_place.id, @candidate.to_osm_tags)
-    params[:data_set_id] ||= params["candidate"][:data_set_id]
+    params[:data_set_id] ||= params["candidate"][:data_set_id] if params["candidate"][:data_set_id].present?
     redirect_to next_path(current_admin_user, current_place), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
   end
 

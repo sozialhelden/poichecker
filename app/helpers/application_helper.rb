@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def scope
-    params[:scope] || :unmatched
+    params[:scope] || :to_do
   end
 
   def next_path(current_user, current_place)
