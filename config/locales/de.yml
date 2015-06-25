@@ -44,6 +44,7 @@ de:
       candidate: &attribs
         amenity: OpenStreetMap
         address: Adresse
+        centralkey: Zentralschlüssel
         city: Ort
         coordinates: Koordinaten
         country: Land
@@ -60,6 +61,8 @@ de:
         phone: Telefon
         website: Webseite
         wheelchair: Rollstuhlgerecht
+        wheelchair_description: Beschreibung
+        wheelchair_toilet: Rollstuhltoilette
         updated_at: Aktualisiert am
       data_set:
         created_at: Erzeugt am

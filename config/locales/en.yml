@@ -44,6 +44,7 @@ en:
       candidate: &attribs
         amenity: OpenStreetMap
         address: Address
+        centralkey: central key
         city: City
         coordinates: Coordinates
         country: Country
@@ -60,6 +61,8 @@ en:
         phone: Telephone
         website: Website
         wheelchair: wheelchar accessible
+        wheelchair_description: Description
+        wheelchair_toilet: wheelchair toilet
         updated_at: updated at
       data_set:
         created_at: created at
