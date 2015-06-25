@@ -1,0 +1,2 @@
+"original_id","name","type","lat","lon","street","housenumber","postcode","city","country","phone","website","wheelchair","wheelchair_description","wheelchair_toilet"
+"1234","Cafe Achteck","amenity=cafe","54.1","13.4","Friedrichstrasse","24","10117","Berlin","DE","+49 30 12345678","http://example.com","yes","perfect entrance","yes"

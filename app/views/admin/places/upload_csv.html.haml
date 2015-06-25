@@ -1,8 +1,12 @@
 %h3
   Die CSV Datei muss in der ersten Zeile folgende Spalten enthalten:
-  %strong "Name", "Type", "Lat", "Lon", "Street", "Housenumber", "Postcode", "City", "Country", "Phone", "Website", "Wheelchair".
+  %br
+  %strong "original_id","name","type","lat","lon","street","housenumber","postcode","city","country","phone","website","wheelchair","wheelchair_description","wheelchair_toilet"
+  %br
   Die Reihenfolge kann beliebig sein.
   %strong Wichtig ist, dass alle Werte mit "Hochkomma" gerahmt sind und als Feldtrenner ein "," verwendet wird.
+  Pflichtfeld ist lediglich "name". Für bessere Ergebnisse ist aber eine vollständige Adresse angeraten.
+  =link_to "Beispieldatei", "/example.csv"
 
 = semantic_form_for Place.new, :url => import_csv_admin_places_path, :html => {:multipart => true} do |form|
   = form.inputs  "Neuer Datensatz" do
