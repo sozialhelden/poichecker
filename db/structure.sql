@@ -118,7 +118,10 @@ CREATE TABLE candidates (
     osm_id bigint,
     osm_type character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    wheelchair_description character varying(255),
+    wheelchair_toilet character varying(255),
+    centralkey character varying(255)
 );
 
 
@@ -691,4 +694,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140902121726');
 INSERT INTO schema_migrations (version) VALUES ('20150622142101');
 
 INSERT INTO schema_migrations (version) VALUES ('20150625130647');
+
+INSERT INTO schema_migrations (version) VALUES ('20150625140319');
 

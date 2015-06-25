@@ -6,7 +6,8 @@ ActiveAdmin.register Place do
 
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon,
                 :street, :housenumber, :postcode, :city, :country, :website,
-                :phone, :wheelchair, :osm_key, :osm_value, :q, :locale
+                :phone, :wheelchair, :osm_key, :osm_value, :q, :locale,
+                :wheelchair_toilet, :wheelchair_description, :centralkey
 
   belongs_to :data_set, optional: true
 
@@ -223,7 +224,10 @@ ActiveAdmin.register Place do
     f.inputs "Zusatz" do
       f.input :website
       f.input :phone
-      f.input :wheelchair
+      f.input :wheelchair, as: :select, collection: ["yes", "no", "limited"], prompt: ''
+      f.input :wheelchair_toilet, as: :select, collection: ["yes", "no"], prompt: ''
+      f.input :wheelchair_description
+      f.input :centralkey
     end
     f.actions
   end

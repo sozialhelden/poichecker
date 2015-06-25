@@ -7,7 +7,9 @@ ActiveAdmin.register Candidate do
 
   actions :all, :except => [:destroy, :update, :edit, :index]
 
-  permit_params :name, :lat, :lon, :street, :housenumber, :postcode, :city, :website, :phone, :wheelchair, :id, :osm_type
+  permit_params :name, :lat, :lon, :street, :housenumber, :postcode, :city,
+                :website, :phone, :wheelchair, :wheelchair_description,
+                :wheelchair_toilet, :centralkey, :id, :osm_type
 
   member_action :merge, :method => :post do
     @candidate = Candidate.new(permitted_params["candidate"])
@@ -81,7 +83,7 @@ ActiveAdmin.register Candidate do
         panel I18n.t('places.show.headline_source', source: place.data_set.name) do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for place do
-              %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
+              %w{name street housenumber postcode city website phone wheelchair wheelchair_toilet wheelchair_description centralkey}.each do |attrib|
                 row attrib, class: "single left-source" do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+A22(#{place.lon},#{place.lat})/#{place.lon},#{place.lat},17/480x320.png64", style: "width:100%"
                   render partial: "left_form_field", locals: { form: form, attrib: attrib, value: p.send(attrib) }
@@ -118,7 +120,7 @@ ActiveAdmin.register Candidate do
         panel I18n.t('places.show.headline_source', source: 'OpenStreetMap') do
           form_for :source, url: '/', disabled: true do |form|
             attributes_table_for resource do
-              %w{name street housenumber postcode city wheelchair website phone}.each do |attrib|
+              %w{name street housenumber postcode city website phone wheelchair wheelchair_toilet wheelchair_description centralkey}.each do |attrib|
                 row attrib, class: "single right-source" do |p|
                   #image_tag "http://api.tiles.mapbox.com/v3/sozialhelden.map-iqt6py1k/pin-l-star+2A2(#{resource.lon},#{resource.lat})/#{resource.lon},#{resource.lat},17/480x320.png64", style: "width:100%"
                   render partial: "right_form_field", locals: { form: form, attrib: attrib, value: p.try(attrib) }

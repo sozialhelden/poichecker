@@ -50,9 +50,12 @@ class Candidate < ActiveRecord::Base
       :housenumber,
       :postcode,
       :city,
-      :wheelchair,
       :website,
       :phone,
+      :wheelchair,
+      :wheelchair_toilet,
+      :wheelchair_description,
+      :centralkey,
       :lat,
       :lon
     ]
@@ -65,9 +68,11 @@ class Candidate < ActiveRecord::Base
       :housenumber,
       :postcode,
       :city,
-      :wheelchair,
       :website,
       :phone,
+      :wheelchair,
+      :wheelchair_description,
+      :centralkey,
     ].inject(ActiveSupport::HashWithIndifferentAccess.new) do |a,key|
       value = send(key)
       a[key.to_s] = value unless value.blank?

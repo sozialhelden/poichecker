@@ -171,9 +171,11 @@ class Place < ActiveRecord::Base
       :postcode,
       :city,
       :phone,
-      :wheelchair,
       :website,
-      :phone,
+      :wheelchair,
+      :wheelchair_toilet,
+      :wheelchair_description,
+      :centralkey,
       :osm_key,
       :osm_value
     ]
