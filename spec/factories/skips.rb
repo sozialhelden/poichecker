@@ -7,6 +7,7 @@
 #  place_id      :integer          not null
 #  created_at    :datetime
 #  updated_at    :datetime
+#  matched       :boolean          default(FALSE), not null
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

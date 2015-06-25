@@ -309,7 +309,10 @@ CREATE TABLE places (
     osm_type character varying(255),
     matcher_id integer,
     location geography(Point,4326),
-    skips_count integer DEFAULT 0
+    skips_count integer DEFAULT 0,
+    wheelchair_description character varying(255),
+    wheelchair_toilet character varying(255),
+    centralkey character varying(255)
 );
 
 
@@ -686,4 +689,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140821105932');
 INSERT INTO schema_migrations (version) VALUES ('20140902121726');
 
 INSERT INTO schema_migrations (version) VALUES ('20150622142101');
+
+INSERT INTO schema_migrations (version) VALUES ('20150625130647');
 
