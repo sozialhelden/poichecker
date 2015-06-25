@@ -15,13 +15,22 @@ ActiveAdmin.register Place do
 
   scope :all,       :if => proc { current_admin_user.admin? }
   # custom scope not defined on the model
-  scope :skipped,   :if => proc { current_admin_user.admin? } do |places|
-    places.skipped_by(current_admin_user)
-  end
-  scope :matched,   :if => proc { current_admin_user.admin? } do |places|
+
+  scope :matched, :if => proc { current_admin_user.admin? } do |places|
     places.with_osm_id
   end
-  scope :unmatched, :default => true, :if => proc { current_admin_user.admin? } do |places|
+
+  scope :unmatched, :if => proc { current_admin_user.admin? } do |places|
+    places.without_osm_id
+  end
+
+  scope :skipped_by_you,   :if => proc { current_admin_user.admin? } do |places|
+    places.without_osm_id.skipped_by(current_admin_user)
+  end
+  scope :matched_by_you,   :if => proc { current_admin_user.admin? } do |places|
+    places.with_osm_id.matched_by(current_admin_user)
+  end
+  scope :to_do, :default => true, :if => proc { current_admin_user.admin? } do |places|
     places.without_osm_id.unskipped_by(current_admin_user)
   end
 
@@ -48,7 +57,14 @@ ActiveAdmin.register Place do
 
     # add all skipped place ids for current user to actual search query
     if next_place = find_collection.first
-      redirect_to admin_place_path(next_place, params.permit(:order, :scope))
+      url_for_params = {
+        controller: :places,
+        action: :show,
+        id: next_place.id,
+        data_set_id: params[:data_set_id],
+
+      }
+      redirect_to url_for(params.permit(:order, :scope).merge(url_for_params))
     else
       redirect_to admin_places_path, notice: "Das war der letzte Ort."
     end
@@ -93,9 +109,13 @@ ActiveAdmin.register Place do
       end_of_association_chain.with_distance_to(current_admin_user.location).with_coordinates
     end
 
+    def parent_or_collection
+      params[:data_set_id].present? ? parent.places : Place
+    end
+
   end
 
-  index title: proc{ I18n.t('places.index.headline', count: Place.without_osm_id.with_coordinates.count) }, :default => true, :download_links => false do
+  index title: proc{ I18n.t('places.index.headline', count: parent_or_collection.without_osm_id.with_coordinates.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
       panel I18n.t('places.index.email_nag.headline'), id: 'mail_missing' do
         span "Gib deine"
@@ -112,7 +132,8 @@ ActiveAdmin.register Place do
     end
     selectable_column
     column :name do |place|
-      link_to place.name, admin_place_path(place, params)
+      url_for_params = {controller: 'places', action: 'show', data_set_id: params[:data_set_id], id: place.id}
+      link_to(place.name, url_for(params.merge(url_for_params)))
     end
     column :address, sortable: :street
     if current_admin_user.admin?

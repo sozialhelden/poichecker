@@ -1,4 +1,5 @@
-= semantic_form_for [:admin, :place, @candidate] do |f|
+
+= semantic_form_for [:admin, @data_set, :place, @candidate] do |f|
   = f.inputs I18n.t('candidates.new.panel.new') do
     = f.input :name
     = f.input :street

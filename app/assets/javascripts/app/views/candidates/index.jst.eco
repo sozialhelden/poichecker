@@ -4,7 +4,7 @@
     <td class="col col-name"><%= candidate.name %></td>
     <td class="col col-address"><%= candidate.address() %></td>
     <td class="col col-match">
-      <a class="light-button" href='<%= "/admin/places/#{@parent_id}/candidates/#{candidate.osm_id}?osm_type=#{candidate.osm_type}" %>'><%= I18n.t('places.show.link.match')%></a>
+      <a class="light-button" href='<%= "/admin/places/#{@parent_id}/candidates/#{candidate.osm_id}?osm_type=#{candidate.osm_type}&data_set_id=#{@data_set_id}" %>'><%= I18n.t('places.show.link.match')%></a>
     </td>
   </tr>
 <% end %>

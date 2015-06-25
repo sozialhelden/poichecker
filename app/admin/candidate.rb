@@ -14,7 +14,7 @@ ActiveAdmin.register Candidate do
 
     current_place = Place.find(params[:place_id])
     OsmUpdateJob.enqueue(params[:id], params[:candidate][:osm_type], current_admin_user.id, current_place.id, @candidate.to_osm_tags)
-
+    params[:data_set_id] ||= params["candidate"][:data_set_id]
     redirect_to next_path(current_admin_user, current_place), notice: t('flash.actions.merge.notice', resource_name: @candidate.class.model_name.human)
   end
 
@@ -97,6 +97,7 @@ ActiveAdmin.register Candidate do
           form_for candidate, url: merge_admin_place_candidate_path(place.id,resource.id) do |form|
             result = Candidate.new(resource.merge_attributes(place.attributes))
             form.hidden_field :osm_type, value: params[:osm_type]
+            form.hidden_field :data_set_id, value: params[:data_set_id]
             attributes_table_for result do
               Candidate.valid_keys.reject{|a| a == :id}.each do |attrib|
                 next if attrib == :lat || attrib == :lon

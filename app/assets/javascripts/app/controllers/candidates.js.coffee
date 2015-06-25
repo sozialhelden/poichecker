@@ -17,14 +17,15 @@ class App.Candidates extends Spine.Controller
     @map_placeholder = $('#map')
     @spinner         = $('.spinner')
 
-    @parent_id  = $('#app').data('parent')
-    @lat        = $('#app').data('lat')
-    @lon        = $('#app').data('lon')
-    @bbox       = $('#app').data('bbox')
-    @name       = $('#app').data('name')
-    @place      = $('#app').data('place')
-    @phrase     = $('#app').data('phrase')
-    @locale     = $('#app').data('locale')
+    @data_set    = $('#app').data('dataset')
+    @parent_id   = $('#app').data('parent')
+    @lat         = $('#app').data('lat')
+    @lon         = $('#app').data('lon')
+    @bbox        = $('#app').data('bbox')
+    @name        = $('#app').data('name')
+    @place       = $('#app').data('place')
+    @phrase      = $('#app').data('phrase')
+    @locale      = $('#app').data('locale')
     @params = {
       url: "/admin/places/#{@parent_id}/candidates/suggest"
       processData: true
@@ -35,8 +36,13 @@ class App.Candidates extends Spine.Controller
   stop_spinner: ->
     @spinner.html('')
 
-  render_table: (candidates, parent_id) =>
-    @candidate_table.html(@view('candidates/index')(candidates: candidates, parent_id: parent_id))
+  render_table: (candidates, parent_id, data_set_id) =>
+    data_set_id = if data_set_id != undefined
+      data_set_id
+    else
+      ''
+
+    @candidate_table.html(@view('candidates/index')(candidates: candidates, parent_id: parent_id, data_set_id: data_set_id))
 
   render_map: (candidates, lat, lon) =>
     map = L.map("map").setView([
@@ -79,7 +85,7 @@ class App.Candidates extends Spine.Controller
 
   render: =>
     candidates = Candidate.all()
-    @render_table(candidates, @parent_id)
+    @render_table(candidates, @parent_id, @data_set)
     @stop_spinner()
     @render_map(candidates, @lat, @lon)
 #    @html @template(candidates)

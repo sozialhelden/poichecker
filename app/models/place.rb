@@ -59,8 +59,13 @@ class Place < ActiveRecord::Base
           ) #{table_name}")
   end
 
+  def self.matched_by(user)
+    skipped_places = Skip.where(admin_user_id: user.id, matched: true).pluck(:place_id)
+    where(id: skipped_places)
+  end
+
   def self.skipped_by(user)
-    skipped_places = Skip.where(admin_user_id: user.id).pluck(:place_id)
+    skipped_places = Skip.where(admin_user_id: user.id, matched: false).pluck(:place_id)
     where(id: skipped_places)
   end
 

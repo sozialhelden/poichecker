@@ -16,6 +16,7 @@ class OsmUpdateJob < OsmCommonJob
       osm_changeset = find_or_create_changeset(user, place.data_set_id)
       api.save(osm_element, osm_changeset)
       Place.where(id: place_id).update_all({osm_id: element_id, osm_type: element_type, matcher_id: user_id})
+      Skip.where(admin_user_id: user_id, place_id: place_id).update_all(matched: true)
     rescue Rosemary::Conflict => e
       # We cannot resolve the conflict from here, so we ignore the job and
       # let another person try to update the osm element later.
