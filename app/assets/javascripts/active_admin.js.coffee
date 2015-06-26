@@ -5,8 +5,6 @@
 #= require app
 
 $ ->
-  I18n.defaultLocale = 'de'
-  I18n.locale        = 'de'
 
   $('.attributes_table.candidate input').each (index, field) ->
     $(field).on 'change', false, ->

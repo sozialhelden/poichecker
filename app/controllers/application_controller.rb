@@ -24,8 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = I18n.default_locale
-    I18n.locale = params["locale"] unless params["locale"].blank?
+    I18n.locale = params[:locale] if params[:locale].present?
   end
 
   def default_url_options(options={})

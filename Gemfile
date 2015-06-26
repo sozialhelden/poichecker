@@ -28,7 +28,7 @@ group :default do
   gem 'i18n'
   gem 'rails-i18n'
   gem 'devise-i18n'
-  gem 'i18n-js'
+  gem "i18n-js", ">= 3.0.0.rc8"
 
   # Geo Stuff
   gem 'geocoder' #, github: 'alexreisner/geocoder'

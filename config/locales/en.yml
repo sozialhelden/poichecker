@@ -136,6 +136,14 @@ en:
       headline_source: "Information from %{source}"
       link:
         match: That is the one
+  scopes:
+    all: 'All'
+    matched: 'Matched'
+    matched_by_you: 'Matched by you'
+    skipped_by_you: 'Skipped by you'
+    to_do: 'Please check'
+    unmatched: 'Unmatched'
+
   shared:
     back: Back
     cancel: Cancel

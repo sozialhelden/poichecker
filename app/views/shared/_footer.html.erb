@@ -1,3 +1,16 @@
+<script type="text/javascript">
+  // Instantiate the object
+  var I18n = I18n || {};
+  // Set default locale to what is set as default in i18n initializer
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+
+  // Set default handling of translation fallbacks to true
+  I18n.fallbacks = true;
+
+  // Set current locale to one chosen by the user
+  I18n.locale = "<%= I18n.locale %>";
+</script>
+
 <p>
   <%= "Copyright #{Date.today.year} SOZIALHELDEN e.V." %>
   <%= link_to "Impressum", "http://www.sozialhelden.de/kontakt/", target: '_blank' %>

@@ -136,6 +136,13 @@ de:
       headline_source: "Angaben von %{source}"
       link:
         match: Der ist es
+  scopes:
+    all: 'Alle'
+    matched: 'Gechecked'
+    matched_by_you: 'Von dir gechecked'
+    skipped_by_you: 'Von dir übersprungen'
+    to_do: 'Noch zu checken'
+    unmatched: 'Ungechecked'
   shared:
     back: Zurück
     cancel: Abbrechen
