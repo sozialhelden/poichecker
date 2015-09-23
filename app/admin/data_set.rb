@@ -15,6 +15,12 @@ ActiveAdmin.register DataSet do
     end
   end
 
+  action_item only: :show do
+    link_to admin_data_set_places_path(data_set, format: :csv) do
+      fa_icon('download', text: 'Download CSV')
+    end
+  end
+
   filter :name
   filter :license,      if: ->(data_set) { current_admin_user.admin? }
   filter :description,  if: ->(data_set) { current_admin_user.admin? }

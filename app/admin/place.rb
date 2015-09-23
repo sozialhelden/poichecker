@@ -116,6 +116,15 @@ ActiveAdmin.register Place do
 
   end
 
+  csv do
+    column :original_id, humanize_name: false
+    column :osm_id, humanize_name: false
+    column :osm_type, humanize_name: false
+    column :wheelchair, humanize_name: false
+    column :wheelchair_toilet, humanize_name: false
+    column :ref_url, humanize_name: false
+  end
+
   index title: proc{ I18n.t('places.index.headline', count: parent_or_collection.without_osm_id.with_coordinates.count) }, :default => true, :download_links => false do
     if current_admin_user.email.blank?
       panel I18n.t('places.index.email_nag.headline'), id: 'mail_missing' do
