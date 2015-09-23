@@ -315,7 +315,8 @@ CREATE TABLE places (
     skips_count integer DEFAULT 0,
     wheelchair_description character varying(255),
     wheelchair_toilet character varying(255),
-    centralkey character varying(255)
+    centralkey character varying(255),
+    ref_url character varying(255)
 );
 
 
@@ -696,4 +697,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150622142101');
 INSERT INTO schema_migrations (version) VALUES ('20150625130647');
 
 INSERT INTO schema_migrations (version) VALUES ('20150625140319');
+
+INSERT INTO schema_migrations (version) VALUES ('20150923094658');
 

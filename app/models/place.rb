@@ -177,7 +177,8 @@ class Place < ActiveRecord::Base
       :wheelchair_description,
       :centralkey,
       :osm_key,
-      :osm_value
+      :osm_value,
+      :ref_url
     ]
   end
 

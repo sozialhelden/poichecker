@@ -59,6 +59,7 @@ de:
         street: Strasse
         osm_id: 'OSM ID'
         phone: Telefon
+        ref_url: 'Referenz URL'
         website: Webseite
         wheelchair: Rollstuhlgerecht
         wheelchair_description: Beschreibung

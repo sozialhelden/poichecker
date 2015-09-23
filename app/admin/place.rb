@@ -7,7 +7,7 @@ ActiveAdmin.register Place do
   permit_params :data_set_id, :original_id, :osm_id, :name, :lat, :lon,
                 :street, :housenumber, :postcode, :city, :country, :website,
                 :phone, :wheelchair, :osm_key, :osm_value, :q, :locale,
-                :wheelchair_toilet, :wheelchair_description, :centralkey
+                :wheelchair_toilet, :wheelchair_description, :centralkey, :ref_url
 
   belongs_to :data_set, optional: true
 
