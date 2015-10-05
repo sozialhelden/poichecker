@@ -12,9 +12,6 @@ before_script:
 - psql -c 'CREATE EXTENSION postgis;' -U postgres -d poichecker_test
 - psql -c 'CREATE EXTENSION postgis_topology;' -U postgres -d poichecker_test
 - psql -U postgres -q -d poichecker_test -f db/structure.sql
-branches:
-  only:
-  - master
 notifications:
   email:
   - info@christophbuente.de
