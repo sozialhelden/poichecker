@@ -16,7 +16,7 @@ ActiveAdmin.register DataSet do
   end
 
   action_item only: :show do
-    link_to admin_data_set_places_path(data_set, format: :csv) do
+    link_to admin_data_set_places_path(data_set, format: :csv, scope: :matched) do
       fa_icon('download', text: 'Download CSV')
     end
   end

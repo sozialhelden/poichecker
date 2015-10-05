@@ -14,24 +14,24 @@ ActiveAdmin.register Place do
   actions :all, :except => [:destroy, :create]
   config.batch_actions = false
 
-  scope I18n.t('scopes.all'), :all,       :if => proc { current_admin_user.admin? }
+  scope :all,       :if => proc { current_admin_user.admin? }
   # custom scope not defined on the model
 
-  scope I18n.t('scopes.matched'), :matched, :if => proc { current_admin_user.admin? } do |places|
+  scope :matched, :if => proc { current_admin_user.admin? } do |places|
     places.with_osm_id
   end
 
-  scope I18n.t('scopes.unmatched'), :unmatched, :if => proc { current_admin_user.admin? } do |places|
+  scope :unmatched, :if => proc { current_admin_user.admin? } do |places|
     places.without_osm_id
   end
 
-  scope I18n.t('scopes.skipped_by_you'), :skipped_by_you,   :if => proc { current_admin_user.admin? } do |places|
+  scope :skipped_by_you,   :if => proc { current_admin_user.admin? } do |places|
     places.without_osm_id.skipped_by(current_admin_user)
   end
-  scope I18n.t('scopes.matched_by_you'), :matched_by_you,   :if => proc { current_admin_user.admin? } do |places|
+  scope :matched_by_you,   :if => proc { current_admin_user.admin? } do |places|
     places.with_osm_id.matched_by(current_admin_user)
   end
-  scope I18n.t('scopes.to_do'), :to_do, :default => true, :if => proc { current_admin_user.admin? } do |places|
+  scope :to_do, :default => true, :if => proc { current_admin_user.admin? } do |places|
     places.without_osm_id.unskipped_by(current_admin_user)
   end
 
