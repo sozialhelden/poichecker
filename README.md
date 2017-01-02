@@ -1,3 +1,6 @@
+# Notice:The development of this project has been stopped.
+
+
 # POIchecker: Dedupe GEO-Data
 
 [![Build Status](https://travis-ci.org/sozialhelden/poichecker.png?branch=master)](https://travis-ci.org/sozialhelden/poichecker)
@@ -8,10 +11,6 @@
 [![Gittip ](http://img.shields.io/gittip/sozialhelden.png)](https://gittip.com/sozialhelden)
 
 POIchecker is an interactive webbased import-tool to manually match and deduplicate geo datasets between external sources and the OpenStreetMap.
-
-============
-The development of this project has been stopped.
-============
 
 With more than 1 million contributors the OpenStreetMap is the largest free and open database for geo-spatial information. Importing new data into the OpenStreetMap most likely creates duplicate data entries. To avoid this undesired effect POIchecker provides a web interface to match and merge every entry manually.
 
